@@ -8,6 +8,7 @@ CBB Website
     - Roster
 - Composite Rankings
     - AP, Kenpom, Torvik, NET, etc.
+    - Quad records
 - Conference Standings
 - Conf, tournament, game probabilities
     - Live game probabilities
