@@ -36,4 +36,4 @@ def bracket():
     return render_template('pages/bracket.html')
 
 if __name__=='__main__': 
-   app.run(debug=True) 
+   app.run() 
