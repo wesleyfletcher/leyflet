@@ -1,0 +1,1618 @@
+{
+	"Abilene Christian": [
+		"Abilene Christian",
+		"Abilene Chr",
+		"Abilene",
+		"ACU"
+	],
+	"Air Force": [
+		"Air Force"
+	],
+	"Akron": [
+		"Akron"
+	],
+	"Alabama A&M": [
+		"Alabama A&M",
+		"AAMU"
+	],
+	"Alabama St": [
+		"Alabama St",
+		"Alabama State",
+		"AL St",
+		"AL State"
+	],
+	"Alabama": [
+		"Alabama",
+		"Bama"
+	],
+	"Albany": [
+		"Albany",
+		"UAlbany",
+		"SUNY Albany"
+	],
+	"Alcorn St": [
+		"Alcorn St",
+		"Alcorn State",
+		"Alcorn"
+	],
+	"American": [
+		"American",
+		"American Univ"
+	],
+	"Appalachian St": [
+		"Appalachian St",
+		"Appalachian State",
+		"App St",
+		"App State"
+	],
+	"Arizona St": [
+		"Arizona St",
+		"Arizona State",
+		"AZ St",
+		"AZ State",
+		"ASU"
+	],
+	"Arizona": [
+		"Arizona",
+		"Zona"
+	],
+	"Arkansas Pine Bluff": [
+		"Arkansas Pine Bluff",
+		"Ark Pine Bluff",
+		"Pine Bluff",
+		"UAPB"
+	],
+	"Arkansas St": [
+		"Arkansas St",
+		"Arkansas State"
+	],
+	"Arkansas": [
+		"Arkansas"
+	],
+	"Army": [
+		"Army",
+		"Army West Point",
+		"West Point"
+	],
+	"Auburn": [
+		"Auburn"
+	],
+	"Austin Peay": [
+		"Austin Peay"
+	],
+	"BYU": [
+		"BYU",
+		"Brigham Young"
+	],
+	"Ball St": [
+		"Ball St",
+		"Ball State"
+	],
+	"Baylor": [
+		"Baylor"
+	],
+	"Bellarmine": [
+		"Bellarmine"
+	],
+	"Belmont": [
+		"Belmont"
+	],
+	"Bethune Cookman": [
+		"Bethune Cookman",
+		"Bethune"
+	],
+	"Binghamton": [
+		"Binghamton"
+	],
+	"Boise St": [
+		"Boise St",
+		"Boise State"
+	],
+	"Boston College": [
+		"Boston College",
+		"BC"
+	],
+	"Boston U": [
+		"Boston U",
+		"Boston Univ",
+		"Boston University"
+	],
+	"Bowling Green": [
+		"Bowling Green",
+		"Bowling Green St",
+		"Bowling Green State",
+		"BGSU"
+	],
+	"Bradley": [
+		"Bradley"
+	],
+	"Brown": [
+		"Brown"
+	],
+	"Bryant": [
+		"Bryant"
+	],
+	"Bucknell": [
+		"Bucknell"
+	],
+	"Buffalo": [
+		"Buffalo",
+		"SUNY Buffalo"
+	],
+	"Butler": [
+		"Butler"
+	],
+	"Cal Baptist": [
+		"Cal Baptist",
+		"California Baptist"
+	],
+	"Cal Poly": [
+		"Cal Poly"
+	],
+	"Cal St Bakersfield": [
+		"Cal St Bakersfield",
+		"Cal State Bakersfield",
+		"CS Bakersfield",
+		"CSU Bakersfield",
+		"CSUB",
+		"Bakersfield"
+	],
+	"Cal St Fullerton": [
+		"Cal St Fullerton",
+		"Cal State Fullerton",
+		"CS Fullerton",
+		"CSU Fullerton",
+		"CSUF",
+		"Fullerton"
+	],
+	"Cal St Northridge": [
+		"Cal St Northridge",
+		"Cal State Northridge",
+		"CS Northridge",
+		"CSU Northridge",
+		"CSUN",
+		"Northridge"
+	],
+	"California": [
+		"California",
+		"Cal"
+	],
+	"Campbell": [
+		"Campbell"
+	],
+	"Canisius": [
+		"Canisius"
+	],
+	"Central Arkansas": [
+		"Central Arkansas",
+		"C Arkansas",
+		"Cent Arkansas",
+		"Central Ark",
+		"Cent Ark"
+	],
+	"Central Connecticut St": [
+		"Central Connecticut St",
+		"Central Connecticut State",
+		"Central Connecticut",
+		"Central Conn",
+		"Central Conn St",
+		"Central Conn State",
+		"CCSU"
+	],
+	"Central Michigan": [
+		"Central Michigan",
+		"C Michigan",
+		"Cent Michigan",
+		"Central Mich",
+		"CMU"
+	],
+	"Charleston Southern": [
+		"Charleston Southern",
+		"Charleston So"
+	],
+	"Charleston": [
+		"Charleston",
+		"College of Charleston",
+		"CofC",
+		"Col Charleston",
+		"Col of Charleston"
+	],
+	"Charlotte": [
+		"Charlotte",
+		"UNC Charlotte"
+	],
+	"Chattanooga": [
+		"Chattanooga"
+	],
+	"Chicago St": [
+		"Chicago St",
+		"Chicago State"
+	],
+	"Cincinnati": [
+		"Cincinnati",
+		"Cincy"
+	],
+	"Citadel": [
+		"Citadel",
+		"The Citadel"
+	],
+	"Clemson": [
+		"Clemson"
+	],
+	"Cleveland St": [
+		"Cleveland St",
+		"Cleveland State"
+	],
+	"Coastal Carolina": [
+		"Coastal Carolina",
+		"Coastal",
+		"CCU",
+		"Coastal Car"
+	],
+	"Colgate": [
+		"Colgate"
+	],
+	"Colorado St": [
+		"Colorado St",
+		"Colorado State"
+	],
+	"Colorado": [
+		"Colorado"
+	],
+	"Columbia": [
+		"Columbia"
+	],
+	"Coppin St": [
+		"Coppin St",
+		"Coppin State"
+	],
+	"Cornell": [
+		"Cornell"
+	],
+	"Creighton": [
+		"Creighton"
+	],
+	"Dartmouth": [
+		"Dartmouth"
+	],
+	"Davidson": [
+		"Davidson"
+	],
+	"Dayton": [
+		"Dayton"
+	],
+	"DePaul": [
+		"DePaul"
+	],
+	"Delaware St": [
+		"Delaware St",
+		"Delaware State"
+	],
+	"Delaware": [
+		"Delaware"
+	],
+	"Denver": [
+		"Denver"
+	],
+	"Detroit Mercy": [
+		"Detroit Mercy",
+		"Detroit"
+	],
+	"Drake": [
+		"Drake"
+	],
+	"Drexel": [
+		"Drexel"
+	],
+	"Duke": [
+		"Duke"
+	],
+	"Duquesne": [
+		"Duquesne"
+	],
+	"ETSU": [
+		"ETSU",
+		"East Tennessee St",
+		"East Tennessee State",
+		"E Tennessee St",
+		"E Tennessee State"
+	],
+	"East Carolina": [
+		"East Carolina",
+		"E Carolina",
+		"ECU"
+	],
+	"East Texas A&M": [
+		"East Texas A&M",
+		"Texas A&M Commerce",
+		"TAMU Commerce",
+		"A&M Commerce",
+		"TAM Commerce"
+	],
+	"Eastern Illinois": [
+		"Eastern Illinois",
+		"E Illinois",
+		"EIU",
+		"Eastern Ill"
+	],
+	"Eastern Kentucky": [
+		"Eastern Kentucky",
+		"E Kentucky",
+		"EKU",
+		"Eastern Ky"
+	],
+	"Eastern Michigan": [
+		"Eastern Michigan",
+		"E Michigan",
+		"Eastern Mich",
+		"EMU"
+	],
+	"Eastern Washington": [
+		"Eastern Washington",
+		"E Washington",
+		"Eastern Wash",
+		"EWU"
+	],
+	"Elon": [
+		"Elon"
+	],
+	"Evansville": [
+		"Evansville"
+	],
+	"FAU": [
+		"FAU",
+		"Florida Atlantic",
+		"FL Atlantic",
+		"Fla Atlantic"
+	],
+	"FGCU": [
+		"FGCU",
+		"Florida Gulf Coast",
+		"Florida GC"
+	],
+	"FIU": [
+		"FIU",
+		"Florida International",
+		"Florida Int",
+		"Florida Intl"
+	],
+	"Fairfield": [
+		"Fairfield"
+	],
+	"Fairleigh Dickinson": [
+		"Fairleigh Dickinson",
+		"FDU",
+		"Fairleigh",
+		"F Dickinson"
+	],
+	"Florida A&M": [
+		"Florida A&M",
+		"FAMU"
+	],
+	"Florida St": [
+		"Florida St",
+		"Florida State"
+	],
+	"Florida": [
+		"Florida"
+	],
+	"Fordham": [
+		"Fordham"
+	],
+	"Fresno St": [
+		"Fresno St",
+		"Fresno State"
+	],
+	"Furman": [
+		"Furman"
+	],
+	"Gardner Webb": [
+		"Gardner Webb",
+		"Gardner"
+	],
+	"George Mason": [
+		"George Mason"
+	],
+	"George Washington": [
+		"George Washington",
+		"GW",
+		"GWU",
+		"G Washington",
+		"George Wash"
+	],
+	"Georgetown": [
+		"Georgetown"
+	],
+	"Georgia Southern": [
+		"Georgia Southern",
+		"GA Southern",
+		"Georgia So"
+	],
+	"Georgia St": [
+		"Georgia St",
+		"Georgia State",
+		"GA St",
+		"GA State"
+	],
+	"Georgia Tech": [
+		"Georgia Tech",
+		"GA Tech",
+		"GT"
+	],
+	"Georgia": [
+		"Georgia",
+		"UGA"
+	],
+	"Gonzaga": [
+		"Gonzaga",
+		"Zaga"
+	],
+	"Grambling": [
+		"Grambling",
+		"Grambling St",
+		"Grambling State"
+	],
+	"Grand Canyon": [
+		"Grand Canyon",
+		"GCU"
+	],
+	"Green Bay": [
+		"Green Bay",
+		"UW Green Bay",
+		"WI Green Bay",
+		"UWGB"
+	],
+	"Hampton": [
+		"Hampton"
+	],
+	"Harvard": [
+		"Harvard"
+	],
+	"Hawaii": [
+		"Hawaii",
+		"Hawai'i"
+	],
+	"High Point": [
+		"High Point",
+		"HPU"
+	],
+	"Hofstra": [
+		"Hofstra"
+	],
+	"Holy Cross": [
+		"Holy Cross"
+	],
+	"Houston Christian": [
+		"Houston Christian",
+		"Houston Chr",
+		"Hou Christian",
+		"Houston Baptist",
+		"Hou Baptist"
+	],
+	"Houston": [
+		"Houston"
+	],
+	"Howard": [
+		"Howard"
+	],
+	"IU Indy": [
+		"IU Indy",
+		"IU Indianapolis",
+		"IUPUI"
+	],
+	"Idaho St": [
+		"Idaho St",
+		"Idaho State"
+	],
+	"Idaho": [
+		"Idaho"
+	],
+	"Illinois St": [
+		"Illinois St",
+		"Illinois State",
+		"IL St",
+		"IL State"
+	],
+	"Illinois": [
+		"Illinois"
+	],
+	"Incarnate Word": [
+		"Incarnate Word",
+		"UIW"
+	],
+	"Indiana St": [
+		"Indiana St",
+		"Indiana State"
+	],
+	"Indiana": [
+		"Indiana"
+	],
+	"Iona": [
+		"Iona"
+	],
+	"Iowa St": [
+		"Iowa St",
+		"Iowa State",
+		"IA State",
+		"IA St"
+	],
+	"Iowa": [
+		"Iowa"
+	],
+	"Jackson St": [
+		"Jackson St",
+		"Jackson State"
+	],
+	"Jacksonville St": [
+		"Jacksonville St",
+		"Jacksonville State",
+		"Jax St",
+		"Jax State"
+	],
+	"Jacksonville": [
+		"Jacksonville"
+	],
+	"James Madison": [
+		"James Madison",
+		"JMU"
+	],
+	"Kansas City": [
+		"Kansas City",
+		"Missouri Kansas City",
+		"Missouri KC",
+		"UMKC"
+	],
+	"Kansas St": [
+		"Kansas St",
+		"Kansas State"
+	],
+	"Kansas": [
+		"Kansas"
+	],
+	"Kennesaw St": [
+		"Kennesaw St",
+		"Kennesaw State",
+		"Kennesaw"
+	],
+	"Kent St": [
+		"Kent St",
+		"Kent State",
+		"Kent"
+	],
+	"Kentucky": [
+		"Kentucky"
+	],
+	"LIU": [
+		"LIU",
+		"Long Island",
+		"LIU Brooklyn"
+	],
+	"LSU": [
+		"LSU",
+		"Louisiana St",
+		"Louisiana State"
+	],
+	"La Salle": [
+		"La Salle"
+	],
+	"Lafayette": [
+		"Lafayette"
+	],
+	"Lamar": [
+		"Lamar",
+		"Lamar Univ",
+		"Lamar University"
+	],
+	"Le Moyne": [
+		"Le Moyne"
+	],
+	"Lehigh": [
+		"Lehigh"
+	],
+	"Liberty": [
+		"Liberty"
+	],
+	"Lindenwood": [
+		"Lindenwood"
+	],
+	"Lipscomb": [
+		"Lipscomb"
+	],
+	"Little Rock": [
+		"Little Rock",
+		"Arkansas Little Rock",
+		"Ark Little Rock",
+		"UALR"
+	],
+	"Long Beach St": [
+		"Long Beach St",
+		"Long Beach State",
+		"Long Beach",
+		"LBSU"
+	],
+	"Longwood": [
+		"Longwood"
+	],
+	"Louisiana Tech": [
+		"Louisiana Tech",
+		"LA Tech"
+	],
+	"Louisiana": [
+		"Louisiana",
+		"Louisiana Lafayette",
+		"LA Lafayette",
+		"ULL"
+	],
+	"Louisville": [
+		"Louisville"
+	],
+	"Loyola Chicago": [
+		"Loyola Chicago",
+		"Loyola IL",
+		"Loyola Ill",
+		"Loyola Illinois",
+		"Loy Chicago"
+	],
+	"Loyola Maryland": [
+		"Loyola Maryland",
+		"Loyola MD",
+		"Loy Maryland"
+	],
+	"Loyola Marymount": [
+		"Loyola Marymount",
+		"Loy Marymount",
+		"LMU",
+		"LMU CA",
+		"Loyola CA"
+	],
+	"MTSU": [
+		"MTSU",
+		"Middle Tennessee St",
+		"Middle Tennessee State",
+		"Middle Tennessee",
+		"Middle Tenn"
+	],
+	"Maine": [
+		"Maine"
+	],
+	"Manhattan": [
+		"Manhattan"
+	],
+	"Marist": [
+		"Marist"
+	],
+	"Marquette": [
+		"Marquette"
+	],
+	"Marshall": [
+		"Marshall"
+	],
+	"Maryland": [
+		"Maryland"
+	],
+	"McNeese": [
+		"McNeese",
+		"McNeese St",
+		"McNeese State"
+	],
+	"Memphis": [
+		"Memphis"
+	],
+	"Mercer": [
+		"Mercer"
+	],
+	"Mercyhurst": [
+		"Mercyhurst"
+	],
+	"Merrimack": [
+		"Merrimack"
+	],
+	"Miami FL": [
+		"Miami FL",
+		"Miami"
+	],
+	"Miami OH": [
+		"Miami OH",
+		"Miami Univ",
+		"Miami University"
+	],
+	"Michigan St": [
+		"Michigan St",
+		"Michigan State",
+		"MI St",
+		"MI State"
+	],
+	"Michigan": [
+		"Michigan"
+	],
+	"Milwaukee": [
+		"Milwaukee",
+		"UW Milwaukee",
+		"WI Milwaukee",
+		"UWM"
+	],
+	"Minnesota": [
+		"Minnesota"
+	],
+	"Mississippi St": [
+		"Mississippi St",
+		"Mississippi State",
+		"Miss St",
+		"Miss State"
+	],
+	"Mississippi Valley St": [
+		"Mississippi Valley St",
+		"Mississippi Valley State",
+		"Mississippi Valley",
+		"Mississippi Val St",
+		"Mississippi Val State",
+		"Mississippi Val",
+		"Miss Valley St",
+		"Miss Valley State",
+		"Miss Valley",
+		"MS Valley St",
+		"MS Valley State",
+		"MS Valley"
+	],
+	"Missouri St": [
+		"Missouri St",
+		"Missouri State",
+		"MO St",
+		"MO State"
+	],
+	"Missouri": [
+		"Missouri",
+		"Mizzou"
+	],
+	"Monmouth": [
+		"Monmouth"
+	],
+	"Montana St": [
+		"Montana St",
+		"Montana State"
+	],
+	"Montana": [
+		"Montana"
+	],
+	"Morehead St": [
+		"Morehead St",
+		"Morehead State"
+	],
+	"Morgan St": [
+		"Morgan St",
+		"Morgan State"
+	],
+	"Mt St Mary's": [
+		"Mt St Mary's",
+		"Mount St Mary's",
+		"Mt Saint Mary's",
+		"Mount Saint Mary's"
+	],
+	"Murray St": [
+		"Murray St",
+		"Murray State"
+	],
+	"NC A&T": [
+		"NC A&T",
+		"N Carolina A&T",
+		"North Carolina A&T"
+	],
+	"NC Central": [
+		"NC Central",
+		"UNC Central",
+		"North Carolina Central",
+		"NCCU"
+	],
+	"NC St": [
+		"NC St",
+		"NC State",
+		"N Carolina St",
+		"N Carolina State",
+		"North Carolina St",
+		"North Carolina State",
+		"NCSU",
+		"NCST"
+	],
+	"NJIT": [
+		"NJIT"
+	],
+	"Navy": [
+		"Navy"
+	],
+	"Nebraska": [
+		"Nebraska"
+	],
+	"Nevada": [
+		"Nevada",
+		"UNR"
+	],
+	"New Hampshire": [
+		"New Hampshire",
+		"UNH"
+	],
+	"New Haven": [
+		"New Haven"
+	],
+	"New Mexico St": [
+		"New Mexico St",
+		"New Mexico State",
+		"NM St",
+		"NM State",
+		"NMSU"
+	],
+	"New Mexico": [
+		"New Mexico",
+		"UNM"
+	],
+	"New Orleans": [
+		"New Orleans"
+	],
+	"Niagara": [
+		"Niagara"
+	],
+	"Nicholls": [
+		"Nicholls",
+		"Nicholls St",
+		"Nicholls State"
+	],
+	"Norfolk St": [
+		"Norfolk St",
+		"Norfolk State"
+	],
+	"North Alabama": [
+		"North Alabama",
+		"N Alabama",
+		"North Ala",
+		"UNA"
+	],
+	"North Carolina": [
+		"North Carolina",
+		"N Carolina",
+		"UNC"
+	],
+	"North Dakota St": [
+		"North Dakota St",
+		"North Dakota State",
+		"N Dakota St",
+		"N Dakota State",
+		"ND St",
+		"ND State",
+		"NDSU"
+	],
+	"North Dakota": [
+		"North Dakota",
+		"N Dakota"
+	],
+	"North Florida": [
+		"North Florida",
+		"N Florida"
+	],
+	"North Texas": [
+		"North Texas",
+		"N Texas",
+		"UNT"
+	],
+	"Northeastern": [
+		"Northeastern"
+	],
+	"Northern Arizona": [
+		"Northern Arizona",
+		"N Arizona",
+		"Northern Ariz",
+		"NAU"
+	],
+	"Northern Colorado": [
+		"Northern Colorado",
+		"N Colorado",
+		"Northern Colo"
+	],
+	"Northern Illinois": [
+		"Northern Illinois",
+		"N Illinois",
+		"NIU",
+		"Northern Ill"
+	],
+	"Northern Iowa": [
+		"Northern Iowa",
+		"N Iowa",
+		"Northern IA",
+		"UNI"
+	],
+	"Northern Kentucky": [
+		"Northern Kentucky",
+		"N Kentucky",
+		"NKU",
+		"Northern Ky"
+	],
+	"Northwestern St": [
+		"Northwestern St",
+		"Northwestern State",
+		"NW St",
+		"NW State",
+		"Northwestern LA"
+	],
+	"Northwestern": [
+		"Northwestern",
+		"NW"
+	],
+	"Notre Dame": [
+		"Notre Dame",
+		"ND"
+	],
+	"Oakland": [
+		"Oakland"
+	],
+	"Ohio St": [
+		"Ohio St",
+		"Ohio State"
+	],
+	"Ohio": [
+		"Ohio"
+	],
+	"Oklahoma St": [
+		"Oklahoma St",
+		"Oklahoma State",
+		"OK St",
+		"OK State"
+	],
+	"Oklahoma": [
+		"Oklahoma"
+	],
+	"Old Dominion": [
+		"Old Dominion",
+		"ODU"
+	],
+	"Ole Miss": [
+		"Ole Miss",
+		"Mississippi"
+	],
+	"Omaha": [
+		"Omaha",
+		"Nebraska Omaha",
+		"Omaha NE",
+		"NE Omaha"
+	],
+	"Oral Roberts": [
+		"Oral Roberts",
+		"ORU"
+	],
+	"Oregon St": [
+		"Oregon St",
+		"Oregon State"
+	],
+	"Oregon": [
+		"Oregon"
+	],
+	"Pacific": [
+		"Pacific"
+	],
+	"Penn St": [
+		"Penn St",
+		"Penn State"
+	],
+	"Penn": [
+		"Penn",
+		"Pennsylvania",
+		"UPenn"
+	],
+	"Pepperdine": [
+		"Pepperdine"
+	],
+	"Pittsburgh": [
+		"Pittsburgh",
+		"Pitt"
+	],
+	"Portland St": [
+		"Portland St",
+		"Portland State"
+	],
+	"Portland": [
+		"Portland"
+	],
+	"Prairie View A&M": [
+		"Prairie View A&M",
+		"Prairie View",
+		"PV A&M",
+		"PVAMU"
+	],
+	"Presbyterian": [
+		"Presbyterian"
+	],
+	"Princeton": [
+		"Princeton"
+	],
+	"Providence": [
+		"Providence"
+	],
+	"Purdue Fort Wayne": [
+		"Purdue Fort Wayne",
+		"Purdue FW",
+		"PFW",
+		"Fort Wayne"
+	],
+	"Purdue": [
+		"Purdue"
+	],
+	"Queens": [
+		"Queens",
+		"Queens NC"
+	],
+	"Quinnipiac": [
+		"Quinnipiac"
+	],
+	"Radford": [
+		"Radford"
+	],
+	"Rhode Island": [
+		"Rhode Island",
+		"URI"
+	],
+	"Rice": [
+		"Rice"
+	],
+	"Richmond": [
+		"Richmond"
+	],
+	"Rider": [
+		"Rider"
+	],
+	"Robert Morris": [
+		"Robert Morris",
+		"RMU"
+	],
+	"Rutgers": [
+		"Rutgers"
+	],
+	"SE Louisiana": [
+		"SE Louisiana",
+		"Southeastern Louisiana",
+		"Southeastern LA",
+		"SELA"
+	],
+	"SEMO": [
+		"SEMO",
+		"SE Missouri",
+		"SE Missouri St",
+		"SE Missouri State",
+		"Southeast Missouri",
+		"Southeast Missouri St",
+		"Southeast Missouri State",
+		"Southeast MO",
+		"Southeast MO St",
+		"Southeast MO State"
+	],
+	"SIUE": [
+		"SIUE",
+		"SIU Edwardsville",
+		"Edwardsville"
+	],
+	"SMU": [
+		"SMU",
+		"Southern Methodist",
+		"So Methodist"
+	],
+	"Sacramento St": [
+		"Sacramento St",
+		"Sacramento State",
+		"Cal St Sacramento",
+		"Cal State Sacramento",
+		"CS Sacramento",
+		"CSU Sacramento",
+		"Sac St",
+		"Sac State"
+	],
+	"Sacred Heart": [
+		"Sacred Heart"
+	],
+	"Sam Houston": [
+		"Sam Houston",
+		"Sam Houston St",
+		"Sam Houston State"
+	],
+	"Samford": [
+		"Samford"
+	],
+	"San Diego St": [
+		"San Diego St",
+		"San Diego State"
+	],
+	"San Diego": [
+		"San Diego"
+	],
+	"San Francisco": [
+		"San Francisco"
+	],
+	"San Jose St": [
+		"San Jose St",
+		"San Jose State",
+		"SJSU"
+	],
+	"Santa Clara": [
+		"Santa Clara"
+	],
+	"Seattle": [
+		"Seattle",
+		"Seattle U"
+	],
+	"Seton Hall": [
+		"Seton Hall"
+	],
+	"Siena": [
+		"Siena"
+	],
+	"South Alabama": [
+		"South Alabama",
+		"S Alabama",
+		"South Ala",
+		"USA"
+	],
+	"South Carolina St": [
+		"South Carolina St",
+		"South Carolina State",
+		"S Carolina St",
+		"S Carolina State",
+		"SC St",
+		"SC State"
+	],
+	"South Carolina": [
+		"South Carolina",
+		"S Carolina"
+	],
+	"South Dakota St": [
+		"South Dakota St",
+		"South Dakota State",
+		"S Dakota St",
+		"S Dakota State"
+	],
+	"South Dakota": [
+		"South Dakota",
+		"S Dakota"
+	],
+	"Southern Illinois": [
+		"Southern Illinois",
+		"So Illinois",
+		"S Illinois",
+		"SIU",
+		"Southern Ill"
+	],
+	"Southern Indiana": [
+		"Southern Indiana",
+		"Southern Ind",
+		"So Indiana",
+		"S Indiana",
+		"USI"
+	],
+	"Southern Miss": [
+		"Southern Miss",
+		"Southern Mississippi",
+		"S Miss",
+		"S Mississippi",
+		"USM"
+	],
+	"Southern Utah": [
+		"Southern Utah",
+		"So Utah",
+		"S Utah",
+		"SUU"
+	],
+	"Southern": [
+		"Southern",
+		"Southern U",
+		"Southern Univ"
+	],
+	"St Bonaventure": [
+		"St Bonaventure",
+		"Saint Bonaventure"
+	],
+	"St Francis": [
+		"St Francis",
+		"Saint Francis",
+		"St Francis PA",
+		"Saint Francis PA"
+	],
+	"St John's": [
+		"St John's",
+		"Saint John's",
+		"St John's NY",
+		"Saint John's NY"
+	],
+	"St Joseph's": [
+		"St Joseph's",
+		"Saint Joseph's",
+		"St Joe's",
+		"Saint Joe's",
+		"St Joseph's PA",
+		"Saint Joseph's PA"
+	],
+	"St Louis": [
+		"St Louis",
+		"Saint Louis"
+	],
+	"St Mary's": [
+		"St Mary's",
+		"Saint Mary's",
+		"St Mary's CA",
+		"Saint Mary's CA"
+	],
+	"St Peter's": [
+		"St Peter's",
+		"Saint Peter's"
+	],
+	"St Thomas": [
+		"St Thomas",
+		"Saint Thomas",
+		"St Thomas MN",
+		"Saint Thomas MN"
+	],
+	"Stanford": [
+		"Stanford"
+	],
+	"Stephen F Austin": [
+		"Stephen F Austin",
+		"SF Austin",
+		"SFA"
+	],
+	"Stetson": [
+		"Stetson"
+	],
+	"Stonehill": [
+		"Stonehill"
+	],
+	"Stony Brook": [
+		"Stony Brook"
+	],
+	"Syracuse": [
+		"Syracuse",
+		"Cuse"
+	],
+	"TCU": [
+		"TCU",
+		"Texas Christian",
+		"Texas Chr"
+	],
+	"Tarleton St": [
+		"Tarleton St",
+		"Tarleton State",
+		"Tarleton"
+	],
+	"Temple": [
+		"Temple"
+	],
+	"Tennessee St": [
+		"Tennessee St",
+		"Tennessee State"
+	],
+	"Tennessee Tech": [
+		"Tennessee Tech"
+	],
+	"Tennessee": [
+		"Tennessee"
+	],
+	"Texas A&M Corpus Christi": [
+		"Texas A&M Corpus Christi",
+		"Texas A&M Corpus Chris",
+		"Texas A&M C Christi",
+		"TAMU Corpus Christi",
+		"TAMU Corpus Chris",
+		"TAMU C Christi",
+		"A&M Corpus Christi",
+		"A&M Corpus Chris",
+		"A&M C Christi",
+		"TAM Corpus Christi",
+		"TAM Corpus Chris",
+		"TAM C Christi"
+	],
+	"Texas A&M": [
+		"Texas A&M",
+		"TAMU"
+	],
+	"Texas Southern": [
+		"Texas Southern",
+		"Texas So",
+		"TX Southern"
+	],
+	"Texas St": [
+		"Texas St",
+		"Texas State"
+	],
+	"Texas Tech": [
+		"Texas Tech"
+	],
+	"Texas": [
+		"Texas"
+	],
+	"Toledo": [
+		"Toledo"
+	],
+	"Towson": [
+		"Towson"
+	],
+	"Troy": [
+		"Troy"
+	],
+	"Tulane": [
+		"Tulane"
+	],
+	"Tulsa": [
+		"Tulsa"
+	],
+	"UAB": [
+		"UAB"
+	],
+	"UC Davis": [
+		"UC Davis",
+		"UCD",
+		"Davis"
+	],
+	"UC Irvine": [
+		"UC Irvine",
+		"UCI",
+		"Irvine"
+	],
+	"UC Riverside": [
+		"UC Riverside",
+		"UCR",
+		"Riverside"
+	],
+	"UC San Diego": [
+		"UC San Diego",
+		"UCSD"
+	],
+	"UC Santa Barbara": [
+		"UC Santa Barbara",
+		"UCSB",
+		"Santa Barbara"
+	],
+	"UCF": [
+		"UCF",
+		"Central Florida",
+		"Cent Florida",
+		"C Florida"
+	],
+	"UCLA": [
+		"UCLA"
+	],
+	"UConn": [
+		"UConn",
+		"Connecticut"
+	],
+	"UIC": [
+		"UIC",
+		"Illinois Chicago",
+		"Ill Chicago",
+		"IL Chicago"
+	],
+	"ULM": [
+		"ULM",
+		"Louisiana Monroe",
+		"LA Monroe"
+	],
+	"UMBC": [
+		"UMBC"
+	],
+	"UMES": [
+		"UMES",
+		"Maryland Eastern Shore",
+		"Maryland E Shore",
+		"MD Eastern Shore",
+		"MD E Shore"
+	],
+	"UMass Lowell": [
+		"UMass Lowell",
+		"Mass Lowell",
+		"MA Lowell",
+		"Lowell"
+	],
+	"UMass": [
+		"UMass",
+		"Massachusetts"
+	],
+	"UNC Asheville": [
+		"UNC Asheville",
+		"NC Asheville",
+		"UNCA"
+	],
+	"UNC Greensboro": [
+		"UNC Greensboro",
+		"NC Greensboro",
+		"UNCG"
+	],
+	"UNC Wilmington": [
+		"UNC Wilmington",
+		"UNCW",
+		"NC Wilmington"
+	],
+	"UNLV": [
+		"UNLV"
+	],
+	"USC Upstate": [
+		"USC Upstate",
+		"SC Upstate",
+		"South Carolina Upstate",
+		"Upstate"
+	],
+	"USC": [
+		"USC",
+		"Southern Cal",
+		"Southern California",
+		"SC"
+	],
+	"USF": [
+		"USF",
+		"South Florida",
+		"So Florida",
+		"S Florida",
+		"South Fla"
+	],
+	"UT Arlington": [
+		"UT Arlington",
+		"Texas Arlington",
+		"TX Arlington",
+		"UTA"
+	],
+	"UT Martin": [
+		"UT Martin",
+		"Tennessee Martin",
+		"Tenn Martin",
+		"TN Martin",
+		"UTM"
+	],
+	"UTEP": [
+		"UTEP",
+		"UT El Paso",
+		"Texas El Paso",
+		"El Paso"
+	],
+	"UTRGV": [
+		"UTRGV",
+		"UT Rio Grande Valley",
+		"Texas RGV",
+		"Texas Rio Grande Valley",
+		"TX RGV",
+		"TX Rio Grande Valley"
+	],
+	"UTSA": [
+		"UTSA",
+		"UT San Antonio",
+		"Texas San Antonio",
+		"San Antonio"
+	],
+	"Utah St": [
+		"Utah St",
+		"Utah State"
+	],
+	"Utah Tech": [
+		"Utah Tech",
+		"UT Tech",
+		"Dixie St"
+	],
+	"Utah Valley": [
+		"Utah Valley",
+		"UVU"
+	],
+	"Utah": [
+		"Utah"
+	],
+	"VCU": [
+		"VCU",
+		"Virginia Commonwealth",
+		"VA Commonwealth"
+	],
+	"VMI": [
+		"VMI",
+		"Virginia Military"
+	],
+	"Valparaiso": [
+		"Valparaiso",
+		"Valpo"
+	],
+	"Vanderbilt": [
+		"Vanderbilt",
+		"Vandy"
+	],
+	"Vermont": [
+		"Vermont"
+	],
+	"Villanova": [
+		"Villanova",
+		"Nova"
+	],
+	"Virginia Tech": [
+		"Virginia Tech",
+		"VA Tech",
+		"VT"
+	],
+	"Virginia": [
+		"Virginia",
+		"UVA"
+	],
+	"Wagner": [
+		"Wagner"
+	],
+	"Wake Forest": [
+		"Wake Forest",
+		"WF",
+		"Wake"
+	],
+	"Washington St": [
+		"Washington St",
+		"Washington State",
+		"Wazzu"
+	],
+	"Washington": [
+		"Washington"
+	],
+	"Weber St": [
+		"Weber St",
+		"Weber State"
+	],
+	"West Georgia": [
+		"West Georgia",
+		"W Georgia",
+		"West Ga",
+		"UWG"
+	],
+	"West Virginia": [
+		"West Virginia",
+		"W Virginia"
+	],
+	"Western Carolina": [
+		"Western Carolina",
+		"W Carolina",
+		"Western Caro",
+		"WCU"
+	],
+	"Western Illinois": [
+		"Western Illinois",
+		"W Illinois",
+		"WIU",
+		"Western Ill"
+	],
+	"Western Kentucky": [
+		"Western Kentucky",
+		"W Kentucky",
+		"WKU",
+		"Western Ky"
+	],
+	"Western Michigan": [
+		"Western Michigan",
+		"W Michigan",
+		"Western Mich",
+		"WMU"
+	],
+	"Wichita St": [
+		"Wichita St",
+		"Wichita State"
+	],
+	"William & Mary": [
+		"William & Mary",
+		"William and Mary"
+	],
+	"Winthrop": [
+		"Winthrop"
+	],
+	"Wisconsin": [
+		"Wisconsin"
+	],
+	"Wofford": [
+		"Wofford"
+	],
+	"Wright St": [
+		"Wright St",
+		"Wright State"
+	],
+	"Wyoming": [
+		"Wyoming"
+	],
+	"Xavier": [
+		"Xavier"
+	],
+	"Yale": [
+		"Yale"
+	],
+	"Youngstown St": [
+		"Youngstown St",
+		"Youngstown State",
+		"YSU"
+	]
+}
