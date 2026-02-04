@@ -7,10 +7,11 @@ class database:
 
     def __init__(self):
         self.schema = sql.connect(
-            host='localhost',
+            host='turntable.proxy.rlwy.net',
+            port=36283,
             user='root',
-            password='Fletchdog04!', #make more secure
-            database='leyflet'
+            password='jMkXScGltcodPCsTAdWCxkkmeIQbRcJi', #make more secure
+            database='railway'
         )
         self.cursor = self.schema.cursor()
 
