@@ -10,7 +10,12 @@ def home():
 @app.route('/teams/')
 def teams():
     team = request.args.get('team')
-    return render_template('pages/teams.html', team=team)
+
+    db = database()
+    teams_list = list(db.show('teams')['name'])
+    db.close()
+
+    return render_template('pages/teams.html', team=team, teams_list=teams_list)
 
 @app.route('/scores/')
 def scores():

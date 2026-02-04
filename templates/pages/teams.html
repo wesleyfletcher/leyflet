@@ -6,7 +6,9 @@
 {% if team %}
     <h2>Team = {{team}}</h2>
 {% else %}
-    <h2>No team selected</h2>
+    {% for tm in teams_list %}
+        <h3>{{tm}}</h3>
+    {% endfor %}
 {% endif %}
 
 {% endblock %}
