@@ -1,4 +1,5 @@
 from flask import *
+from database import database
 
 app = Flask(__name__)
 
@@ -6,34 +7,30 @@ app = Flask(__name__)
 def home():
     return render_template('pages/home.html')
 
-@app.route('/teams')
-@app.route('/teams/<team>')
-def teams(team=None):
+@app.route('/teams/')
+def teams():
+    team = request.args.get('team')
     return render_template('pages/teams.html', team=team)
 
-@app.route('/scores')
+@app.route('/scores/')
 def scores():
     return render_template('pages/scores.html')
 
-@app.route('/schedule')
-def schedule():
-    return render_template('pages/schedule.html')
-
-@app.route('/stats')
+@app.route('/stats/')
 def stats():
     return render_template('pages/stats.html')
 
-@app.route('/rankings')
+@app.route('/rankings/')
 def rankings():
     return render_template('pages/rankings.html')
 
-@app.route('/standings')
+@app.route('/standings/')
 def standings():
     return render_template('pages/standings.html')
 
-@app.route('/bracket')
+@app.route('/bracket/')
 def bracket():
     return render_template('pages/bracket.html')
 
-if __name__=='__main__': 
+if __name__=='__main__':
    app.run() 

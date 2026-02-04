@@ -10,7 +10,7 @@ nav {
 }
 nav ul {
     float: right;
-    margin-right: 5%;
+    margin-right: 2%;
 
     list-style-type: none;
     padding: 0;
@@ -30,13 +30,13 @@ nav .logo {
     font-family: "Akaya Kanadaka", system-ui;
     font-weight: bold;
 
-    margin-left: 5%;
+    margin-left: 2%;
     font-size: 3em;
 
     text-decoration: none;
 }
 nav .link {
-    padding: 20px;
+    padding: 15px;
 
     font-size: 1.4em;
     color: white;
