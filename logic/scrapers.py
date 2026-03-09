@@ -7,7 +7,7 @@ import json
 
 import pandas as pd
 
-def appoll():
+def ap():
     url = "https://apnews.com/hub/ap-top-25-college-basketball-poll"
     page = requests.get(url)
 
@@ -22,9 +22,9 @@ def appoll():
     ranks = [int(r.text) for r in rank_col]
     teams = [r.text for r in team_col]
 
-    pd.DataFrame({'Rank' : ranks, 'Team' : teams}).to_csv('TEMP_TABLES/appoll.csv', index=False)
+    return pd.DataFrame({'Rank' : ranks, 'Team' : teams}).sort_values(by='Rank', ascending=True)
 
-def kenpom():
+def kp():
     url = "https://kenpom.com"
 
     driver = webdriver.Chrome()
@@ -53,7 +53,7 @@ def kenpom():
     ranks = [int(r.text) for r in rank_col]
     teams = [r.text for r in team_col]
 
-    pd.DataFrame({'Rank' : ranks, 'Team' : teams}).to_csv('TEMP_TABLES/kenpom.csv', index=False)
+    return pd.DataFrame({'Rank' : ranks, 'Team' : teams}).sort_values(by='Rank', ascending=True)
 
 def net():
     url = "https://ncaa.com/rankings/basketball-men/d1/ncaa-mens-basketball-net-rankings"
@@ -70,9 +70,9 @@ def net():
     ranks = [int(r.text) for r in rank_col]
     teams = [r.text for r in team_col]
 
-    pd.DataFrame({'Rank' : ranks, 'Team' : teams}).to_csv('TEMP_TABLES/net.csv', index=False)
+    return pd.DataFrame({'Rank' : ranks, 'Team' : teams}).sort_values(by='Rank', ascending=True)
 
-def torvik():
+def wab():
     url = "https://barttorvik.com/#"
 
     driver = webdriver.Chrome()
@@ -89,17 +89,20 @@ def torvik():
 
     rows = soup.find_all('tr', class_='seedrow')
 
-    rank_col = [row.find('td', class_='lowrowclick') for row in rows]
+    rank_col = [row.find('td', class_='34').find('span') for row in rows]
 
     ranks = [int(r.text) for r in rank_col]
     teams = [row.find('a').find(string=True) for row in rows]
 
-    pd.DataFrame({'Rank' : ranks, 'Team' : teams}).to_csv('TEMP_TABLES/torvik.csv', index=False)
+    return pd.DataFrame({'Rank' : ranks, 'Team' : teams}).sort_values(by='Rank', ascending=True)
 
-def get_name(team : str):
-    names = json.load(open('name_variants.json', 'r'))
+def get_name(team : str, throw_error=False):
+    names = json.load(open('./logic/name_variants.json', 'r'))
 
     team = team.replace('-', ' ')
+    team = team.replace('–', ' ')
+    team = team.replace('é', 'e')
+
     chrs = '.,()'
     for chr in chrs:
         team = team.replace(chr, '')
@@ -109,4 +112,7 @@ def get_name(team : str):
         if team.lower() in values:
             return key
         
-    raise ValueError(f"{team} not found.")
+    if throw_error:
+        raise ValueError(f"{team} not found.")
+    else:
+        return None

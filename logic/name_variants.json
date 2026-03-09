@@ -28,7 +28,8 @@
 	"Albany": [
 		"Albany",
 		"UAlbany",
-		"SUNY Albany"
+		"SUNY Albany",
+		"Albany NY"
 	],
 	"Alcorn St": [
 		"Alcorn St",
@@ -37,7 +38,8 @@
 	],
 	"American": [
 		"American",
-		"American Univ"
+		"American Univ",
+		"American University"
 	],
 	"Appalachian St": [
 		"Appalachian St",
@@ -110,6 +112,8 @@
 	],
 	"Boston College": [
 		"Boston College",
+		"Boston Col",
+		"Boston Coll",
 		"BC"
 	],
 	"Boston U": [
@@ -182,6 +186,13 @@
 	],
 	"Canisius": [
 		"Canisius"
+	],
+	"Centenary": [
+		"Centenary",
+		"Centenary LA",
+		"Centenary College",
+		"Centenary Col",
+		"Centenary Coll"
 	],
 	"Central Arkansas": [
 		"Central Arkansas",
@@ -465,6 +476,9 @@
 	"Hampton": [
 		"Hampton"
 	],
+	"Hartford": [
+		"Hartford"
+	],
 	"Harvard": [
 		"Harvard"
 	],
@@ -585,7 +599,9 @@
 	"LIU": [
 		"LIU",
 		"Long Island",
-		"LIU Brooklyn"
+		"LIU Brooklyn",
+		"Long Island University",
+		"Long Island Univ"
 	],
 	"LSU": [
 		"LSU",
@@ -1028,6 +1044,8 @@
 		"Purdue Fort Wayne",
 		"Purdue FW",
 		"PFW",
+		"UPFW",
+		"IPFW",
 		"Fort Wayne"
 	],
 	"Purdue": [
@@ -1035,7 +1053,9 @@
 	],
 	"Queens": [
 		"Queens",
-		"Queens NC"
+		"Queens NC",
+		"Queens University",
+		"Queens Univ"
 	],
 	"Quinnipiac": [
 		"Quinnipiac"
@@ -1130,6 +1150,13 @@
 	"Santa Clara": [
 		"Santa Clara"
 	],
+	"Savannah St": [
+		"Savannah St",
+		"Savannah State",
+		"SSU",
+		"Sav St",
+		"Sav State"
+	],
 	"Seattle": [
 		"Seattle",
 		"Seattle U"
@@ -1204,7 +1231,13 @@
 		"St Bonaventure",
 		"Saint Bonaventure"
 	],
-	"St Francis": [
+	"St Francis Brooklyn": [
+		"St Francis Brooklyn",
+		"Saint Francis Brooklyn",
+		"St Francis NY",
+		"Saint Francis NY"
+	],
+	"St Francis PA": [
 		"St Francis",
 		"Saint Francis",
 		"St Francis PA",
@@ -1242,7 +1275,9 @@
 		"St Thomas",
 		"Saint Thomas",
 		"St Thomas MN",
-		"Saint Thomas MN"
+		"Saint Thomas MN",
+		"St Thomas Minnesota",
+		"Saint Thomas Minnesota"
 	],
 	"Stanford": [
 		"Stanford"
@@ -1313,7 +1348,9 @@
 	],
 	"Texas St": [
 		"Texas St",
-		"Texas State"
+		"Texas State",
+		"Texas St San Marcos",
+		"Texas State San Marcos"
 	],
 	"Texas Tech": [
 		"Texas Tech"
@@ -1385,7 +1422,8 @@
 	"ULM": [
 		"ULM",
 		"Louisiana Monroe",
-		"LA Monroe"
+		"LA Monroe",
+		"UL Monroe"
 	],
 	"UMBC": [
 		"UMBC"
@@ -1469,7 +1507,14 @@
 		"Texas RGV",
 		"Texas Rio Grande Valley",
 		"TX RGV",
-		"TX Rio Grande Valley"
+		"TX Rio Grande Valley",
+		"UTPA",
+		"UT Pan American",
+		"Texas PA",
+		"Texas Pan American",
+		"TX PA",
+		"TX Pan American",
+		"TX Pan-American"
 	],
 	"UTSA": [
 		"UTSA",
@@ -1484,7 +1529,8 @@
 	"Utah Tech": [
 		"Utah Tech",
 		"UT Tech",
-		"Dixie St"
+		"Dixie St",
+		"Dixie State"
 	],
 	"Utah Valley": [
 		"Utah Valley",

@@ -22,14 +22,17 @@ class database:
         self.schema.commit()
 
     def query(self, qry : str, rows=-1) -> pd.DataFrame:
+        if rows > -1:
+            qry += f' LIMIT {rows}'
+
         self.cursor.execute(qry)
 
         df = pd.DataFrame(columns=self.cursor.column_names)
         for x in self.cursor:
             df.loc[len(df)] = x
 
-        if rows >= 0:
-            df = df.head(rows)
+        if len(df) == 1 and len(df.columns) == 1:
+            return df.iloc[0, 0]
         
         return df
     
@@ -38,13 +41,13 @@ class database:
 
     def show(self, tbl : str, rows=-1) -> pd.DataFrame:
         qry = f'SELECT * FROM {tbl}'
-        return self.query(qry, rows=rows)
+        return self.query(qry, rows)
 
     def describe(self, tbl : str, rows=-1) -> pd.DataFrame:
         qry = f'DESCRIBE {tbl}'
         return self.query(qry, rows=rows)
 
-    def insert(self, tbl : str, vals):
+    def insert(self, tbl : str, vals, cols=None):
         # Single row
         if type(vals[0]) not in [list, set, tuple, pd.Series]:
             size = len(vals)
@@ -58,7 +61,15 @@ class database:
         format = size*'%s, '
         format = format[:-2]
 
-        qry = f'INSERT INTO {tbl} VALUES ({format})'
+        if cols is None:
+            qry = f'INSERT INTO {tbl} VALUES ({format})'
+        else:
+            col_str = ''
+            for col in cols:
+                col_str += col + ', '
+            col_str = col_str[:-2]
+
+            qry = f'INSERT INTO {tbl}({col_str}) VALUES ({format})'
 
         if single:
             self.cursor.execute(qry, vals)

@@ -12,7 +12,7 @@ def teams():
     team = request.args.get('team')
 
     db = database()
-    teams_list = list(db.show('teams')['name'])
+    teams_list = list(db.show('team')['name'])
     db.close()
 
     return render_template('pages/teams.html', team=team, teams_list=teams_list)
