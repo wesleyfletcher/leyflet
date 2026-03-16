@@ -15,6 +15,7 @@ CBB Website
 - Bracketology
 - MTEs, Conf tournaments, etc
 - Team comparison
+- Printable bracket
 
 
 Data scrapers

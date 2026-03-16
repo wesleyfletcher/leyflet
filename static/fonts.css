@@ -1,0 +1,41 @@
+/* farro-300 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Farro';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/static/fonts/farro-v15-latin-300.woff2') format('woff2');
+}
+/* farro-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Farro';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/static/fonts/farro-v15-latin-regular.woff2') format('woff2');
+}
+/* farro-500 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Farro';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/static/fonts/farro-v15-latin-500.woff2') format('woff2');
+}
+/* farro-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Farro';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/static/fonts/farro-v15-latin-700.woff2') format('woff2');
+}
+
+/* akaya-kanadaka-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Akaya Kanadaka';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/static/fonts/akaya-kanadaka-v18-latin-regular.woff2') format('woff2');
+}

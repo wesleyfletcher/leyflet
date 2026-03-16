@@ -2,10 +2,17 @@
 {% block content %}
 
 <div class="day-select">
-    <a class="link">&lt; Previous</a>
-    <h1>Month DD, YYYY</h1>
-    <a class="link">Next &gt;</a>
-    <!-- Example dates -->
+    <a class="link" href="/scores/?date={{previous}}">&lt; Previous</a>
+    <h1>{{date}}</h1>
+    <a class="link" href="/scores/?date={{next}}">Next &gt;</a>
 </div>
+
+{% if games | length > 0 %}
+    {% for game in games %}
+        <h3>{{game.home_team}} {{game.home_score}} - {{game.away_score}} {{game.away_team}}</h3>
+    {% endfor %}
+{% else %}
+    <h3>No games on this date.</h3>
+{% endif %}
 
 {% endblock %}

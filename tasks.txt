@@ -1,0 +1,9 @@
+Read incorrect scoreboards into complete
+Remove duplicate plays
+Fix 'not available' plays
+
+Insert removed plays
+Add info for 'FIX FIX' players
+Clear and set roster
+
+Try to add missing plays and box scores

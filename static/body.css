@@ -39,6 +39,9 @@ body {
 div .link {
     padding: 5px;
     cursor: pointer;
+
+    color: inherit;
+    text-decoration: none;
 }
 
 div .link:hover {

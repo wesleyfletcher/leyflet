@@ -1,6 +1,8 @@
 from flask import *
 from database import database
 
+import datetime
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -19,7 +21,34 @@ def teams():
 
 @app.route('/scores/')
 def scores():
-    return render_template('pages/scores.html')
+    dt = request.args.get('date')
+
+    if dt:
+        dt = datetime.date.fromisoformat(dt)
+    else:
+        dt = datetime.date.today()
+
+    previous = str(dt - datetime.timedelta(days=1)).replace('-', '')
+    next     = str(dt + datetime.timedelta(days=1)).replace('-', '')
+
+    date_str = dt.strftime('%B %d, %Y')
+
+    db = database()
+    game_table = db.query(f'SELECT * FROM game JOIN complete USING (id) WHERE game_date = "{dt}"')
+    db.close()
+
+    games = []
+    for i in range(len(game_table)):
+        row = game_table.loc[i]
+
+        games.append({
+            'home_team'  : row['home_team'],
+            'away_team'  : row['away_team'],
+            'home_score' : row['home_score'],
+            'away_score' : row['away_score']     
+        })
+
+    return render_template('pages/scores.html', date=date_str, previous=previous, next=next, games=games)
 
 @app.route('/stats/')
 def stats():
