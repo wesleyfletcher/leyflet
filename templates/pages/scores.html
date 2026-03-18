@@ -1,18 +1,66 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="day-select">
-    <a class="link" href="/scores/?date={{previous}}">&lt; Previous</a>
-    <h1>{{date}}</h1>
-    <a class="link" href="/scores/?date={{next}}">Next &gt;</a>
-</div>
-
-{% if games | length > 0 %}
-    {% for game in games %}
-        <h3>{{game.home_team}} {{game.home_score}} - {{game.away_score}} {{game.away_team}}</h3>
-    {% endfor %}
-{% else %}
-    <h3>No games on this date.</h3>
+{% set conf_url = '' %}
+{% if data.conf %}
+    {% set conf_url = '&conf='+data.conf %}
 {% endif %}
 
+<div class="day-select">
+    <div style="width:25%">
+        <a class="link" href="/scores/?date={{ data.date.previous }}{{ conf_url }}">&lt; Previous</a>
+    </div>
+    <div style="width:50%">
+        <h1>{{ data.date.today }}</h1>
+    </div>
+    <div style="width:25%">
+        <a class="link" href="/scores/?date={{ data.date.next }}{{ conf_url }}">Next &gt;</a>
+    </div>
+</div>
+
+{% if data.scores | length > 0 %}
+    <div class="container">
+        {% for game in data.scores %}
+            <div class="scoreboard-block-small">
+                <div class="scoreboard-row" style="height:10%; padding-top:4%;">
+                    <div class="scoreboard-logo"></div>
+                    <div class="scoreboard-team"></div>
+                    <div class="scoreboard-total-score" style="font-size:inherit">T</div>
+
+                    <div class="scoreboard-half-score">1H</div>
+                    <div class="scoreboard-half-score">2H</div>
+                    {% if game.overtimes > 0 %}
+                        <div class="scoreboard-half-score">OT</div>
+                    {% endif %}
+                </div>
+                <div class="scoreboard-row">
+                    <img class="scoreboard-logo" src="/static/logos/{{ game.away_code }}.png">
+                    <div class="scoreboard-team">{{ game.away_team }}</div>
+                    <div class="scoreboard-total-score">{{ game.away_score }}</div>
+
+                    <div class="scoreboard-half-score">{{ game.away_score_1h }}</div>
+                    <div class="scoreboard-half-score">{{ game.away_score_2h }}</div>
+                    {% if game.overtimes > 0 %}
+                        <div class="scoreboard-half-score">{{ game.away_score_ot }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="scoreboard-row">
+                    <img class="scoreboard-logo" src="/static/logos/{{ game.home_code }}.png">
+                    <div class="scoreboard-team">{{ game.home_team }}</div>
+                    <div class="scoreboard-total-score">{{ game.home_score }}</div>
+
+                    <div class="scoreboard-half-score">{{ game.home_score_1h }}</div>
+                    <div class="scoreboard-half-score">{{ game.home_score_2h }}</div>
+                    {% if game.overtimes > 0 %}
+                        <div class="scoreboard-half-score">{{ game.home_score_ot }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <!-- do something -->
+    <h3>No games found.</h3>
+{% endif %}
 {% endblock %}

@@ -1,0 +1,63 @@
+.day-select {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.scoreboard-block-small {
+    margin: 2%;
+
+    height: 2in;
+
+    background-color: white;
+
+    border: solid;
+    border-width: 3px;
+    border-color: lightblue;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+}
+
+.scoreboard-row {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    height: 20%;
+}
+
+.scoreboard-logo {
+    padding-left: 2%;
+    width: 8%;
+    align-items: center;
+}
+
+.scoreboard-team {
+    width: 50%;
+    padding-left: 2%;
+
+    text-align: left;
+    font-size: 1.2vw;
+}
+
+.scoreboard-total-score {
+    width: 15%;
+    font-size: 1.2vw;
+}
+
+.scoreboard-half-score {
+    width: 7%;
+    font-size: 1vw;
+}
