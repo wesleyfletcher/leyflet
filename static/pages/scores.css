@@ -40,8 +40,17 @@
 
 .scoreboard-logo {
     padding-left: 2%;
+
     width: 8%;
+    height: 100%;
+
     align-items: center;
+}
+
+.scoreboard-logo img {
+    width: 90%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .scoreboard-team {
@@ -58,6 +67,6 @@
 }
 
 .scoreboard-half-score {
-    width: 7%;
-    font-size: 1vw;
+    width: 5%;
+    font-size: 0.8vw;
 }

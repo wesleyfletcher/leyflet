@@ -3,13 +3,28 @@
 
 <h1>Teams</h1>
 
-{% if team %}
-    <h2>{{ team }}</h2>
-    <img src="/static/logos/{{ code }}.png">
+{% if not data.list %}
+    <table>
+        <tr>
+            <td>{{ data.name }}</td>
+            <td><img src="/static/logos/{{ data.code }}.png" style="width: 50px; height: 50px; object-fit: contain;"></td>
+        </tr>
+    </table>
 {% else %}
-    {% for tm in teams_list %}
-        <h3>{{ tm }}</h3>
-    {% endfor %}
+    <table>
+        <tr>
+            <th>Team</th>
+            <th>Code</th>
+            <th>Logo</th>
+        </tr>
+        {% for team in data.teams %}
+            <tr>
+                <td><a href="/teams/?team={{ team.code }}">{{ team.name }}</a></td>
+                <td>{{ team.code }}</td>
+                <td><img src="/static/logos/{{ team.code }}.png" style="width: 50px; height: 50px; object-fit: contain;"></td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endif %}
 
 {% endblock %}

@@ -13,15 +13,9 @@ def home():
 def teams():
     code = request.args.get('team')
 
-    db = endpoint.database()
-    team = db.query(f'SELECT name FROM team WHERE code = "{code}"')
-    teams_list = list(db.show('team')['name'])
-    db.close()
+    data = endpoint.teams(code)
 
-    if type(team) != str:
-        team = None
-
-    return render_template('pages/teams.html', team=team, code=code, teams_list=teams_list)
+    return render_template('pages/teams.html', data=data)
 
 @app.route('/scores/')
 def scores():
@@ -47,6 +41,12 @@ def standings():
 @app.route('/bracket/')
 def bracket():
     return render_template('pages/bracket.html')
+
+@app.route('/game/<id>')
+def game(id):
+    data = endpoint.game(id)
+
+    return render_template('pages/game.html', data=data)
 
 if __name__=='__main__':
    app.run() 

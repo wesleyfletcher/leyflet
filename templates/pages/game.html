@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div style="display:flex; align-items: center; width: 80%; justify-content: center;">
+    <img src="/static/logos/{{ data.away_code }}.png" style="width: 50px; height: 50px; object-fit: contain; padding: 2%;">
+    <h2>{{data.away_team}} {{data.away_score}} - {{data.home_score}} {{data.home_team}}</h2>
+    <img src="/static/logos/{{ data.home_code }}.png" style="width: 50px; height: 50px; object-fit: contain; padding: 2%;">
+</div>
+
+<h2>1st Half</h2>
+{% for play in data.plays['1H'] %}
+    <p>{{play.text}}</p>
+{% endfor %}
+
+<h2>2nd Half</h2>
+{% for play in data.plays['2H'] %}
+    <p>{{play.text}}</p>
+{% endfor %}
+
+{% endblock %}

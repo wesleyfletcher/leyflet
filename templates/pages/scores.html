@@ -34,7 +34,9 @@
                     {% endif %}
                 </div>
                 <div class="scoreboard-row">
-                    <img class="scoreboard-logo" src="/static/logos/{{ game.away_code }}.png">
+                    <div class="scoreboard-logo">
+                        <img src="/static/logos/{{ game.away_code }}.png">
+                    </div>
                     <div class="scoreboard-team">{{ game.away_team }}</div>
                     <div class="scoreboard-total-score">{{ game.away_score }}</div>
 
@@ -46,7 +48,9 @@
                 </div>
 
                 <div class="scoreboard-row">
-                    <img class="scoreboard-logo" src="/static/logos/{{ game.home_code }}.png">
+                    <div class="scoreboard-logo">
+                        <img src="/static/logos/{{ game.home_code }}.png">
+                    </div>
                     <div class="scoreboard-team">{{ game.home_team }}</div>
                     <div class="scoreboard-total-score">{{ game.home_score }}</div>
 
