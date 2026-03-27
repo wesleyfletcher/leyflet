@@ -54,38 +54,12 @@ def scores(date, conf):
     data['conf'] = conf.replace(' ', '_')
 
     db = database()
-    game_table = db.query(f'''
-        SELECT *,
-            home_code.code AS home_team_code,
-            away_code.code AS away_team_code
-        FROM game
-                          
-        JOIN complete
-        USING (id)
-                          
-        JOIN team AS home_code
-        ON game.home_team = home_code.name
-        
-        JOIN team AS away_code
-        ON game.away_team = away_code.name
-                          
-        JOIN member AS home_conf
-        ON game.home_team = home_conf.team
-            AND game.season = home_conf.season
-                          
-        JOIN member AS away_conf
-        ON game.away_team = away_conf.team
-            AND game.season = away_conf.season
-        
-        WHERE game_date = '{today}'
-        AND (home_conf.conf LIKE '%{conf}%'
-            OR away_conf.conf LIKE '%{conf}%')
-    ''')
+    scores_table = db.runfile('scores_table', today=today, conf=conf)
     db.close()
 
     data['scores'] = []
-    for i in range(len(game_table)):
-        row = game_table.loc[i]
+    for i in range(len(scores_table)):
+        row = scores_table.loc[i]
         data['scores'].append({
             'id' : row['id'],
             'home_team' : row['home_team'], 'home_code' : row['home_team_code'],
@@ -112,35 +86,14 @@ def standings():
 def bracket():
     pass
 
-def game(id):
+def games(id):
     data = {}
 
     db = database()
 
-    game_table = db.query(f'''
-        SELECT *,
-            home_code.code AS home_team_code,
-            away_code.code AS away_team_code
-        FROM game
-                          
-        JOIN complete
-        USING (id)
-                          
-        JOIN team AS home_code
-        ON game.home_team = home_code.name
-        
-        JOIN team AS away_code
-        ON game.away_team = away_code.name
-
-        WHERE id = {id}
-    ''')
-
-    play_table = db.query(f'''
-        SELECT *
-        FROM play
-        WHERE game = {id}
-        ORDER BY seq                
-    ''')
+    game_table = db.runfile('game_table', id=id)
+    stat_table = db.runfile('box_score', id=id)
+    play_table = db.runfile('play_table', id=id)
 
     db.close()
 
@@ -149,8 +102,10 @@ def game(id):
     
     game_table = game_table.loc[0]
 
+    ## General info
+
     data['status'] = game_table['status']
-    data['game_date'] = game_table['game_date']
+    data['game_date'] = game_table['game_date'].strftime("%B %d, %Y")
 
     data['home_team'], data['away_team'] = game_table['home_team'], game_table['away_team']
     data['home_code'], data['away_code'] = game_table['home_team_code'], game_table['away_team_code']
@@ -165,17 +120,56 @@ def game(id):
     data['neutral'] = bool(game_table['neutral'])
     data['overtimes'] = int(game_table['overtimes'])
 
-    data['plays'] = {'1H' : [], '2H' : [], 'OT' : []}
+    ## Stats
+
+    data['stats'] = {data['away_team'] : [], data['home_team'] : []}
+    for i in range(len(stat_table)):
+        row = stat_table.loc[i]
+
+        data['stats'][row['team']].append({
+            'lname' : row['lname'],
+            'fname' : row['fname'],
+            'suffix' : ' ' + row['suffix'] if row['suffix'] else '',
+
+            'min' : int(row['min']),
+            'pts' : int(row['pts']),
+            'fgm' : int(row['fgm']),
+            'fga' : int(row['fga']),
+            'tpm' : int(row['tpm']),
+            'tpa' : int(row['tpa']),
+            'ftm' : int(row['ftm']),
+            'fta' : int(row['fta']),
+
+            'reb' : int(row['reb']),
+            'ast' : int(row['ast']),
+            'to'  : int(row['to']),
+            'stl' : int(row['stl']),
+            'blk' : int(row['blk']),
+
+            'oreb' : int(row['oreb']),
+            'dreb' : int(row['dreb']),
+            'pf' : int(row['pf'])
+        })
+
+    ## Plays
+
+    data['plays'] = {}
     for i in range(len(play_table)):
         row = play_table.loc[i]
 
-        data['plays'][row['half'][-2:]].append({
-            'type' : row['type'],
-            'text' : row['text'],
-            'clock' : str(row['clock'])[:5],
-            'team' : row['team'],
+        if row['half'] not in data['plays']:
+            data['plays'][row['half']] = []
+
+        data['plays'][row['half']].append({
+            'type'   : row['type'],
+            'text'   : row['text'],
+            'clock'  : str(row['clock'])[:5],
+            'team'   : row['team'],
             'player' : int(row['player']) if row['player'] else None,
             'points' : int(row['points'])
         })
 
     return data
+
+def players(id):
+    pass

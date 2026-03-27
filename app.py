@@ -1,8 +1,6 @@
 from flask import *
 import endpoint
 
-import datetime
-
 app = Flask(__name__)
 
 @app.route('/')
@@ -42,11 +40,17 @@ def standings():
 def bracket():
     return render_template('pages/bracket.html')
 
-@app.route('/game/<id>')
-def game(id):
-    data = endpoint.game(id)
+@app.route('/games/<id>')
+def games(id):
+    data = endpoint.games(id)
 
-    return render_template('pages/game.html', data=data)
+    return render_template('pages/games.html', data=data)
+
+@app.route('/players/<id>')
+def players(id):
+    data = endpoint.players(id)
+
+    return render_template('pages/players.html', data=data)
 
 if __name__=='__main__':
    app.run() 

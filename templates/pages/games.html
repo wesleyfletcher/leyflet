@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div style="display:flex; align-items: center; width: 80%; justify-content: center;">
+    <img src="/static/logos/{{ data.away_code }}.png" style="width: 80px; height: 80px; object-fit: contain; padding: 2%;">
+    <h1>{{data.away_team}} {{data.away_score}} - {{data.home_score}} {{data.home_team}}</h1>
+    <img src="/static/logos/{{ data.home_code }}.png" style="width: 80px; height: 80px; object-fit: contain; padding: 2%;">
+</div>
+
+<h3>{{ data.game_date }}</h3>
+
+<h1>Stats</h1>
+
+<div class="stat-container" style="display: flex;">
+    <div class="stat-away">
+        <h2>{{ data.away_team }}</h2>
+
+        <table>
+            <tr>
+                <th>PLAYER</th>
+                <th>MIN</th>
+                <th>PTS</th>
+                
+                <th>FG</th>
+                <th>3P</th>
+                <th>FT</th>
+
+                <th>REB</th>
+                <th>AST</th>
+                <th>TO</th>
+                <th>STL</th>
+                <th>BLK</th>
+                <th>OREB</th>
+                <th>DREB</th>
+                <th>PF</th>
+            </tr>
+            {% for stat in data.stats[data.away_team] %}
+                <tr>
+                    <td>{{ stat.lname }}{{ stat.suffix }}, {{ stat.fname }}</td>
+                    <td>{{ stat.min }}</td>
+                    <td>{{ stat.pts }}</td>
+
+                    <td>{{ stat.fgm }}-{{ stat.fga }}</td>
+                    <td>{{ stat.tpm }}-{{ stat.tpa }}</td>
+                    <td>{{ stat.ftm }}-{{ stat.fta }}</td>
+
+                    <td>{{ stat.reb }}</td>
+                    <td>{{ stat.ast }}</td>
+                    <td>{{ stat.to  }}</td>
+                    <td>{{ stat.stl }}</td>
+                    <td>{{ stat.blk }}</td>
+                    <td>{{ stat.oreb }}</td>
+                    <td>{{ stat.dreb }}</td>
+                    <td>{{ stat.pf }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="stat-home">
+
+        <h2>{{ data.home_team }}</h2>
+
+        <table>
+            <tr>
+                <th>PLAYER</th>
+                <th>MIN</th>
+                <th>PTS</th>
+                
+                <th>FG</th>
+                <th>3P</th>
+                <th>FT</th>
+
+                <th>REB</th>
+                <th>AST</th>
+                <th>TO</th>
+                <th>STL</th>
+                <th>BLK</th>
+                <th>OREB</th>
+                <th>DREB</th>
+                <th>PF</th>
+            </tr>
+            {% for stat in data.stats[data.home_team] %}
+                <tr>
+                    <td>{{ stat.lname }}{{ stat.suffix }}, {{ stat.fname }}</td>
+                    <td>{{ stat.min }}</td>
+                    <td>{{ stat.pts }}</td>
+
+                    <td>{{ stat.fgm }}-{{ stat.fga }}</td>
+                    <td>{{ stat.tpm }}-{{ stat.tpa }}</td>
+                    <td>{{ stat.ftm }}-{{ stat.fta }}</td>
+
+                    <td>{{ stat.reb }}</td>
+                    <td>{{ stat.ast }}</td>
+                    <td>{{ stat.to  }}</td>
+                    <td>{{ stat.stl }}</td>
+                    <td>{{ stat.blk }}</td>
+                    <td>{{ stat.oreb }}</td>
+                    <td>{{ stat.dreb }}</td>
+                    <td>{{ stat.pf }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+<h1>Plays</h1>
+
+<h2>1st Half</h2>
+{% for play in data.plays['1H'] %}
+    <p>{{play.text}}</p>
+{% endfor %}
+
+<h2>2nd Half</h2>
+{% for play in data.plays['2H'] %}
+    <p>{{play.text}}</p>
+{% endfor %}
+
+{% endblock %}

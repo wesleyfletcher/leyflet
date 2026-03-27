@@ -36,6 +36,25 @@ class database:
         
         return df
     
+    def runfile(self, file : str, **kwargs):
+        sql_file = open(f'static/sql/{file}.sql', 'r')
+
+        qry = sql_file.read().replace('\n', ' ')
+
+        blocks = qry.split()
+        for blk in blocks:
+            if '{' in blk:
+                start = blk.index('{')
+                end = blk.index('}')
+
+                qry = qry.replace(blk[start:end+1], str(kwargs[blk[start+1:end]]))
+
+        print(qry)
+
+        sql_file.close()
+
+        return self.query(qry)
+    
     def execute(self, qry : str):
         self.cursor.execute(qry)
 

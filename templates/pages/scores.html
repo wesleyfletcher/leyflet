@@ -18,10 +18,12 @@
     </div>
 </div>
 
+<input type="date">
+
 {% if data.scores | length > 0 %}
     <div class="container">
         {% for game in data.scores %}
-            <div class="scoreboard-block-small">
+            <a class="scoreboard-block-small" href="/games/{{ game.id }}">
                 <div class="scoreboard-row" style="height:10%; padding-top:4%;">
                     <div class="scoreboard-logo"></div>
                     <div class="scoreboard-team"></div>
@@ -60,7 +62,7 @@
                         <div class="scoreboard-half-score">{{ game.home_score_ot }}</div>
                     {% endif %}
                 </div>
-            </div>
+            </a>
         {% endfor %}
     </div>
 {% else %}
