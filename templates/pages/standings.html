@@ -3,4 +3,27 @@
 
 <h1>Standings</h1>
 
+{% for conf in data %}
+
+    <h2>{{ conf }}</h2>
+
+    <table>
+        <tr>
+            <th>Team</th>
+            <th>W</th>
+            <th>L</th>
+            <th>%</th>
+        </tr>
+        {% for row in data[conf] %}
+            <tr>
+                <td>{{ row.team }}</td>
+                <td>{{ row.season_wins }}</td>
+                <td>{{ row.season_losses }}</td>
+                <td>{{ row.season_pct }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endfor %}
+
 {% endblock %}
