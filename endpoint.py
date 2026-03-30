@@ -83,7 +83,7 @@ def standings(season, conf):
     data = {}
 
     season = 2025 if not season else season
-    conf = '' if not conf else conf.replace('_', ' ')
+    conf = '' if not conf else conf.replace('-', ' ')
 
     db = database()
 
