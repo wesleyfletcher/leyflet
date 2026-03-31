@@ -99,9 +99,13 @@ def standings(season, conf):
         
         data[row['conf']].append({
             'team' : row['team'],
-            'season_wins' : int(row['season_wins']),
+            'conf_wins'   : int(row['conf_wins']),
+            'conf_losses' : int(row['conf_losses']),
+            'conf_pct'    : '{:0.3f}'.format(row['season_pct']).lstrip('0'),
+
+            'season_wins'   : int(row['season_wins']),
             'season_losses' : int(row['season_losses']),
-            'season_pct' : '{:0.3f}'.format(row['season_pct']).lstrip('0')
+            'season_pct'    : '{:0.3f}'.format(row['season_pct']).lstrip('0')
         })
 
     return data

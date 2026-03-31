@@ -9,7 +9,17 @@
 
     <table>
         <tr>
+            <th></th>
+            <th colspan="3">Conference</th>
+            <th colspan="3">Season</th>
+        </tr>
+        <tr>
             <th>Team</th>
+
+            <th>W</th>
+            <th>L</th>
+            <th>%</th>
+
             <th>W</th>
             <th>L</th>
             <th>%</th>
@@ -17,6 +27,11 @@
         {% for row in data[conf] %}
             <tr>
                 <td>{{ row.team }}</td>
+
+                <td>{{ row.conf_wins }}</td>
+                <td>{{ row.conf_losses }}</td>
+                <td>{{ row.conf_pct }}</td>
+
                 <td>{{ row.season_wins }}</td>
                 <td>{{ row.season_losses }}</td>
                 <td>{{ row.season_pct }}</td>
