@@ -105,7 +105,11 @@ def standings(season, conf):
 
             'season_wins'   : int(row['season_wins']),
             'season_losses' : int(row['season_losses']),
-            'season_pct'    : '{:0.3f}'.format(row['season_pct']).lstrip('0')
+            'season_pct'    : '{:0.3f}'.format(row['season_pct']).lstrip('0'),
+
+            'home_record' : f'{row['home_wins']}-{row['home_losses']}',
+            'away_record' : f'{row['away_wins']}-{row['away_losses']}',
+            'neutral_record' : f'{row['neutral_wins']}-{row['neutral_losses']}'
         })
 
     return data

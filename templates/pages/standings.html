@@ -12,6 +12,7 @@
             <th></th>
             <th colspan="3">Conference</th>
             <th colspan="3">Season</th>
+            <th colspan="3">Site</th>
         </tr>
         <tr>
             <th>Team</th>
@@ -23,6 +24,10 @@
             <th>W</th>
             <th>L</th>
             <th>%</th>
+
+            <th>Home</th>
+            <th>Away</th>
+            <th>Neutral</th>
         </tr>
         {% for row in data[conf] %}
             <tr>
@@ -35,6 +40,10 @@
                 <td>{{ row.season_wins }}</td>
                 <td>{{ row.season_losses }}</td>
                 <td>{{ row.season_pct }}</td>
+
+                <td>{{ row.home_record}}</td>
+                <td>{{ row.away_record}}</td>
+                <td>{{ row.neutral_record}}</td>
             </tr>
         {% endfor %}
     </table>
