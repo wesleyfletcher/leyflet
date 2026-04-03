@@ -50,7 +50,6 @@ def scores(date, conf):
     }
 
     conf = '' if not conf else conf.replace('_', ' ')
-
     data['conf'] = conf.replace(' ', '_')
 
     db = database()
@@ -101,8 +100,40 @@ def rankings(season, conf):
 
     return data
 
-def standings():
-    pass
+def standings(season, conf):
+    data = {}
+
+    season = 2025 if not season else season
+    conf = '' if not conf else conf.replace('-', ' ')
+
+    db = database()
+
+    conf_standings = db.runfile('conf_standings', conf=conf, season=season)
+
+    db.close()
+
+    for i in range(len(conf_standings)):
+        row = conf_standings.loc[i]
+
+        if row['conf'] not in data:
+            data[row['conf']] = []
+        
+        data[row['conf']].append({
+            'team' : row['team'],
+            'conf_wins'   : int(row['conf_wins']),
+            'conf_losses' : int(row['conf_losses']),
+            'conf_pct'    : '{:0.3f}'.format(row['season_pct']).lstrip('0'),
+
+            'season_wins'   : int(row['season_wins']),
+            'season_losses' : int(row['season_losses']),
+            'season_pct'    : '{:0.3f}'.format(row['season_pct']).lstrip('0'),
+
+            'home_record' : f'{row['home_wins']}-{row['home_losses']}',
+            'away_record' : f'{row['away_wins']}-{row['away_losses']}',
+            'neutral_record' : f'{row['neutral_wins']}-{row['neutral_losses']}'
+        })
+
+    return data
 
 def bracket():
     pass

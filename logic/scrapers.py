@@ -24,8 +24,8 @@ def ap():
 
     return pd.DataFrame({'Rank' : ranks, 'Team' : teams}).sort_values(by='Rank', ascending=True)
 
-def kp():
-    url = "https://kenpom.com"
+def kp(year=2026):
+    url = f"https://kenpom.com/index.php?y={year}"
 
     driver = webdriver.Chrome()
     driver.minimize_window()
@@ -72,8 +72,8 @@ def net():
 
     return pd.DataFrame({'Rank' : ranks, 'Team' : teams}).sort_values(by='Rank', ascending=True)
 
-def wab():
-    url = "https://barttorvik.com/#"
+def wab(year=2026):
+    url = f"https://barttorvik.com/trank.php?year={year}#"
 
     driver = webdriver.Chrome()
     driver.minimize_window()
