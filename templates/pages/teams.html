@@ -1,30 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Teams</h1>
+<div style="display: flex; flex-direction: row; align-items: center;">
+    <img src="/static/logos/{{ data.code }}.png" style="width: 50px; height: 50px; object-fit: contain;">
+    <h1>{{ data.name }} ({{ data.wins }}-{{ data.losses }})</h1>
+</div>
 
-{% if not data.list %}
-    <table>
-        <tr>
-            <td>{{ data.name }}</td>
-            <td><img src="/static/logos/{{ data.code }}.png" style="width: 50px; height: 50px; object-fit: contain;"></td>
-        </tr>
-    </table>
-{% else %}
-    <table>
-        <tr>
-            <th>Team</th>
-            <th>Code</th>
-            <th>Logo</th>
-        </tr>
-        {% for team in data.teams %}
-            <tr>
-                <td><a href="/teams/?team={{ team.code }}">{{ team.name }}</a></td>
-                <td>{{ team.code }}</td>
-                <td><img src="/static/logos/{{ team.code }}.png" style="width: 50px; height: 50px; object-fit: contain;"></td>
-            </tr>
-        {% endfor %}
-    </table>
-{% endif %}
+<h2>Schedule</h2>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Site</th>
+        <th>Opponent</th>
+        <th>Score</th>
+        <th>Event</th>
+    </tr>
+    {% for game in data.schedule %}
+    <tr>
+        <td>{{ game.game_date }}</td>
+        <td>{{ game.site }}</td>
+        <td>{{ game.opponent }}</td>
+        <td><a class="link" href="/games/{{ game.id }}">{{ game.result }} ({{ game.team_score }}-{{ game.oppt_score }})</a></td>
+        <td>{{ game.event }}</td>
+    </tr>
+    {% endfor %}
+</table>
 
 {% endblock %}

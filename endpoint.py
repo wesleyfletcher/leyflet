@@ -1,25 +1,8 @@
 from database import database
 import datetime
 
-def teams(code):
+def teams_list():
     data = {}
-
-    if code:
-        db = database()
-        name = db.query(f'SELECT name FROM team WHERE code = "{code}"')
-        db.close()
-
-        if type(name) == str:
-            data['list'] = False
-
-            data['name'] = name
-            data['code'] = code
-
-            ## other team info sheets
-
-            return data
-    
-    data['list'] = True
 
     db = database()
     team_table = db.query('SELECT name, code FROM team ORDER BY name ASC')
@@ -33,6 +16,43 @@ def teams(code):
             'code' : row['code']
         })
     
+    return data
+
+def teams(code, season):
+    data = {}
+
+    db = database()
+    name = db.query(f'SELECT name FROM team WHERE code = "{code}"')
+
+    if type(name) != str:
+        raise ValueError(f'Team {code} not found')
+    
+    data['name'] = name
+    data['code'] = code
+
+    record = db.query(f'SELECT season_wins, season_losses FROM team_records WHERE season = {season} AND team = "{name}"')
+    data['wins'] = record.loc[0, 'season_wins']
+    data['losses'] = record.loc[0, 'season_losses']
+
+    game_log = db.runfile('game_log', name=name, season=season)
+
+    db.close()
+
+    data['schedule'] = []
+    for i in range(len(game_log)):
+        row = game_log.loc[i]
+        data['schedule'].append({
+            'id'         : row['id'],
+            'game_date'  : row['game_date'], # maybe strftime this
+            'site'       : row['site'],
+            'opponent'   : row['opponent'],
+            'team_score' : int(row['team_score']),
+            'oppt_score' : int(row['oppt_score']),
+            'result'     : 'W' if int(row['team_score']) > int(row['oppt_score']) else 'L',
+            'overtimes'  : int(row['overtimes']),
+            'event'      : row['event'] if row['event'] else ''
+        })
+
     return data
 
 def scores(date, conf):

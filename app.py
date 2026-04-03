@@ -8,10 +8,17 @@ def home():
     return render_template('pages/home.html')
 
 @app.route('/teams/')
-def teams():
-    code = request.args.get('team')
+def teams_list():
+    data = endpoint.teams_list()
 
-    data = endpoint.teams(code)
+    return render_template('pages/teams_list.html', data=data)
+
+@app.route('/teams/<code>')
+def teams(code):
+    season = request.args.get('season')
+    season = int(season) if season else 2025
+
+    data = endpoint.teams(code, season)
 
     return render_template('pages/teams.html', data=data)
 
