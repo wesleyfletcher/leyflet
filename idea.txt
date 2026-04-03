@@ -30,3 +30,6 @@ Data scrapers
 - all team name variants are held in json
     - assumes case insensitive and dashes equal spaces
     - for conversion should remove periods, parentheses, commas
+
+
+(possibly) use dagster for pipelining data from ESPN to site

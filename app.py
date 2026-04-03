@@ -30,11 +30,22 @@ def stats():
 
 @app.route('/rankings/')
 def rankings():
-    return render_template('pages/rankings.html')
+    season = request.args.get('season')
+    conf = request.args.get('conf')
+
+    data = endpoint.rankings(season, conf)
+
+    return render_template('pages/rankings.html', data=data)
 
 @app.route('/standings/')
 def standings():
-    return render_template('pages/standings.html')
+
+    season = request.args.get('season')
+    conf = request.args.get('conf')
+
+    data = endpoint.standings(season, conf)
+
+    return render_template('pages/standings.html', data=data)
 
 @app.route('/bracket/')
 def bracket():

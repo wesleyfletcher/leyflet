@@ -77,11 +77,64 @@ def scores(date, conf):
 def stats():
     pass
 
-def rankings():
-    pass
+def rankings(season, conf):
+    data = []
 
-def standings():
-    pass
+    season = 2025 if not season else season
+    conf = '' if not conf else conf.replace('-', ' ')
+
+    db = database()
+    metrics_table = db.runfile('metrics_table', season=season, conf=conf)
+    db.close()
+
+    for i in range(len(metrics_table)):
+        row = metrics_table.loc[i]
+        
+        data.append({
+            'team' : row['team'],
+            'kenpom' : int(row['kenpom']),
+            'net'    : int(row['net']),
+            'wab'    : int(row['wab']),
+            'sor'    : int(row['sor']),
+            'torvik' : int(row['torvik'])
+        })
+
+    return data
+
+def standings(season, conf):
+    data = {}
+
+    season = 2025 if not season else season
+    conf = '' if not conf else conf.replace('-', ' ')
+
+    db = database()
+
+    conf_standings = db.runfile('conf_standings', conf=conf, season=season)
+
+    db.close()
+
+    for i in range(len(conf_standings)):
+        row = conf_standings.loc[i]
+
+        if row['conf'] not in data:
+            data[row['conf']] = []
+        
+        data[row['conf']].append({
+            'team' : row['team'],
+            'conf_wins'   : int(row['conf_wins']),
+            'conf_losses' : int(row['conf_losses']),
+            'conf_pct'    : '{:0.3f}'.format(row['season_pct']).lstrip('0'),
+
+            'season_wins'   : int(row['season_wins']),
+            'season_losses' : int(row['season_losses']),
+            'season_pct'    : '{:0.3f}'.format(row['season_pct']).lstrip('0'),
+
+            'home_record' : f'{row['home_wins']}-{row['home_losses']}',
+            'away_record' : f'{row['away_wins']}-{row['away_losses']}',
+            'neutral_record' : f'{row['neutral_wins']}-{row['neutral_losses']}'
+        })
+
+    return data
 
 def bracket():
     pass

@@ -3,4 +3,25 @@
 
 <h1>Rankings</h1>
 
+<table>
+    <tr>
+        <th>Team</th>
+        <th>KenPom</th>
+        <th>NET</th>
+        <th>WAB</th>
+        <th>SOR</th>
+        <th>Torvik</th>
+    </tr>
+    {% for row in data %}
+        <tr>
+            <td>{{ row.team }}</td>
+            <td>{{ row.kenpom }}</td>
+            <td>{{ row.net }}</td>
+            <td>{{ row.wab }}</td>
+            <td>{{ row.sor }}</td>
+            <td>{{ row.torvik }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
 {% endblock %}
