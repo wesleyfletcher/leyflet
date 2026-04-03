@@ -49,8 +49,9 @@ def scores(date, conf):
         'next' : next
     }
 
-    conf = '' if not conf else conf.replace('_', ' ')
-    data['conf'] = conf.replace(' ', '_')
+    conf = '' if not conf else conf.replace('-', ' ')
+
+    data['conf'] = conf.replace(' ', '-')
 
     db = database()
     scores_table = db.runfile('scores_table', today=today, conf=conf)
