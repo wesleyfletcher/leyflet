@@ -76,8 +76,29 @@ def scores(date, conf):
 def stats():
     pass
 
-def rankings():
-    pass
+def rankings(season, conf):
+    data = []
+
+    season = 2025 if not season else season
+    conf = '' if not conf else conf.replace('-', ' ')
+
+    db = database()
+    metrics_table = db.runfile('metrics_table', season=season, conf=conf)
+    db.close()
+
+    for i in range(len(metrics_table)):
+        row = metrics_table.loc[i]
+        
+        data.append({
+            'team' : row['team'],
+            'kenpom' : int(row['kenpom']),
+            'net'    : int(row['net']),
+            'wab'    : int(row['wab']),
+            'sor'    : int(row['sor']),
+            'torvik' : int(row['torvik'])
+        })
+
+    return data
 
 def standings(season, conf):
     data = {}
