@@ -1,25 +1,8 @@
 from database import database
 import datetime
 
-def teams(code):
+def teams_list():
     data = {}
-
-    if code:
-        db = database()
-        name = db.query(f'SELECT name FROM team WHERE code = "{code}"')
-        db.close()
-
-        if type(name) == str:
-            data['list'] = False
-
-            data['name'] = name
-            data['code'] = code
-
-            ## other team info sheets
-
-            return data
-    
-    data['list'] = True
 
     db = database()
     team_table = db.query('SELECT name, code FROM team ORDER BY name ASC')
@@ -33,6 +16,88 @@ def teams(code):
             'code' : row['code']
         })
     
+    return data
+
+def teams(code, season):
+    data = {}
+
+    db = database()
+    name = db.query(f'SELECT name FROM team WHERE code = "{code}"')
+
+    if type(name) != str:
+        raise ValueError(f'Team {code} not found')
+    
+    data['name'] = name
+    data['code'] = code
+
+    record = db.query(f'SELECT season_wins, season_losses FROM team_records WHERE season = {season} AND team = "{name}"')
+    data['wins'] = record.loc[0, 'season_wins']
+    data['losses'] = record.loc[0, 'season_losses']
+
+    game_log = db.runfile('game_log', name=name, season=season)
+    stats_table = db.runfile('season_stats', name=name, season=season)
+    roster_table = db.runfile('team_roster', name=name, season=season)
+
+    db.close()
+
+    data['schedule'] = []
+    for i in range(len(game_log)):
+        row = game_log.loc[i]
+        data['schedule'].append({
+            'id'         : row['id'],
+            'game_date'  : row['game_date'].strftime('%b %d'), # maybe strftime this
+            'site'       : row['site'],
+            'opponent'   : row['opponent'],
+            'team_score' : int(row['team_score']),
+            'oppt_score' : int(row['oppt_score']),
+            'result'     : 'W' if int(row['team_score']) > int(row['oppt_score']) else 'L',
+            'overtimes'  : int(row['overtimes']),
+            'event'      : row['event'] if row['event'] else ''
+        })
+
+    data['stats'] = []
+    for i in range(len(stats_table)):
+        row = stats_table.loc[i]
+        data['stats'].append({
+            'lname' : row['lname'],
+            'fname' : row['fname'],
+            'suffix' : ' ' + row['suffix'] if row['suffix'] else '',
+
+            'gp'  : int(row['gp']),
+            'min' : float(row['min']),
+            'pts' : float(row['pts']),
+
+            'fg_pct' : float(row['fg_pct']),
+            'tp_pct' : float(row['fg_pct']),
+            'ft_pct' : float(row['ft_pct']),
+
+            'reb' : float(row['reb']),
+            'ast' : float(row['ast']),
+            'tov' : float(row['tov']),
+            'stl' : float(row['stl']),
+            'blk' : float(row['blk']),
+
+            'oreb' : float(row['oreb']),
+            'dreb' : float(row['dreb']),
+            'pf' : float(row['pf'])
+        })
+
+    data['roster'] = []
+    for i in range(len(roster_table)):
+        row = roster_table.loc[i]
+        data['roster'].append({
+            'lname' : row['lname'],
+            'fname' : row['fname'],
+            'suffix' : ' ' + row['suffix'] if row['suffix'] else '',
+
+            'position' : row['position'],
+            'height' : row['height'],
+            'weight' : int(row['weight']),
+
+            'city' : row['city'],
+            'state' : row['state']
+        })
+
     return data
 
 def scores(date, conf):
@@ -195,7 +260,7 @@ def games(id):
 
             'reb' : int(row['reb']),
             'ast' : int(row['ast']),
-            'to'  : int(row['to']),
+            'tov' : int(row['tov']),
             'stl' : int(row['stl']),
             'blk' : int(row['blk']),
 
