@@ -49,8 +49,6 @@ class database:
 
                 qry = qry.replace(blk[start:end+1], str(kwargs[blk[start+1:end]]))
 
-        print(qry)
-
         sql_file.close()
 
         return self.query(qry)
