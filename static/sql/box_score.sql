@@ -11,4 +11,4 @@ JOIN player
 ON player.id = stats.player
 
 WHERE game = {id}
-ORDER BY pts DESC
+ORDER BY pts DESC;
