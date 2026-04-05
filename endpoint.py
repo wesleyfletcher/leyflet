@@ -35,6 +35,8 @@ def teams(code, season):
     data['losses'] = record.loc[0, 'season_losses']
 
     game_log = db.runfile('game_log', name=name, season=season)
+    stats_table = db.runfile('season_stats', name=name, season=season)
+    roster_table = db.runfile('team_roster', name=name, season=season)
 
     db.close()
 
@@ -43,7 +45,7 @@ def teams(code, season):
         row = game_log.loc[i]
         data['schedule'].append({
             'id'         : row['id'],
-            'game_date'  : row['game_date'], # maybe strftime this
+            'game_date'  : row['game_date'].strftime('%b %d'), # maybe strftime this
             'site'       : row['site'],
             'opponent'   : row['opponent'],
             'team_score' : int(row['team_score']),
@@ -51,6 +53,49 @@ def teams(code, season):
             'result'     : 'W' if int(row['team_score']) > int(row['oppt_score']) else 'L',
             'overtimes'  : int(row['overtimes']),
             'event'      : row['event'] if row['event'] else ''
+        })
+
+    data['stats'] = []
+    for i in range(len(stats_table)):
+        row = stats_table.loc[i]
+        data['stats'].append({
+            'lname' : row['lname'],
+            'fname' : row['fname'],
+            'suffix' : ' ' + row['suffix'] if row['suffix'] else '',
+
+            'gp'  : int(row['gp']),
+            'min' : float(row['min']),
+            'pts' : float(row['pts']),
+
+            'fg_pct' : float(row['fg_pct']),
+            'tp_pct' : float(row['fg_pct']),
+            'ft_pct' : float(row['ft_pct']),
+
+            'reb' : float(row['reb']),
+            'ast' : float(row['ast']),
+            'tov' : float(row['tov']),
+            'stl' : float(row['stl']),
+            'blk' : float(row['blk']),
+
+            'oreb' : float(row['oreb']),
+            'dreb' : float(row['dreb']),
+            'pf' : float(row['pf'])
+        })
+
+    data['roster'] = []
+    for i in range(len(roster_table)):
+        row = roster_table.loc[i]
+        data['roster'].append({
+            'lname' : row['lname'],
+            'fname' : row['fname'],
+            'suffix' : ' ' + row['suffix'] if row['suffix'] else '',
+
+            'position' : row['position'],
+            'height' : row['height'],
+            'weight' : int(row['weight']),
+
+            'city' : row['city'],
+            'state' : row['state']
         })
 
     return data
@@ -162,7 +207,7 @@ def games(id):
 
             'reb' : int(row['reb']),
             'ast' : int(row['ast']),
-            'to'  : int(row['to']),
+            'tov' : int(row['tov']),
             'stl' : int(row['stl']),
             'blk' : int(row['blk']),
 
