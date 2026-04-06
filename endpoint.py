@@ -35,7 +35,7 @@ def teams(code, season):
     data['losses'] = record.loc[0, 'season_losses']
 
     game_log = db.runfile('game_log', name=name, season=season)
-    stats_table = db.runfile('season_stats', name=name, season=season)
+    stats_table = db.runfile('roster_stats', name=name, season=season)
     roster_table = db.runfile('team_roster', name=name, season=season)
 
     db.close()
