@@ -18,81 +18,87 @@
     </div>
 </div>
 
-<table class="view-section" id="teams-schedule">
-    <tr>
-        <th>Date</th>
-        <th>Site</th>
-        <th>Opponent</th>
-        <th>Score</th>
-        <th>Event</th>
-    </tr>
-    {% for game in data.schedule %}
-    <tr>
-        <td>{{ game.game_date }}</td>
-        <td>{{ game.site }}</td>
-        <td>{{ game.opponent }}</td>
-        <td><a class="link" href="/games/{{ game.id }}">{{ game.result }} ({{ game.team_score }}-{{ game.oppt_score }})</a></td>
-        <td>{{ game.event }}</td>
-    </tr>
-    {% endfor %}
-</table>
-
-<table class="view-section" id="teams-stats" style="display: none;">
-    <tr>
-        <th>Player</th>
-        <th>GP</th>
-        <th>MIN</th>
-        <th>PTS</th>
-        <th>FG%</th>
-        <th>3P%</th>
-        <th>FT%</th>
-        <th>REB</th>
-        <th>AST</th>
-        <th>TOV</th>
-        <th>STL</th>
-        <th>BLK</th>
-        <th>OREB</th>
-        <th>DREB</th>
-        <th>PF</th>
-    </tr>
-    {% for stat in data.stats %}
-    <tr>
-        <td>{{ stat.lname }}{{ stat.suffix }}, {{ stat.fname }}</td>
-        <td>{{ stat.gp }}</td>
-        <td>{{ stat.min }}</td>
-        <td>{{ stat.pts }}</td>
-        <td>{{ stat.fg_pct }}</td>
-        <td>{{ stat.tp_pct }}</td>
-        <td>{{ stat.ft_pct }}</td>
-        <td>{{ stat.reb }}</td>
-        <td>{{ stat.ast }}</td>
-        <td>{{ stat.tov }}</td>
-        <td>{{ stat.stl }}</td>
-        <td>{{ stat.blk }}</td>
-        <td>{{ stat.oreb }}</td>
-        <td>{{ stat.dreb }}</td>
-        <td>{{ stat.pf }}</td>
-    </tr>
-    {% endfor %}
-</table>
-
-<table class="view-section" id="teams-roster" style="display: none;">
-    <tr>
-        <th>Player</th>
-        <th>Position</th>
-        <th>Height</th>
-        <th>Weight</th>
-        <th>Hometown</th>
-    </tr>
-    {% for row in data.roster %}
+<div class="view-section" id="teams-schedule">
+    <table id="schedule-table">
         <tr>
-            <td>{{ row.lname }}{{ row.suffix }}, {{ row.fname }}</td>
-            <td>{{ row.position }}</td>
-            <td>{{ row.height }}</td>
-            <td>{{ row.weight }}</td>
-            <td>{{ row.city }}, {{ row.state }}</td>
+            <th>Date</th>
+            <th>Site</th>
+            <th>Opponent</th>
+            <th>Score</th>
+            <th>Event</th>
         </tr>
-    {% endfor %}
-</table>
+        {% for game in data.schedule %}
+        <tr>
+            <td>{{ game.game_date }}</td>
+            <td>{{ game.site }}</td>
+            <td>{{ game.opponent }}</td>
+            <td><a class="link" href="/games/{{ game.id }}">{{ game.result }} ({{ game.team_score }}-{{ game.oppt_score }})</a></td>
+            <td>{{ game.event }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div class="view-section" id="teams-stats" style="display: none;">
+    <table id="stats-table">
+        <tr>
+            <th>Player</th>
+            <th>GP</th>
+            <th>MIN</th>
+            <th>PTS</th>
+            <th>FG%</th>
+            <th>3P%</th>
+            <th>FT%</th>
+            <th>REB</th>
+            <th>AST</th>
+            <th>TOV</th>
+            <th>STL</th>
+            <th>BLK</th>
+            <th>OREB</th>
+            <th>DREB</th>
+            <th>PF</th>
+        </tr>
+        {% for stat in data.stats %}
+        <tr>
+            <td>{{ stat.lname }}{{ stat.suffix }}, {{ stat.fname }}</td>
+            <td>{{ stat.gp }}</td>
+            <td>{{ stat.min }}</td>
+            <td>{{ stat.pts }}</td>
+            <td>{{ stat.fg_pct }}</td>
+            <td>{{ stat.tp_pct }}</td>
+            <td>{{ stat.ft_pct }}</td>
+            <td>{{ stat.reb }}</td>
+            <td>{{ stat.ast }}</td>
+            <td>{{ stat.tov }}</td>
+            <td>{{ stat.stl }}</td>
+            <td>{{ stat.blk }}</td>
+            <td>{{ stat.oreb }}</td>
+            <td>{{ stat.dreb }}</td>
+            <td>{{ stat.pf }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div class="view-section" id="teams-roster" style="display: none;">
+    <table id="roster-table">
+        <tr>
+            <th>Player</th>
+            <th>Position</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>Hometown</th>
+        </tr>
+        {% for row in data.roster %}
+            <tr>
+                <td>{{ row.lname }}{{ row.suffix }}, {{ row.fname }}</td>
+                <td>{{ row.position }}</td>
+                <td>{{ row.height }}</td>
+                <td>{{ row.weight }}</td>
+                <td>{{ row.city }}, {{ row.state }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
 
 {% endblock %}
