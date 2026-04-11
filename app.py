@@ -9,20 +9,21 @@ def home():
 
 @app.route('/teams/')
 def teams_list():
-    data = endpoint.teams_list()
+    season = request.args.get('season')
+
+    data = endpoint.teams_list(season)
 
     return render_template('pages/teams_list.html', data=data)
 
 @app.route('/teams/<code>')
 def teams(code):
     season = request.args.get('season')
-    season = int(season) if season else 2025
 
     data = endpoint.teams(code, season)
 
     return render_template('pages/teams.html', data=data)
 
-@app.route('/scores/')
+@app.route('/scores/', methods=['GET', 'POST'])
 def scores():
     date = request.args.get('date')
     conf = request.args.get('conf')
@@ -33,7 +34,13 @@ def scores():
 
 @app.route('/stats/')
 def stats():
-    return render_template('pages/stats.html')
+    season = request.args.get('season')
+    conf = request.args.get('conf')
+    page = request.args.get('page')
+
+    data = endpoint.stats(season, conf, page)
+
+    return render_template('pages/stats.html', data=data)
 
 @app.route('/rankings/')
 def rankings():

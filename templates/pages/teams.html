@@ -6,8 +6,19 @@
     <h1>{{ data.name }} ({{ data.wins }}-{{ data.losses }})</h1>
 </div>
 
-<h2>Schedule</h2>
-<table>
+<div class="view-select" style="--view-count: 3;">
+    <div class="view-option view-left view-active" id="teams-schedule-btn" onclick="switchTab('teams-schedule')">
+        Schedule
+    </div>
+    <div class="view-option view-center" id="teams-stats-btn" onclick="switchTab('teams-stats')">
+        Stats
+    </div>
+    <div class="view-option view-right" id="teams-roster-btn" onclick="switchTab('teams-roster')">
+        Roster
+    </div>
+</div>
+
+<table class="view-section" id="teams-schedule">
     <tr>
         <th>Date</th>
         <th>Site</th>
@@ -26,8 +37,7 @@
     {% endfor %}
 </table>
 
-<h2>Stats</h2>
-<table>
+<table class="view-section" id="teams-stats" style="display: none;">
     <tr>
         <th>Player</th>
         <th>GP</th>
@@ -66,8 +76,7 @@
     {% endfor %}
 </table>
 
-<h2>Roster</h2>
-<table>
+<table class="view-section" id="teams-roster" style="display: none;">
     <tr>
         <th>Player</th>
         <th>Position</th>

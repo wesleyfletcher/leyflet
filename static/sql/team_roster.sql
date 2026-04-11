@@ -1,10 +1,10 @@
 SELECT
     lname, fname, suffix,
-    position,
-    height,
-    weight,
-    city,
-    state
+    IFNULL(position, '') AS position,
+    IFNULL(height, '') AS height,
+    IFNULL(weight, '') AS weight,
+    IFNULL(city, '') AS city,
+    IFNULL(state, '') AS state
 FROM roster
 
 JOIN player

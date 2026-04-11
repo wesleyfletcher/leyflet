@@ -33,7 +33,11 @@ ON player.id = stats.player
 JOIN roster
 USING (player, season)
 
+JOIN member
+USING (team, season)
+
 WHERE season = {season}
+AND conf LIKE '%{conf}%'
 
 GROUP BY player, season
 HAVING (gp >= 25)

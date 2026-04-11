@@ -1,24 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% set conf_url = '' %}
-{% if data.conf %}
-    {% set conf_url = '&conf='+data.conf %}
-{% endif %}
+<h1>Scores</h1>
+<h3>{{ data.day_string }}</h3>
 
-<div class="day-select">
-    <div style="width:25%">
-        <a class="link" href="/scores/?date={{ data.date.previous }}{{ conf_url }}">&lt; Previous</a>
-    </div>
-    <div style="width:50%">
-        <h1>{{ data.date.today }}</h1>
-    </div>
-    <div style="width:25%">
-        <a class="link" href="/scores/?date={{ data.date.next }}{{ conf_url }}">Next &gt;</a>
-    </div>
-</div>
+<form onsubmit="scoresRedirect()" method="POST">
+    <label for="date-picker">Date:</label>
+    <input id="date-picker" type="date" value="{{ data.date }}"><br>
 
-<input type="date">
+    <label for="conf-picker">Conf:</label>
+    <select id="conf-picker" value="{{ data.conf }}">
+        <option value="all">Division I</option>
+        {% for conf in data.confs_list %}
+            <option value="{{ conf }}" {{ 'selected' if data.conf==conf else "" }}>{{ conf }}</option>
+        {% endfor %}
+    </select><br>
+    <input id="date-submit" type="submit" value="Go">
+</form>
 
 {% if data.scores | length > 0 %}
     <div class="container">
@@ -66,7 +64,9 @@
         {% endfor %}
     </div>
 {% else %}
-    <!-- do something -->
     <h3>No games found.</h3>
 {% endif %}
+
+<script src="/static/scripts/scores.js"></script>
+
 {% endblock %}

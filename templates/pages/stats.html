@@ -3,4 +3,56 @@
 
 <h1>Stats</h1>
 
+<ul style="list-style-type: none">
+    <li style="display: inline-block;"><a href="?page=1">1</a></li>
+    <li style="display: inline-block;">2</li>
+    <li style="display: inline-block;">3</li>
+</ul>
+
+<p>Min. 25 GP</p>
+
+<table>
+    <tr>
+        <th>Player</th>
+        <th>Team</th>
+        <th>GP</th>
+        <th>MIN</th>
+        <th>PTS</th>
+        <th>FG%</th>
+        <th>3P%</th>
+        <th>FT%</th>
+        <th>REB</th>
+        <th>AST</th>
+        <th>TOV</th>
+        <th>STL</th>
+        <th>BLK</th>
+        <th>OREB</th>
+        <th>DREB</th>
+        <th>PF</th>
+    </tr>
+    {% for player in data.players %}
+        <tr>
+            <td>{{ player.lname }}{{ player.suffix }}, {{ player.fname }}</td>
+            <td>{{ player.team }}</td>
+
+            <td>{{ player.gp }}</td>
+            <td>{{ player.min }}</td>
+            <td>{{ player.pts }}</td>
+
+            <td>{{ player.fg_pct }}%</td>
+            <td>{{ player.tp_pct }}%</td>
+            <td>{{ player.ft_pct }}%</td>
+
+            <td>{{ player.reb }}</td>
+            <td>{{ player.ast }}</td>
+            <td>{{ player.tov }}</td>
+            <td>{{ player.stl }}</td>
+            <td>{{ player.blk }}</td>
+            <td>{{ player.oreb }}</td>
+            <td>{{ player.dreb }}</td>
+            <td>{{ player.pf }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
 {% endblock %}

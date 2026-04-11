@@ -3,19 +3,22 @@
 
 <h1>Teams</h1>
 
-<table>
-    <tr>
-        <th>Team</th>
-        <th>Code</th>
-        <th>Logo</th>
-    </tr>
-    {% for team in data.teams %}
+{% for conf in data %}
+    <h2>{{ conf }}</h2>
+    <table>
         <tr>
-            <td><a class="link" href="/teams/{{ team.code }}">{{ team.name }}</a></td>
-            <td>{{ team.code }}</td>
-            <td><img src="/static/logos/{{ team.code }}.png" style="width: 50px; height: 50px; object-fit: contain;"></td>
+            <th>Team</th>
+            <th>Code</th>
+            <th>Logo</th>
         </tr>
-    {% endfor %}
-</table>
+        {% for team in data[conf] %}
+            <tr>
+                <td><a class="link" href="/teams/{{ team.code }}">{{ team.name }}</a></td>
+                <td>{{ team.code }}</td>
+                <td><img src="/static/logos/{{ team.code }}.png" style="width: 50px; height: 50px; object-fit: contain;"></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endfor %}
 
 {% endblock %}

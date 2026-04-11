@@ -18,6 +18,43 @@ CBB Website
 - Printable bracket
 
 
+
+
+
+
+
+
+
+Page Sections
+- Single game page
+    - Team stats
+    - Box score
+    - Play by play
+
+- Team page
+    - Schedule
+    - Stats
+    - Roster
+
+    - team list page
+        - Option to sort by conf or alphabet
+
+- Metrics
+    - Team ratings (kenpom, net, wab....)
+    - Polls (ap, coaches)
+    - Quad info ?
+
+- Standings
+    - Might want to add more pages
+        with gritty detail about clinching
+        reg season titles and magic numbers and whatnot
+
+
+
+
+
+
+
 Data scrapers
 
 - Currently have NET, Torvik, and Kenpom

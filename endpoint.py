@@ -1,17 +1,24 @@
 from database import database
 import datetime
 
-def teams_list():
+CURRENT_SEASON = 2025
+
+def teams_list(season):
     data = {}
 
+    season = CURRENT_SEASON if not season else season
+
     db = database()
-    team_table = db.query('SELECT name, code FROM team ORDER BY name ASC')
+    team_table = db.runfile('teams_list', season=season)
     db.close()
 
-    data['teams'] = []
     for i in range(len(team_table)):
         row = team_table.loc[i]
-        data['teams'].append({
+
+        if row['conf'] not in data:
+            data[row['conf']] = []
+
+        data[row['conf']].append({
             'name' : row['name'],
             'code' : row['code']
         })
@@ -20,6 +27,8 @@ def teams_list():
 
 def teams(code, season):
     data = {}
+
+    season = CURRENT_SEASON if not season else season
 
     db = database()
     name = db.query(f'SELECT name FROM team WHERE code = "{code}"')
@@ -92,7 +101,7 @@ def teams(code, season):
 
             'position' : row['position'],
             'height' : row['height'],
-            'weight' : int(row['weight']),
+            'weight' : row['weight'],
 
             'city' : row['city'],
             'state' : row['state']
@@ -103,24 +112,22 @@ def teams(code, season):
 def scores(date, conf):
     data = {}
 
-    today = datetime.date.today() if not date else datetime.date.fromisoformat(date)
+    date = datetime.date.today() if not date else datetime.date.fromisoformat(date)
 
-    previous = str(today - datetime.timedelta(days=1)).replace('-', '')
-    next     = str(today + datetime.timedelta(days=1)).replace('-', '')
+    data['date'] = date
+    data['day_string'] = date.strftime('%B %d, %Y')
 
-    data['date'] = {
-        'today' : today.strftime('%B %d, %Y'),
-        'previous' : previous,
-        'next' : next
-    }
-
-    conf = '' if not conf else conf.replace('-', ' ')
-
-    data['conf'] = conf.replace(' ', '-')
+    conf = conf.replace("-", " ") if conf else ''
+    data['conf'] = conf
 
     db = database()
-    scores_table = db.runfile('scores_table', today=today, conf=conf)
+
+    confs_list = db.query("SELECT DISTINCT conf FROM member WHERE conf IS NOT NULL ORDER BY conf ASC")
+    scores_table = db.runfile('scores_table', date=date, conf=conf)
+    
     db.close()
+
+    data['confs_list'] = list(confs_list['conf'])
 
     data['scores'] = []
     for i in range(len(scores_table)):
@@ -139,13 +146,52 @@ def scores(date, conf):
 
     return data
 
-def stats():
-    pass
+def stats(season, conf, page):
+    data = {}
+
+    season = CURRENT_SEASON if not season else season
+    conf = conf = '' if not conf else conf.replace('-', ' ')
+    page = 0 if not page else 100*(int(page)-1)
+
+    db = database()
+    player_table = db.runfile('player_stats', season=season, conf=conf, page=page)
+    db.close()
+    
+    data['players'] = []
+    for i in range(len(player_table)):
+        row = player_table.loc[i]
+        data['players'].append({
+            'lname' : row['lname'],
+            'fname' : row['fname'],
+            'suffix' : ' ' + row['suffix'] if row['suffix'] else '',
+
+            'team' : row['team'],
+
+            'gp' : int(row['gp']),
+            'min' : float(row['min']),
+            'pts' : float(row['pts']),
+
+            'fg_pct' : float(row['fg_pct']),
+            'tp_pct' : float(row['tp_pct']),
+            'ft_pct' : float(row['ft_pct']),
+
+            'reb' : float(row['reb']),
+            'ast' : float(row['ast']),
+            'tov' : float(row['tov']),
+            'stl' : float(row['stl']),
+            'blk' : float(row['blk']),
+            
+            'oreb' : float(row['oreb']),
+            'dreb' : float(row['dreb']),
+            'pf' : float(row['pf'])
+        })
+
+    return data
 
 def rankings(season, conf):
     data = []
 
-    season = 2025 if not season else season
+    season = CURRENT_SEASON if not season else season
     conf = '' if not conf else conf.replace('-', ' ')
 
     db = database()
@@ -169,7 +215,7 @@ def rankings(season, conf):
 def standings(season, conf):
     data = {}
 
-    season = 2025 if not season else season
+    season = CURRENT_SEASON if not season else season
     conf = '' if not conf else conf.replace('-', ' ')
 
     db = database()

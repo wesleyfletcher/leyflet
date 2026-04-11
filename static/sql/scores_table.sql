@@ -20,6 +20,6 @@ JOIN member AS away_conf
 ON game.away_team = away_conf.team
     AND game.season = away_conf.season
 
-WHERE game_date = '{today}'
+WHERE game_date = '{date}'
 AND (home_conf.conf LIKE '%{conf}%'
     OR away_conf.conf LIKE '%{conf}%')

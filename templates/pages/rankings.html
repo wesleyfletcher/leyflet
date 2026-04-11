@@ -3,25 +3,36 @@
 
 <h1>Rankings</h1>
 
-<table>
-    <tr>
-        <th>Team</th>
-        <th>KenPom</th>
-        <th>NET</th>
-        <th>WAB</th>
-        <th>SOR</th>
-        <th>Torvik</th>
-    </tr>
-    {% for row in data %}
+<div class="view-select" style="--view-count: 2;">
+    <div class="view-option view-left view-active" id="rankings-metrics-btn" onclick="switchTab('rankings-metrics')">
+        Metrics
+    </div>
+    <div class="view-option view-right" id="rankings-polls-btn" onclick="switchTab('rankings-polls')">
+        Polls
+    </div>
+</div>
+
+<div class="view-section" id="rankings-metrics">
+    <table>
         <tr>
-            <td>{{ row.team }}</td>
-            <td>{{ row.kenpom }}</td>
-            <td>{{ row.net }}</td>
-            <td>{{ row.wab }}</td>
-            <td>{{ row.sor }}</td>
-            <td>{{ row.torvik }}</td>
+            <th>Team</th>
+            <th>KenPom</th>
+            <th>NET</th>
+            <th>WAB</th>
+            <th>SOR</th>
+            <th>Torvik</th>
         </tr>
-    {% endfor %}
-</table>
+        {% for row in data %}
+            <tr>
+                <td>{{ row.team }}</td>
+                <td>{{ row.kenpom }}</td>
+                <td>{{ row.net }}</td>
+                <td>{{ row.wab }}</td>
+                <td>{{ row.sor }}</td>
+                <td>{{ row.torvik }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
 
 {% endblock %}
