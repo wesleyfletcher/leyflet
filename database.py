@@ -31,6 +31,8 @@ class database:
         for x in self.cursor:
             df.loc[len(df)] = x
 
+        df = df.replace({float('nan'): None})
+
         if len(df) == 1 and len(df.columns) == 1:
             return df.iloc[0, 0]
         

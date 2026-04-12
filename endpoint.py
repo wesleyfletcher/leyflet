@@ -70,7 +70,7 @@ def teams(code, season):
         data['stats'].append({
             'lname' : row['lname'],
             'fname' : row['fname'],
-            'suffix' : ' ' + row['suffix'] if row['suffix'] else '',
+            'suffix' : f' {row['suffix']}' if row['suffix'] else '',
 
             'gp'  : int(row['gp']),
             'min' : float(row['min']),
@@ -97,7 +97,7 @@ def teams(code, season):
         data['roster'].append({
             'lname' : row['lname'],
             'fname' : row['fname'],
-            'suffix' : ' ' + row['suffix'] if row['suffix'] else '',
+            'suffix' : f' {row['suffix']}' if row['suffix'] else '',
 
             'position' : row['position'],
             'height' : row['height'],
@@ -293,7 +293,7 @@ def games(id):
         data['stats'][row['team']].append({
             'lname' : row['lname'],
             'fname' : row['fname'],
-            'suffix' : ' ' + row['suffix'] if row['suffix'] else '',
+            'suffix' : f' {row['suffix']}' if row['suffix'] else '',
 
             'min' : int(row['min']),
             'pts' : int(row['pts']),
