@@ -1,75 +1,109 @@
-.day-select {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+#date-picker, #conf-picker {
+    color: var(--dark-color);
+    font-family: "Farro", sans-serif;
 
-    align-items: center;
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
 }
 
 .container {
-    width: 100%;
+    --content-width: min(100vw, 1080px);
+    --block-size: 360px;
+    --scoreboard-cols: max(1, round(down, var(--content-width) / var(--block-size)), 1);
+
+    width: min(100%, calc(var(--block-size) * var(--scoreboard-cols)));
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    grid-template-columns: repeat(var(--scoreboard-cols), 1fr);
 }
 
 .scoreboard-block-small {
     margin: 2%;
 
-    height: 2in;
+    width: calc(0.9 * min(100vw, var(--block-size)));
+    height: calc(0.6 * min(100vw, var(--block-size)));
 
     background-color: white;
 
-    border: solid;
-    border-width: 3px;
-    border-color: lightblue;
-    border-radius: 20px;
+    border: min(0.5vw, 2px) solid var(--accent-color);
+    border-radius: min(5vw, 20px);
 
     display: flex;
     flex-direction: column;
-    justify-content: top;
 
-    text-decoration: none;
-    color: inherit;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.scoreboard-block-wide {
+    display: none;
+}
+
+.scoreboard-header {
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+    width: 100%;
+    height: 10%;
+
+    display: flex;
+    align-items: center;
 }
 
 .scoreboard-row {
+    height: 25%;
+
     display: flex;
-    justify-content: left;
     align-items: center;
 
-    height: 20%;
+    border-top: 1px solid black;
+}
+
+.scoreboard-status {
+    width: 69%;
+
+    font-size: 1.2em;
+    text-align: left;
 }
 
 .scoreboard-logo {
-    padding-left: 2%;
-
-    width: 8%;
     height: 100%;
+    width: 16%;
 
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .scoreboard-logo img {
-    width: 90%;
-    height: 100%;
+    max-width: 80%;
+    max-height: 80%;
+
     object-fit: contain;
 }
 
 .scoreboard-team {
-    width: 50%;
-    padding-left: 2%;
-
+    width: 48%;
     text-align: left;
-    font-size: 1.2vw;
 }
 
-.scoreboard-total-score {
-    width: 15%;
-    font-size: 1.2vw;
+.scoreboard-total {
+    width: 10%;
+
+    font-size: 1.2em;
 }
 
-.scoreboard-half-score {
+.scoreboard-half {
+    width: 7%;
+
+    font-size: 0.8em;
+}
+
+.winner .scoreboard-team, .winner .scoreboard-total {
+    font-weight: bold;
+}
+
+.winner-marker {
     width: 5%;
-    font-size: 0.8vw;
 }

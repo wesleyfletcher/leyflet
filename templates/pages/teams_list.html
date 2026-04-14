@@ -1,24 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 
+{% set seasons = range(2022, 2026) %}
+
 <h1>Teams</h1>
 
-{% for conf in data %}
-    <h2>{{ conf }}</h2>
-    <table>
+<table>
+    <tr>
+        <th colspan="3">Team</th>
+        <th colspan="{{ seasons | length }}">Seasons</th>
+    </tr>
+    {% for team in data %}
         <tr>
-            <th>Team</th>
-            <th>Code</th>
-            <th>Logo</th>
+            <td><img src="/static/logos/{{ team }}.png" style="width: 50px; height: 50px; object-fit: contain;"></td>
+            <td>{{ data[team].name }}</td>
+            <td>{{ team }}</td>
+            {% for season in seasons %}
+                <td>
+                    {% if season in data[team].conf %}
+                        <a href="/teams/{{ team }}?season={{ season }}">{{ season }}</a>
+                        <p style="font-size: 12px; color: grey">{{ data[team].conf[season] }}</p>
+                    {% endif %}
+                </td>
+            {% endfor %}
         </tr>
-        {% for team in data[conf] %}
-            <tr>
-                <td><a class="link" href="/teams/{{ team.code }}">{{ team.name }}</a></td>
-                <td>{{ team.code }}</td>
-                <td><img src="/static/logos/{{ team.code }}.png" style="width: 50px; height: 50px; object-fit: contain;"></td>
-            </tr>
-        {% endfor %}
-    </table>
-{% endfor %}
+    {% endfor %}
+</table>
 
 {% endblock %}

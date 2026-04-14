@@ -3,25 +3,23 @@ import datetime
 
 CURRENT_SEASON = 2025
 
-def teams_list(season):
+def teams_list():
     data = {}
 
-    season = CURRENT_SEASON if not season else season
-
     db = database()
-    team_table = db.runfile('teams_list', season=season)
+    team_table = db.runfile('teams_list')
     db.close()
 
     for i in range(len(team_table)):
         row = team_table.loc[i]
 
-        if row['conf'] not in data:
-            data[row['conf']] = []
+        if row['code'] not in data:
+            data[row['code']] = {
+                'name' : row['name'], 
+                'conf' : {}
+            }
 
-        data[row['conf']].append({
-            'name' : row['name'],
-            'code' : row['code']
-        })
+        data[row['code']]['conf'][int(row['season'])] = row['conf']
     
     return data
 
@@ -118,7 +116,6 @@ def scores(date, conf):
     data['day_string'] = date.strftime('%B %d, %Y')
 
     conf = conf.replace("-", " ") if conf else ''
-    data['conf'] = conf
 
     db = database()
 
@@ -127,16 +124,37 @@ def scores(date, conf):
     
     db.close()
 
+    data['conf'] = conf if conf != '' else 'all'
     data['confs_list'] = list(confs_list['conf'])
 
     data['scores'] = []
     for i in range(len(scores_table)):
         row = scores_table.loc[i]
+
+        if row['status'] == 'Complete':
+            ots = int(row['overtimes'])
+
+            game_time = 'FINAL'
+            if ots == 1:
+                game_time += '/OT'
+            elif ots > 1:
+                game_time += f'/{ots}OT'
+
+        elif row['status'] == 'Active':
+            pass
+        else:
+            pass
+
         data['scores'].append({
             'id' : row['id'],
             'home_team' : row['home_team'], 'home_code' : row['home_team_code'],
             'away_team' : row['away_team'], 'away_code' : row['away_team_code'],
-            'neutral' : bool(row['neutral']), 'overtimes' : int(row['overtimes']),
+
+            'neutral' : bool(row['neutral']),
+            'overtimes' : ots,
+            'status' : row['status'], ## FIX TO COVER active AND scheduled
+            'game_time' : game_time,
+
             'home_score' : int(row['home_score']), 'away_score' : int(row['away_score']),
             'home_score_1h' : int(row['home_score_1h']), 'away_score_1h' : int(row['away_score_1h']),
             'home_score_2h' : int(row['home_score_2h']), 'away_score_2h' : int(row['away_score_2h']),

@@ -21,7 +21,13 @@ function scoresRedirect() {
                 .attr("value")
                 .replace(" ", "-")
 
-    form.attr("action", "?date="+date + 
-        (conf == "all" ? "" : "&conf=" + conf)
-    )
+    action = "?date=" + date;
+    if (conf != "all") {
+      console.log(conf);
+      action += ("&conf=" + conf);
+    }
+
+    console.log(action)
+
+    form.attr("action", action)
 }

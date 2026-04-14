@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<link rel="stylesheet" href="/static/pages/scores.css">
+
 <h1>Scores</h1>
 <h3>{{ data.day_string }}</h3>
 
@@ -12,53 +14,76 @@
     <select id="conf-picker" value="{{ data.conf }}">
         <option value="all">Division I</option>
         {% for conf in data.confs_list %}
-            <option value="{{ conf }}" {{ 'selected' if data.conf==conf else "" }}>{{ conf }}</option>
+            <option value="{{ conf }}" {{ 'selected' if data.conf==conf }}>{{ conf }}</option>
         {% endfor %}
     </select><br>
     <input id="date-submit" type="submit" value="Go">
 </form>
 
 {% if data.scores | length > 0 %}
-    <div class="container">
+    <div class="container three-column">
         {% for game in data.scores %}
             <a class="scoreboard-block-small" href="/games/{{ game.id }}">
-                <div class="scoreboard-row" style="height:10%; padding-top:4%;">
-                    <div class="scoreboard-logo"></div>
-                    <div class="scoreboard-team"></div>
-                    <div class="scoreboard-total-score" style="font-size:inherit">T</div>
-
-                    <div class="scoreboard-half-score">1H</div>
-                    <div class="scoreboard-half-score">2H</div>
-                    {% if game.overtimes > 0 %}
-                        <div class="scoreboard-half-score">OT</div>
-                    {% endif %}
+                <div class="scoreboard-header">
+                    <div class="scoreboard-status">{{ game.game_time }}</div>
+                    <div class="scoreboard-total">T</div>
+                    <div class="scoreboard-half">1H</div>
+                    <div class="scoreboard-half">2H</div>
+                    <div class="scoreboard-half">{{ 'OT' if game.overtimes > 0 }}</div>
+                </div>
+                <div class="scoreboard-row {{ 'winner' if game.away_score > game.home_score }}">
+                    <div class="scoreboard-logo">
+                        <img src="/static/logos/{{ game.away_code }}.png">
+                    </div>
+                    <div class="scoreboard-team">{{ game.away_team }}</div>
+                    <div class="winner-marker">{{ '\u25b6' if game.away_score > game.home_score }}</div>
+                    <div class="scoreboard-total">{{ game.away_score }}</div>
+                    <div class="scoreboard-half">{{ game.away_score_1h }}</div>
+                    <div class="scoreboard-half">{{ game.away_score_2h }}</div>
+                    <div class="scoreboard-half">{{ game.away_score_ot if game.overtimes > 0 }}</div>
+                </div>
+                <div class="scoreboard-row {{ 'winner' if game.home_score > game.away_score }}">
+                    <div class="scoreboard-logo">
+                        <img src="/static/logos/{{ game.home_code }}.png">
+                    </div>
+                    <div class="scoreboard-team">{{ game.home_team }}</div>
+                    <div class="winner-marker">{{ '\u25b6' if game.home_score > game.away_score }}</div>
+                    <div class="scoreboard-total">{{ game.home_score }}</div>
+                    <div class="scoreboard-half">{{ game.home_score_1h }}</div>
+                    <div class="scoreboard-half">{{ game.home_score_2h }}</div>
+                    <div class="scoreboard-half">{{ game.home_score_ot if game.overtimes > 0 }}</div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+    <div class="container one-column">
+        {% for game in data.scores %}
+            <a class="scoreboard-block-wide" href="/games/{{ game.id }}">
+                <div class="scoreboard-header">
+                    <div class="scoreboard-total">T</div>
+                    <div class="scoreboard-half">1H</div>
+                    <div class="scoreboard-half">2H</div>
+                    <div class="scoreboard-half">{{ 'OT' if game.overtimes > 0}}</div>
                 </div>
                 <div class="scoreboard-row">
                     <div class="scoreboard-logo">
                         <img src="/static/logos/{{ game.away_code }}.png">
                     </div>
                     <div class="scoreboard-team">{{ game.away_team }}</div>
-                    <div class="scoreboard-total-score">{{ game.away_score }}</div>
-
-                    <div class="scoreboard-half-score">{{ game.away_score_1h }}</div>
-                    <div class="scoreboard-half-score">{{ game.away_score_2h }}</div>
-                    {% if game.overtimes > 0 %}
-                        <div class="scoreboard-half-score">{{ game.away_score_ot }}</div>
-                    {% endif %}
+                    <div class="scoreboard-total">{{ game.away_score }}</div>
+                    <div class="scoreboard-half">{{ game.away_score_1h }}</div>
+                    <div class="scoreboard-half">{{ game.away_score_2h }}</div>
+                    <div class="scoreboard-half">{{ game.away_score_ot if game.overtimes > 0}}</div>
                 </div>
-
                 <div class="scoreboard-row">
                     <div class="scoreboard-logo">
                         <img src="/static/logos/{{ game.home_code }}.png">
                     </div>
                     <div class="scoreboard-team">{{ game.home_team }}</div>
-                    <div class="scoreboard-total-score">{{ game.home_score }}</div>
-
-                    <div class="scoreboard-half-score">{{ game.home_score_1h }}</div>
-                    <div class="scoreboard-half-score">{{ game.home_score_2h }}</div>
-                    {% if game.overtimes > 0 %}
-                        <div class="scoreboard-half-score">{{ game.home_score_ot }}</div>
-                    {% endif %}
+                    <div class="scoreboard-total">{{ game.home_score }}</div>
+                    <div class="scoreboard-half">{{ game.home_score_1h }}</div>
+                    <div class="scoreboard-half">{{ game.home_score_2h }}</div>
+                    <div class="scoreboard-half">{{ game.home_score_ot if game.overtimes > 0}}</div>
                 </div>
             </a>
         {% endfor %}

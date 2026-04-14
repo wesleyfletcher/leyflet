@@ -1,7 +1,12 @@
 from flask import *
+
 import endpoint
 
 app = Flask(__name__)
+
+@app.errorhandler(Exception)
+def error(e):
+    return render_template('error.html', error=f'{e} {type(e)}')
 
 @app.route('/')
 def home():
@@ -9,10 +14,7 @@ def home():
 
 @app.route('/teams/')
 def teams_list():
-    season = request.args.get('season')
-
-    data = endpoint.teams_list(season)
-
+    data = endpoint.teams_list()
     return render_template('pages/teams_list.html', data=data)
 
 @app.route('/teams/<code>')
