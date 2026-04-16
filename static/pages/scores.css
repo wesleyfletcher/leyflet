@@ -2,8 +2,49 @@
     color: var(--dark-color);
     font-family: "Farro", sans-serif;
 
-    border: 2px solid var(--accent-color);
+    border: 2px solid var(--dark-color);
     border-radius: 5px;
+}
+
+.layout-toggle {
+    width: 120px;
+    height: 45px;
+
+    background-color: white;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    border: 2px solid var(--dark-color);
+    border-radius: 10px;
+
+    align-content: center;
+
+    cursor: pointer;
+}
+
+#toggle-three-col {
+    border-radius: 5px 0 0 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#toggle-one-col {
+    border-radius: 0 5px 5px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-active {
+    background-color: var(--dark-color);
+}
+
+.toggle-active svg {
+    fill: white;
 }
 
 .container {
@@ -15,29 +56,47 @@
 
     display: grid;
     justify-items: center;
+
+    margin-top: 15px;
+}
+
+.three-column {
     grid-template-columns: repeat(var(--scoreboard-cols), 1fr);
 }
 
-.scoreboard-block-small {
-    margin: 2%;
+.one-column {
+    grid-template-columns: 1fr;
+}
 
-    width: calc(0.9 * min(100vw, var(--block-size)));
-    height: calc(0.6 * min(100vw, var(--block-size)));
-
+.scoreboard-block {
     background-color: white;
 
-    border: min(0.5vw, 2px) solid var(--accent-color);
+    height: calc((2/3 * 0.94) * min(100vw, var(--block-size)));
+
+    border: min(0.5vw, 2px) solid var(--dark-color);
     border-radius: min(5vw, 20px);
 
     display: flex;
     flex-direction: column;
+}
+
+.small-block {
+    width: calc(0.9 * min(100vw, var(--block-size)));
+
+    margin: 2%;
 
     padding-left: 3%;
     padding-right: 3%;
 }
 
-.scoreboard-block-wide {
-    display: none;
+.wide-block {
+    width: calc(2.9 * min(100vw, var(--block-size)));
+
+    margin: calc(2% / 3);
+
+    padding-left: 1%;
+    padding-right: 1%;
+
 }
 
 .scoreboard-header {
@@ -45,14 +104,14 @@
     padding-bottom: 2%;
 
     width: 100%;
-    height: 10%;
+    height: 8%;
 
     display: flex;
     align-items: center;
 }
 
 .scoreboard-row {
-    height: 25%;
+    height: 24%;
 
     display: flex;
     align-items: center;
@@ -88,6 +147,13 @@
     text-align: left;
 }
 
+.scoreboard-team p {
+    font-weight: normal;
+    font-size: 0.6em;
+
+    margin: 0;
+}
+
 .scoreboard-total {
     width: 10%;
 
@@ -106,4 +172,18 @@
 
 .winner-marker {
     width: 5%;
+}
+
+.key-players {
+    height: 36%;
+
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    align-items: center;
+
+    border-top: 1px solid black;
 }

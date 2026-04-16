@@ -113,14 +113,15 @@ def scores(date, conf):
     date = datetime.date.today() if not date else datetime.date.fromisoformat(date)
 
     data['date'] = date
-    data['day_string'] = date.strftime('%B %d, %Y')
 
     conf = conf.replace("-", " ") if conf else ''
 
     db = database()
 
     confs_list = db.query("SELECT DISTINCT conf FROM member WHERE conf IS NOT NULL ORDER BY conf ASC")
+
     scores_table = db.runfile('scores_table', date=date, conf=conf)
+    key_players = db.runfile('key_players', date=date, conf=conf)
     
     db.close()
 
@@ -159,7 +160,14 @@ def scores(date, conf):
             'home_score_1h' : int(row['home_score_1h']), 'away_score_1h' : int(row['away_score_1h']),
             'home_score_2h' : int(row['home_score_2h']), 'away_score_2h' : int(row['away_score_2h']),
             'home_score_ot' : int(row['home_score_ot']) if row['home_score_ot'] else None,
-            'away_score_ot' : int(row['away_score_ot']) if row['away_score_ot'] else None
+            'away_score_ot' : int(row['away_score_ot']) if row['away_score_ot'] else None,
+
+            'home_conf' : row['home_conf'], 'away_conf' : row['away_conf'],
+
+            'home_season_record' : row['home_season_record'],
+            'away_season_record' : row['away_season_record'],
+            'home_conf_record'   : row['home_conf_record'],
+            'away_conf_record'   : row['away_conf_record']
         })
 
     return data

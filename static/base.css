@@ -60,10 +60,11 @@ div .link:hover {
 .view-select {
     background-color: white;
 
-    width: calc(10% * var(--view-count));
+    width: calc(108px * var(--view-count));
     height: 30px;
 
-    margin-bottom: 2%;
+    margin-top: 15px;
+    margin-bottom: 15px;
 
     border: 2px solid var(--dark-color);
     border-radius: 10px;

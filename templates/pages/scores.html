@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="/static/pages/scores.css">
 
 <h1>Scores</h1>
-<h3>{{ data.day_string }}</h3>
 
 <form onsubmit="scoresRedirect()" method="POST">
     <label for="date-picker">Date:</label>
@@ -20,10 +19,42 @@
     <input id="date-submit" type="submit" value="Go">
 </form>
 
+<div class="view-select" style="--view-count: 4;">
+    <div class="view-option view-left view-active" id="all-scores-btn" onclick="showAllByStatus()">
+        All
+    </div>
+    <div class="view-option view-center" id="Active-scores-btn" onclick="filterByStatus('Active')">
+        Active
+    </div>
+    <div class="view-option view-center" id="Complete-scores-btn" onclick="filterByStatus('Complete')">
+        Completed
+    </div>
+    <div class="view-option view-right" id="Scheduled-scores-btn" onclick="filterByStatus('Scheduled')">
+        Scheduled
+    </div>
+</div>
+
+<div class="layout-toggle" onclick="switchBlockSize()">
+    <div class="toggle-option toggle-active" id="toggle-three-col">
+        <svg width="60" height="45" fill="var(--dark-color)">
+            <rect x="8"  y="15" width="12" height="15"></rect>
+            <rect x="24" y="15" width="12" height="15"></rect>
+            <rect x="40" y="15" width="12" height="15"></rect>
+        </svg>
+    </div>
+    <div class="toggle-option" id="toggle-one-col">
+        <svg width="60" height="45" fill="var(--dark-color)">
+            <rect x="8" y="15" width="44" height="3"></rect>
+            <rect x="8" y="21" width="44" height="3"></rect>
+            <rect x="8" y="27" width="44" height="3"></rect>
+        </svg>
+    </div>
+</div>
+
 {% if data.scores | length > 0 %}
-    <div class="container three-column">
+    <div class="container three-column view-section" id="small-view">
         {% for game in data.scores %}
-            <a class="scoreboard-block-small" href="/games/{{ game.id }}">
+            <a status="{{ game.status }}" class="scoreboard-block small-block" href="/games/{{ game.id }}">
                 <div class="scoreboard-header">
                     <div class="scoreboard-status">{{ game.game_time }}</div>
                     <div class="scoreboard-total">T</div>
@@ -35,7 +66,9 @@
                     <div class="scoreboard-logo">
                         <img src="/static/logos/{{ game.away_code }}.png">
                     </div>
-                    <div class="scoreboard-team">{{ game.away_team }}</div>
+                    <div class="scoreboard-team">{{ game.away_team }}<br>
+                        <p>{{ game.away_season_record }}</p>
+                    </div>
                     <div class="winner-marker">{{ '\u25b6' if game.away_score > game.home_score }}</div>
                     <div class="scoreboard-total">{{ game.away_score }}</div>
                     <div class="scoreboard-half">{{ game.away_score_1h }}</div>
@@ -46,19 +79,28 @@
                     <div class="scoreboard-logo">
                         <img src="/static/logos/{{ game.home_code }}.png">
                     </div>
-                    <div class="scoreboard-team">{{ game.home_team }}</div>
+                    <div class="scoreboard-team">{{ game.home_team }}<br>
+                        <p>{{ game.home_season_record }}</p>
+                    </div>
                     <div class="winner-marker">{{ '\u25b6' if game.home_score > game.away_score }}</div>
                     <div class="scoreboard-total">{{ game.home_score }}</div>
                     <div class="scoreboard-half">{{ game.home_score_1h }}</div>
                     <div class="scoreboard-half">{{ game.home_score_2h }}</div>
                     <div class="scoreboard-half">{{ game.home_score_ot if game.overtimes > 0 }}</div>
                 </div>
+                {% if game.status == 'Complete' %}
+                    <div class="key-players">
+                        <div>PTS</div>
+                        <div>REB</div>
+                        <div>AST</div>
+                    </div>
+                {% endif %}
             </a>
         {% endfor %}
     </div>
-    <div class="container one-column">
+    <div class="container one-column view-section" id="wide-view">
         {% for game in data.scores %}
-            <a class="scoreboard-block-wide" href="/games/{{ game.id }}">
+            <a status="{{ game.status }}" class="scoreboard-block wide-block" href="/games/{{ game.id }}">
                 <div class="scoreboard-header">
                     <div class="scoreboard-total">T</div>
                     <div class="scoreboard-half">1H</div>
