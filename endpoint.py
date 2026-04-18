@@ -175,7 +175,7 @@ def scores(date, conf):
             'away_scorer' : row['away_scorer'],
 
             'away_lname' : row['away_lname'], 'away_fname' :  row['away_fname'],
-            'away_suffix' : row['away_suffix'],
+            'away_suffix' : f' {row['away_suffix']}' if row['away_suffix'] else '',
 
             'away_pts' : int(row['away_pts']),
             'away_fgm' : int(row['away_fgm']), 'away_fga' : int(row['away_fga']),
@@ -184,7 +184,7 @@ def scores(date, conf):
             'home_scorer' : row['home_scorer'],
 
             'home_lname' : row['home_lname'], 'home_fname' :  row['home_fname'],
-            'home_suffix' : row['home_suffix'],
+            'home_suffix' : f' {row['home_suffix']}' if row['home_suffix'] else '',
 
             'home_pts' : int(row['home_pts']),
             'home_fgm' : int(row['home_fgm']), 'home_fga' : int(row['home_fga']),

@@ -1,17 +1,22 @@
 import mysql.connector as sql
 import pandas as pd
 
+import os
+from dotenv import load_dotenv
+
 class database:
     global cursor
     global schema
 
     def __init__(self):
+        load_dotenv()
+
         self.schema = sql.connect(
-            host='turntable.proxy.rlwy.net',
-            port=36283,
-            user='root',
-            password='jMkXScGltcodPCsTAdWCxkkmeIQbRcJi', #make more secure
-            database='railway'
+            host=os.getenv('MYSQLHOST'),
+            port=int(os.getenv('MYSQLPORT')),
+            user=os.getenv('MYSQLUSER'),
+            password=os.getenv('MYSQLPASSWORD'),
+            database=os.getenv('MYSQLDATABASE')
         )
         self.cursor = self.schema.cursor()
 

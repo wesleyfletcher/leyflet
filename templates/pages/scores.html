@@ -93,7 +93,7 @@
                     <div class="key-players">
                         <div class="key-row">
                             <div class="key-team">{{ game.away_code }}</div>
-                            <div class="key-player">{{ game.away_lname }}</div>
+                            <div class="key-player">{{ game.away_fname[0] }}. {{ game.away_lname }}{{ game.away_suffix }}</div>
                             <div class="key-stats">
                                 {{ game.away_pts }} PTS,
                                 {{ game.away_fgm }}-{{ game.away_fga }} FG,
@@ -102,7 +102,7 @@
                         </div>
                         <div class="key-row">
                             <div class="key-team">{{ game.home_code }}</div>
-                            <div class="key-player">{{ game.home_lname }}</div>
+                            <div class="key-player">{{ game.home_fname[0] }}. {{ game.home_lname }}{{ game.home_suffix }}</div>
                             <div class="key-stats">
                                 {{ game.home_pts }} PTS,
                                 {{ game.home_fgm }}-{{ game.home_fga }} FG,
