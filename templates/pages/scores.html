@@ -53,8 +53,9 @@
 
 {% if data.scores | length > 0 %}
     <div class="container three-column view-section" id="small-view">
-        {% for game in data.scores %}
-            <a status="{{ game.status }}" class="scoreboard-block small-block" href="/games/{{ game.id }}">
+        {% for id in data.scores %}
+            {% set game = data.scores[id] %}
+            <a status="{{ game.status }}" class="scoreboard-block small-block" href="/games/{{ id }}">
                 <div class="scoreboard-header">
                     <div class="scoreboard-status">{{ game.game_time }}</div>
                     <div class="scoreboard-total">T</div>
@@ -90,17 +91,33 @@
                 </div>
                 {% if game.status == 'Complete' %}
                     <div class="key-players">
-                        <div>PTS</div>
-                        <div>REB</div>
-                        <div>AST</div>
+                        <div class="key-row">
+                            <div class="key-team">{{ game.away_code }}</div>
+                            <div class="key-player">{{ game.away_lname }}</div>
+                            <div class="key-stats">
+                                {{ game.away_pts }} PTS,
+                                {{ game.away_fgm }}-{{ game.away_fga }} FG,
+                                {{ game.away_reb }} REB, {{ game.away_ast }} AST
+                            </div>
+                        </div>
+                        <div class="key-row">
+                            <div class="key-team">{{ game.home_code }}</div>
+                            <div class="key-player">{{ game.home_lname }}</div>
+                            <div class="key-stats">
+                                {{ game.home_pts }} PTS,
+                                {{ game.home_fgm }}-{{ game.home_fga }} FG,
+                                {{ game.home_reb }} REB, {{ game.home_ast }} AST
+                            </div>
+                        </div>
                     </div>
                 {% endif %}
             </a>
         {% endfor %}
     </div>
     <div class="container one-column view-section" id="wide-view">
-        {% for game in data.scores %}
-            <a status="{{ game.status }}" class="scoreboard-block wide-block" href="/games/{{ game.id }}">
+        {% for id in data.scores %}
+            {% set game = data.scores[id] %}
+            <a status="{{ game.status }}" class="scoreboard-block wide-block" href="/games/{{ id }}">
                 <div class="scoreboard-header">
                     <div class="scoreboard-total">T</div>
                     <div class="scoreboard-half">1H</div>

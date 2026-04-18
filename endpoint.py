@@ -128,7 +128,7 @@ def scores(date, conf):
     data['conf'] = conf if conf != '' else 'all'
     data['confs_list'] = list(confs_list['conf'])
 
-    data['scores'] = []
+    data['scores'] = {}
     for i in range(len(scores_table)):
         row = scores_table.loc[i]
 
@@ -146,8 +146,7 @@ def scores(date, conf):
         else:
             pass
 
-        data['scores'].append({
-            'id' : row['id'],
+        data['scores'][int(row['id'])] = {
             'home_team' : row['home_team'], 'home_code' : row['home_team_code'],
             'away_team' : row['away_team'], 'away_code' : row['away_team_code'],
 
@@ -168,6 +167,28 @@ def scores(date, conf):
             'away_season_record' : row['away_season_record'],
             'home_conf_record'   : row['home_conf_record'],
             'away_conf_record'   : row['away_conf_record']
+        }
+
+    for i in range(len(key_players)):
+        row = key_players.loc[i]
+        data['scores'][int(row['game'])].update({
+            'away_scorer' : row['away_scorer'],
+
+            'away_lname' : row['away_lname'], 'away_fname' :  row['away_fname'],
+            'away_suffix' : row['away_suffix'],
+
+            'away_pts' : int(row['away_pts']),
+            'away_fgm' : int(row['away_fgm']), 'away_fga' : int(row['away_fga']),
+            'away_reb' : int(row['away_reb']), 'away_ast' : int(row['away_ast']),
+
+            'home_scorer' : row['home_scorer'],
+
+            'home_lname' : row['home_lname'], 'home_fname' :  row['home_fname'],
+            'home_suffix' : row['home_suffix'],
+
+            'home_pts' : int(row['home_pts']),
+            'home_fgm' : int(row['home_fgm']), 'home_fga' : int(row['home_fga']),
+            'home_reb' : int(row['home_reb']), 'home_ast' : int(row['home_ast'])
         })
 
     return data
