@@ -53,100 +53,222 @@
 
 {% if data.scores | length > 0 %}
     <div class="container three-column view-section" id="small-view">
-        {% for id in data.scores %}
-            {% set game = data.scores[id] %}
-            <a status="{{ game.status }}" class="scoreboard-block small-block" href="/games/{{ id }}">
-                <div class="scoreboard-header">
-                    <div class="scoreboard-status">{{ game.game_time }}</div>
-                    <div class="scoreboard-total">T</div>
-                    <div class="scoreboard-half">1H</div>
-                    <div class="scoreboard-half">2H</div>
-                    <div class="scoreboard-half">{{ 'OT' if game.overtimes > 0 }}</div>
+    {% for id in data.scores %}
+        {% set game = data.scores[id] %}
+
+        <a status="{{ game.status }}" class="scoreboard-block small-block" href="/games/{{ id }}">
+        {% if game.status == 'Complete' %}
+            <div class="scoreboard-header">
+                <div class="scoreboard-status">{{ game.game_time }}</div>
+                <div class="scoreboard-total">T</div>
+                <div class="scoreboard-half">1H</div>
+                <div class="scoreboard-half">2H</div>
+                <div class="scoreboard-half">{{ 'OT' if game.overtimes > 0 }}</div>
+            </div>
+
+            <div class="scoreboard-row {{ 'winner' if game.away_score > game.home_score }}">
+                <div class="scoreboard-logo">
+                    <img src="/static/logos/{{ game.away_code }}.png">
                 </div>
-                <div class="scoreboard-row {{ 'winner' if game.away_score > game.home_score }}">
-                    <div class="scoreboard-logo">
-                        <img src="/static/logos/{{ game.away_code }}.png">
-                    </div>
-                    <div class="scoreboard-team">{{ game.away_team }}<br>
-                        <p>{{ game.away_season_record }}</p>
-                    </div>
-                    <div class="winner-marker">{{ '\u25b6' if game.away_score > game.home_score }}</div>
-                    <div class="scoreboard-total">{{ game.away_score }}</div>
-                    <div class="scoreboard-half">{{ game.away_score_1h }}</div>
-                    <div class="scoreboard-half">{{ game.away_score_2h }}</div>
-                    <div class="scoreboard-half">{{ game.away_score_ot if game.overtimes > 0 }}</div>
+                <div class="scoreboard-team">{{ game.away_team }}<br>
+                    <p>{{ game.away_season_record }}</p>
                 </div>
-                <div class="scoreboard-row {{ 'winner' if game.home_score > game.away_score }}">
-                    <div class="scoreboard-logo">
-                        <img src="/static/logos/{{ game.home_code }}.png">
-                    </div>
-                    <div class="scoreboard-team">{{ game.home_team }}<br>
-                        <p>{{ game.home_season_record }}</p>
-                    </div>
-                    <div class="winner-marker">{{ '\u25b6' if game.home_score > game.away_score }}</div>
-                    <div class="scoreboard-total">{{ game.home_score }}</div>
-                    <div class="scoreboard-half">{{ game.home_score_1h }}</div>
-                    <div class="scoreboard-half">{{ game.home_score_2h }}</div>
-                    <div class="scoreboard-half">{{ game.home_score_ot if game.overtimes > 0 }}</div>
+                <div class="winner-marker">{{ '\u25b6' if game.away_score > game.home_score }}</div>
+                <div class="scoreboard-total">{{ game.away_score }}</div>
+                <div class="scoreboard-half">{{ game.away_score_1h }}</div>
+                <div class="scoreboard-half">{{ game.away_score_2h }}</div>
+                <div class="scoreboard-half">{{ game.away_score_ot if game.overtimes > 0 }}</div>
+            </div>
+
+            <div class="scoreboard-row {{ 'winner' if game.home_score > game.away_score }}">
+                <div class="scoreboard-logo">
+                    <img src="/static/logos/{{ game.home_code }}.png">
                 </div>
-                {% if game.status == 'Complete' %}
-                    <div class="key-players">
-                        <div class="key-row">
-                            <div class="key-team">{{ game.away_code }}</div>
-                            <div class="key-player">{{ game.away_fname[0] }}. {{ game.away_lname }}{{ game.away_suffix }}</div>
-                            <div class="key-stats">
-                                {{ game.away_pts }} PTS,
-                                {{ game.away_fgm }}-{{ game.away_fga }} FG,
-                                {{ game.away_reb }} REB, {{ game.away_ast }} AST
-                            </div>
-                        </div>
-                        <div class="key-row">
-                            <div class="key-team">{{ game.home_code }}</div>
-                            <div class="key-player">{{ game.home_fname[0] }}. {{ game.home_lname }}{{ game.home_suffix }}</div>
-                            <div class="key-stats">
-                                {{ game.home_pts }} PTS,
-                                {{ game.home_fgm }}-{{ game.home_fga }} FG,
-                                {{ game.home_reb }} REB, {{ game.home_ast }} AST
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-            </a>
-        {% endfor %}
+                <div class="scoreboard-team">{{ game.home_team }}<br>
+                    <p>{{ game.home_season_record }}</p>
+                </div>
+                <div class="winner-marker">{{ '\u25b6' if game.home_score > game.away_score }}</div>
+                <div class="scoreboard-total">{{ game.home_score }}</div>
+                <div class="scoreboard-half">{{ game.home_score_1h }}</div>
+                <div class="scoreboard-half">{{ game.home_score_2h }}</div>
+                <div class="scoreboard-half">{{ game.home_score_ot if game.overtimes > 0 }}</div>
+            </div>
+
+            
+
+        {% elif game.status == 'Active' %}
+            <div class="scoreboard-header">
+                <div class="scoreboard-status">{{ game.game_time }}</div>
+                <div class="scoreboard-total">T</div>
+                <div class="scoreboard-half">1H</div>
+                <div class="scoreboard-half">2H</div>
+                <div class="scoreboard-half">{{ 'OT' if game.overtimes > 0 }}</div>
+            </div>
+
+            <div class="scoreboard-row">
+                <div class="scoreboard-logo">
+                    <img src="/static/logos/{{ game.away_code }}.png">
+                </div>
+                <div class="scoreboard-team">{{ game.away_team }}<br>
+                    <p>{{ game.away_season_record }}</p>
+                </div>
+                <div class="winner-marker"></div>
+                <div class="scoreboard-total">{{ game.away_score }}</div>
+                <div class="scoreboard-half">{{ game.away_score_1h }}</div>
+                <div class="scoreboard-half">{{ game.away_score_2h if game.away_score_2h }}</div>
+                <div class="scoreboard-half">{{ game.away_score_ot if game.overtimes > 0 }}</div>
+            </div>
+
+            <div class="scoreboard-row">
+                <div class="scoreboard-logo">
+                    <img src="/static/logos/{{ game.home_code }}.png">
+                </div>
+                <div class="scoreboard-team">{{ game.home_team }}<br>
+                    <p>{{ game.home_season_record }}</p>
+                </div>
+                <div class="winner-marker"></div>
+                <div class="scoreboard-total">{{ game.home_score }}</div>
+                <div class="scoreboard-half">{{ game.home_score_1h }}</div>
+                <div class="scoreboard-half">{{ game.home_score_2h if game.home_score_2h }}</div>
+                <div class="scoreboard-half">{{ game.home_score_ot if game.overtimes > 0 }}</div>
+            </div>
+
+        {% else %}
+            <div class="scoreboard-header">
+                <div class="scoreboard-status">{{ game.game_time }}</div>
+            </div>
+
+            <div class="scoreboard-row">
+                <div class="scoreboard-logo">
+                    <img src="/static/logos/{{ game.away_code }}.png">
+                </div>
+                <div class="scoreboard-team">{{ game.away_team }}<br>
+                    <p>{{ game.away_season_record }}</p>
+                </div>
+            </div>
+
+            <div class="scoreboard-row">
+                <div class="scoreboard-logo">
+                    <img src="/static/logos/{{ game.home_code }}.png">
+                </div>
+                <div class="scoreboard-team">{{ game.home_team }}<br>
+                    <p>{{ game.home_season_record }}</p>
+                </div>
+            </div>
+        {% endif %}
+        </a>
+    {% endfor %}
     </div>
+
     <div class="container one-column view-section" id="wide-view">
-        {% for id in data.scores %}
-            {% set game = data.scores[id] %}
-            <a status="{{ game.status }}" class="scoreboard-block wide-block" href="/games/{{ id }}">
-                <div class="scoreboard-header">
-                    <div class="scoreboard-total">T</div>
-                    <div class="scoreboard-half">1H</div>
-                    <div class="scoreboard-half">2H</div>
-                    <div class="scoreboard-half">{{ 'OT' if game.overtimes > 0}}</div>
+    {% for id in data.scores %}
+        {% set game = data.scores[id] %}
+        <a status="{{ game.status }}" class="scoreboard-block wide-block" href="/games/{{ id }}">
+        {% if game.status == 'Complete' %}
+            <div class="scoreboard-header">
+                <div class="scoreboard-status">{{ game.game_time }}</div>
+                <div class="scoreboard-total">T</div>
+                <div class="scoreboard-half">1H</div>
+                <div class="scoreboard-half">2H</div>
+                <div class="scoreboard-half">{{ 'OT' if game.overtimes > 0 }}</div>
+            </div>
+
+            <div class="scoreboard-row {{ 'winner' if game.away_score > game.home_score }}">
+                <div class="scoreboard-logo">
+                    <img src="/static/logos/{{ game.away_code }}.png">
                 </div>
-                <div class="scoreboard-row">
-                    <div class="scoreboard-logo">
-                        <img src="/static/logos/{{ game.away_code }}.png">
-                    </div>
-                    <div class="scoreboard-team">{{ game.away_team }}</div>
-                    <div class="scoreboard-total">{{ game.away_score }}</div>
-                    <div class="scoreboard-half">{{ game.away_score_1h }}</div>
-                    <div class="scoreboard-half">{{ game.away_score_2h }}</div>
-                    <div class="scoreboard-half">{{ game.away_score_ot if game.overtimes > 0}}</div>
+                <div class="scoreboard-team">{{ game.away_team }}<br>
+                    <p>{{ game.away_season_record }}</p>
                 </div>
-                <div class="scoreboard-row">
-                    <div class="scoreboard-logo">
-                        <img src="/static/logos/{{ game.home_code }}.png">
-                    </div>
-                    <div class="scoreboard-team">{{ game.home_team }}</div>
-                    <div class="scoreboard-total">{{ game.home_score }}</div>
-                    <div class="scoreboard-half">{{ game.home_score_1h }}</div>
-                    <div class="scoreboard-half">{{ game.home_score_2h }}</div>
-                    <div class="scoreboard-half">{{ game.home_score_ot if game.overtimes > 0}}</div>
+                <div class="winner-marker">{{ '\u25b6' if game.away_score > game.home_score }}</div>
+                <div class="scoreboard-total">{{ game.away_score }}</div>
+                <div class="scoreboard-half">{{ game.away_score_1h }}</div>
+                <div class="scoreboard-half">{{ game.away_score_2h }}</div>
+                <div class="scoreboard-half">{{ game.away_score_ot if game.overtimes > 0 }}</div>
+            </div>
+
+            <div class="scoreboard-row {{ 'winner' if game.home_score > game.away_score }}">
+                <div class="scoreboard-logo">
+                    <img src="/static/logos/{{ game.home_code }}.png">
                 </div>
-            </a>
-        {% endfor %}
+                <div class="scoreboard-team">{{ game.home_team }}<br>
+                    <p>{{ game.home_season_record }}</p>
+                </div>
+                <div class="winner-marker">{{ '\u25b6' if game.home_score > game.away_score }}</div>
+                <div class="scoreboard-total">{{ game.home_score }}</div>
+                <div class="scoreboard-half">{{ game.home_score_1h }}</div>
+                <div class="scoreboard-half">{{ game.home_score_2h }}</div>
+                <div class="scoreboard-half">{{ game.home_score_ot if game.overtimes > 0 }}</div>
+            </div>
+
+            
+
+        {% elif game.status == 'Active' %}
+            <div class="scoreboard-header">
+                <div class="scoreboard-status">{{ game.game_time }}</div>
+                <div class="scoreboard-total">T</div>
+                <div class="scoreboard-half">1H</div>
+                <div class="scoreboard-half">2H</div>
+                <div class="scoreboard-half">{{ 'OT' if game.overtimes > 0 }}</div>
+            </div>
+
+            <div class="scoreboard-row">
+                <div class="scoreboard-logo">
+                    <img src="/static/logos/{{ game.away_code }}.png">
+                </div>
+                <div class="scoreboard-team">{{ game.away_team }}<br>
+                    <p>{{ game.away_season_record }}</p>
+                </div>
+                <div class="winner-marker"></div>
+                <div class="scoreboard-total">{{ game.away_score }}</div>
+                <div class="scoreboard-half">{{ game.away_score_1h }}</div>
+                <div class="scoreboard-half">{{ game.away_score_2h if game.away_score_2h }}</div>
+                <div class="scoreboard-half">{{ game.away_score_ot if game.overtimes > 0 }}</div>
+            </div>
+
+            <div class="scoreboard-row">
+                <div class="scoreboard-logo">
+                    <img src="/static/logos/{{ game.home_code }}.png">
+                </div>
+                <div class="scoreboard-team">{{ game.home_team }}<br>
+                    <p>{{ game.home_season_record }}</p>
+                </div>
+                <div class="winner-marker"></div>
+                <div class="scoreboard-total">{{ game.home_score }}</div>
+                <div class="scoreboard-half">{{ game.home_score_1h }}</div>
+                <div class="scoreboard-half">{{ game.home_score_2h if game.home_score_2h }}</div>
+                <div class="scoreboard-half">{{ game.home_score_ot if game.overtimes > 0 }}</div>
+            </div>
+
+        {% else %}
+            <div class="scoreboard-header">
+                <div class="scoreboard-status">{{ game.game_time }}</div>
+            </div>
+
+            <div class="scoreboard-row">
+                <div class="scoreboard-logo">
+                    <img src="/static/logos/{{ game.away_code }}.png">
+                </div>
+                <div class="scoreboard-team">{{ game.away_team }}<br>
+                    <p>{{ game.away_season_record }}</p>
+                </div>
+                <!-- <div class="winner-marker"></div> -->
+            </div>
+
+            <div class="scoreboard-row">
+                <div class="scoreboard-logo">
+                    <img src="/static/logos/{{ game.home_code }}.png">
+                </div>
+                <div class="scoreboard-team">{{ game.home_team }}<br>
+                    <p>{{ game.home_season_record }}</p>
+                </div>
+                <!-- <div class="winner-marker"></div> -->
+            </div>
+        {% endif %}
+        </a>
+    {% endfor %}
     </div>
+
 {% else %}
     <h3>No games found.</h3>
 {% endif %}

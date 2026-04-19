@@ -111,7 +111,6 @@ def scores(date, conf):
     data = {}
 
     date = datetime.date.today() if not date else datetime.date.fromisoformat(date)
-
     data['date'] = date
 
     conf = conf.replace("-", " ") if conf else ''
@@ -142,9 +141,15 @@ def scores(date, conf):
                 game_time += f'/{ots}OT'
 
         elif row['status'] == 'Active':
-            pass
+            ots = 0
+            if 'OT' in row['half']:
+                ots = int(row['half'][:-2])
+
+            game_time = f'{row['half']} {str(row['clock'])[-5:]}'
         else:
-            pass
+            ots = 0
+
+            game_time = str(row['tip'])[-8:-3]
 
         data['scores'][int(row['id'])] = {
             'home_team' : row['home_team'], 'home_code' : row['home_team_code'],
@@ -152,14 +157,13 @@ def scores(date, conf):
 
             'neutral' : bool(row['neutral']),
             'overtimes' : ots,
-            'status' : row['status'], ## FIX TO COVER active AND scheduled
+            'status' : row['status'],
             'game_time' : game_time,
 
-            'home_score' : int(row['home_score']), 'away_score' : int(row['away_score']),
-            'home_score_1h' : int(row['home_score_1h']), 'away_score_1h' : int(row['away_score_1h']),
-            'home_score_2h' : int(row['home_score_2h']), 'away_score_2h' : int(row['away_score_2h']),
-            'home_score_ot' : int(row['home_score_ot']) if row['home_score_ot'] else None,
-            'away_score_ot' : int(row['away_score_ot']) if row['away_score_ot'] else None,
+            'home_score' : row['home_score'], 'away_score' : row['away_score'],
+            'home_score_1h' : row['home_score_1h'], 'away_score_1h' : row['away_score_1h'],
+            'home_score_2h' : row['home_score_2h'], 'away_score_2h' : row['away_score_2h'],
+            'home_score_ot' : row['home_score_ot'], 'away_score_ot' : row['away_score_ot'],
 
             'home_conf' : row['home_conf'], 'away_conf' : row['away_conf'],
 
@@ -174,7 +178,7 @@ def scores(date, conf):
         data['scores'][int(row['game'])].update({
             'away_scorer' : row['away_scorer'],
 
-            'away_lname' : row['away_lname'], 'away_fname' :  row['away_fname'],
+            'away_lname' : row['away_lname'], 'away_fname' : row['away_fname'],
             'away_suffix' : f' {row['away_suffix']}' if row['away_suffix'] else '',
 
             'away_pts' : int(row['away_pts']),
@@ -183,7 +187,7 @@ def scores(date, conf):
 
             'home_scorer' : row['home_scorer'],
 
-            'home_lname' : row['home_lname'], 'home_fname' :  row['home_fname'],
+            'home_lname' : row['home_lname'], 'home_fname' : row['home_fname'],
             'home_suffix' : f' {row['home_suffix']}' if row['home_suffix'] else '',
 
             'home_pts' : int(row['home_pts']),

@@ -6,10 +6,18 @@ SELECT
     neutral, event, arena,
     status, overtimes,
 
-    home_score, away_score,
-    home_score_1h, away_score_1h,
-    home_score_2h, away_score_2h,
-    home_score_ot, away_score_ot,
+    tip, half, clock,
+
+    IFNULL(active.home_score, complete.home_score) AS home_score,
+    IFNULL(active.away_score, complete.away_score) AS away_score,
+
+    IFNULL(active.home_score_1h, complete.home_score_1h) AS home_score_1h,
+    IFNULL(active.away_score_1h, complete.away_score_1h) AS away_score_1h,
+    IFNULL(active.home_score_2h, complete.home_score_2h) AS home_score_2h,
+    IFNULL(active.away_score_2h, complete.away_score_2h) AS away_score_2h,
+
+    IFNULL(active.home_score_ot, complete.home_score_ot) AS home_score_ot,
+    IFNULL(active.away_score_ot, complete.away_score_ot) AS away_score_ot,
 
     home_code.code AS home_team_code,
     away_code.code AS away_team_code,
@@ -22,9 +30,16 @@ SELECT
 
     CONCAT(home_record.conf_wins, '-', home_record.conf_losses) AS home_conf_record,
     CONCAT(away_record.conf_wins, '-', away_record.conf_losses) AS away_conf_record
+
 FROM game
 
-JOIN complete
+LEFT JOIN complete
+USING (id)
+
+LEFT JOIN active
+USING (id)
+
+LEFT JOIN scheduled
 USING (id)
 
 JOIN team AS home_code
