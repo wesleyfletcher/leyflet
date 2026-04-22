@@ -25,7 +25,6 @@ function scoresRedirect() {
 
     action = "?date=" + date;
     if (conf != "all") {
-      console.log(conf);
       action += ("&conf=" + conf);
     }
 
@@ -64,6 +63,26 @@ function filterByStatus(status) {
 blockSize = 'small';
 d3.select(".one-column")
   .style("display", "none")
+
+window.addEventListener("resize", function(event) {
+    containerWidth = 1080;
+    toggleWidth = +d3.select(".layout-toggle")
+                    .style("width")
+                    .slice(0, -2)
+
+    if (window.innerWidth < containerWidth + 3*toggleWidth) {
+        d3.select(".layout-toggle")
+          .style("visibility", "hidden")
+
+        if (blockSize == 'wide') {
+            switchBlockSize();
+        }
+    }
+    else {
+        d3.select(".layout-toggle")
+          .style("visibility", "visible")
+    }
+})
 
 function switchBlockSize() {
     d3.select(".toggle-active")

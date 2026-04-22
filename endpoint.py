@@ -247,6 +247,7 @@ def rankings(season, conf):
 
     db = database()
     metrics_table = db.runfile('metrics_table', season=season, conf=conf)
+    poll_table = db.runfile('ap_poll', season=season)
     db.close()
 
     for i in range(len(metrics_table)):

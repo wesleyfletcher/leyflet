@@ -7,13 +7,17 @@
 }
 
 .layout-toggle {
-    width: 120px;
-    height: 45px;
+    position: fixed;
+    left: calc(50vw + 540px);
+    top: 60%;
+
+    width: 60px;
+    height: 90px;
 
     background-color: white;
 
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
 
     border: 2px solid var(--dark-color);
     border-radius: 10px;
@@ -24,7 +28,7 @@
 }
 
 #toggle-three-col {
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px 5px 0 0;
 
     display: flex;
     align-items: center;
@@ -32,7 +36,7 @@
 }
 
 #toggle-one-col {
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 0 5px 5px;
 
     display: flex;
     align-items: center;
@@ -53,18 +57,18 @@
     --scoreboard-cols: max(1, round(down, var(--content-width) / var(--block-size)), 1);
 
     width: min(100%, calc(var(--block-size) * var(--scoreboard-cols)));
-
-    display: grid;
     justify-items: center;
-
-    margin-top: 15px;
 }
 
 .three-column {
+    display: grid;
+
     grid-template-columns: repeat(var(--scoreboard-cols), 1fr);
 }
 
 .one-column {
+    display: none;
+
     grid-template-columns: 1fr;
 }
 
@@ -78,6 +82,10 @@
 
     display: flex;
     flex-direction: column;
+}
+
+.scoreboard-block:hover {
+    background-color: #edfdff;
 }
 
 .small-block {

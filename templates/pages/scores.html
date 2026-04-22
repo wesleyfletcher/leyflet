@@ -56,7 +56,8 @@
     {% for id in data.scores %}
         {% set game = data.scores[id] %}
 
-        <a status="{{ game.status }}" class="scoreboard-block small-block" href="/games/{{ id }}">
+        <a status="{{ game.status }}" class="scoreboard-block small-block" href="/games/{{ id }}"
+            home-conf="{{ game.home_conf }}" away-conf="{{ game.away_conf }}">
         {% if game.status == 'Complete' %}
             <div class="scoreboard-header">
                 <div class="scoreboard-status">{{ game.game_time }}</div>
@@ -92,6 +93,27 @@
                 <div class="scoreboard-half">{{ game.home_score_1h }}</div>
                 <div class="scoreboard-half">{{ game.home_score_2h }}</div>
                 <div class="scoreboard-half">{{ game.home_score_ot if game.overtimes > 0 }}</div>
+            </div>
+
+            <div class="key-players">
+                <div class="key-row">
+                    <div class="key-team">{{ game.away_code }}</div>
+                    <div class="key-player">{{ game.away_lname }}</div>
+                    <div class="key-stats">
+                        {{ game.away_pts }} PTS,
+                        {{ game.away_fgm }}-{{ game.away_fga }} FG,
+                        {{ game.away_reb }} REB, {{ game.away_ast }} AST
+                    </div>
+                </div>
+                <div class="key-row">
+                    <div class="key-team">{{ game.home_code }}</div>
+                    <div class="key-player">{{ game.home_lname }}</div>
+                    <div class="key-stats">
+                        {{ game.home_pts }} PTS,
+                        {{ game.home_fgm }}-{{ game.home_fga }} FG,
+                        {{ game.home_reb }} REB, {{ game.home_ast }} AST
+                    </div>
+                </div>
             </div>
 
             
@@ -131,6 +153,27 @@
                 <div class="scoreboard-half">{{ game.home_score_1h }}</div>
                 <div class="scoreboard-half">{{ game.home_score_2h if game.home_score_2h }}</div>
                 <div class="scoreboard-half">{{ game.home_score_ot if game.overtimes > 0 }}</div>
+            </div>
+
+            <div class="key-players">
+                <div class="key-row">
+                    <div class="key-team">{{ game.away_code }}</div>
+                    <div class="key-player">{{ game.away_lname }}</div>
+                    <div class="key-stats">
+                        {{ game.away_pts }} PTS,
+                        {{ game.away_fgm }}-{{ game.away_fga }} FG,
+                        {{ game.away_reb }} REB, {{ game.away_ast }} AST
+                    </div>
+                </div>
+                <div class="key-row">
+                    <div class="key-team">{{ game.home_code }}</div>
+                    <div class="key-player">{{ game.home_lname }}</div>
+                    <div class="key-stats">
+                        {{ game.home_pts }} PTS,
+                        {{ game.home_fgm }}-{{ game.home_fga }} FG,
+                        {{ game.home_reb }} REB, {{ game.home_ast }} AST
+                    </div>
+                </div>
             </div>
 
         {% else %}

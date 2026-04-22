@@ -13,6 +13,8 @@ body {
 
     font-family: "Farro", sans-serif;
     font-weight: 400;
+
+    scrollbar-width: 0;
 }
 
 a {
