@@ -140,9 +140,6 @@ WHERE t1.game = game.id
   AND t1.team = game.away_team
   AND t2.team = game.home_team
 
-  AND (t1.conf LIKE '%{conf}%'
-  OR t2.conf LIKE '%{conf}%')
-
   AND game.status = 'Complete'
 
 ORDER BY game;

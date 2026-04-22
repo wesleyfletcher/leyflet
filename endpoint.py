@@ -107,24 +107,21 @@ def teams(code, season):
 
     return data
 
-def scores(date, conf):
+def scores(date):
     data = {}
 
     date = datetime.date.today() if not date else datetime.date.fromisoformat(date)
     data['date'] = date
 
-    conf = conf.replace("-", " ") if conf else ''
-
     db = database()
 
     confs_list = db.query("SELECT DISTINCT conf FROM member WHERE conf IS NOT NULL ORDER BY conf ASC")
 
-    scores_table = db.runfile('scores_table', date=date, conf=conf)
-    key_players = db.runfile('key_players', date=date, conf=conf)
+    scores_table = db.runfile('scores_table', date=date)
+    key_players = db.runfile('key_players', date=date)
     
     db.close()
 
-    data['conf'] = conf if conf != '' else 'all'
     data['confs_list'] = list(confs_list['conf'])
 
     data['scores'] = {}

@@ -65,7 +65,5 @@ ON game.away_team = away_record.team
     AND game.season = away_record.season
 
 WHERE game_date = '{date}'
-AND (home_conf.conf LIKE '%{conf}%'
-  OR away_conf.conf LIKE '%{conf}%')
 
 ORDER BY id;

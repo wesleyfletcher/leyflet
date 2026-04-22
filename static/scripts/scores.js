@@ -1,16 +1,36 @@
+conf = 'all';
+blockSize = 'small';
+gamesEmpty()
+
 // FORM BUTTONS
 
 d3.select("#date-picker")
   .on("change", function(event) {
     d3.select("#date-picker")
       .attr("value", event.target.value)
-    })
+})
 
 d3.select("#conf-picker")
   .on("change", function(event) {
-    d3.select("#conf-picker")
-      .attr("value", event.target.value);
-    })
+    conf = event.target.value;
+
+    if (conf == 'all') {
+        d3.selectAll(".scoreboard-block")
+          .style("display", "flex")
+    }
+
+    else {
+        d3.selectAll(".scoreboard-block")
+          .style("display", "none")
+
+        d3.selectAll(".scoreboard-block[home-conf='" + conf + "']")
+          .style("display", "flex")
+        d3.selectAll(".scoreboard-block[away-conf='" + conf + "']")
+          .style("display", "flex")
+    }
+
+    gamesEmpty()
+})
 
 function scoresRedirect() {
     form = d3.select("form")
@@ -19,48 +39,61 @@ function scoresRedirect() {
              .attr("value")
              .replaceAll("-", "")
 
-    conf = d3.select("#conf-picker")
-             .attr("value")
-             .replace(" ", "-")
-
     action = "?date=" + date;
-    if (conf != "all") {
-      action += ("&conf=" + conf);
-    }
-
     form.attr("action", action)
 }
 
 // GAME STATUS TABS
 
 function showAllByStatus() {
-    d3.selectAll(".scoreboard-block")
-      .style("display", "flex")
+    if (conf == 'all') {
+        d3.selectAll(".scoreboard-block")
+          .style("display", "flex")
+    }
+
+    else {
+        d3.selectAll(".scoreboard-block[home-conf='" + conf + "']")
+          .style("display", "flex")
+        d3.selectAll(".scoreboard-block[away-conf='" + conf + "']")
+          .style("display", "flex")
+    }
 
     d3.select(".view-active")
       .classed("view-active", false)
 
     d3.select("#all-scores-btn")
       .classed("view-active", true)
+
+    gamesEmpty()
 }
 
 function filterByStatus(status) {
     d3.selectAll(".scoreboard-block")
       .style("display", "none")
 
-    d3.selectAll(".scoreboard-block[status='" + status + "']")
-      .style("display", "flex")
+    if (conf == 'all') {
+        d3.selectAll(".scoreboard-block[status='" + status + "']")
+          .style("display", "flex")
+    }
+
+    else {
+        d3.selectAll(".scoreboard-block[status='" + status + "'][home-conf='" + conf + "']")
+          .style("display", "flex")
+        d3.selectAll(".scoreboard-block[status='" + status + "'][away-conf='" + conf + "']")
+          .style("display", "flex")
+    }
 
     d3.select(".view-active")
       .classed("view-active", false)
 
     d3.select("#" + status + "-scores-btn")
       .classed("view-active", true)
+
+    gamesEmpty()
 }
 
 // LAYOUT SWITCH
 
-blockSize = 'small';
 d3.select(".one-column")
   .style("display", "none")
 
@@ -112,5 +145,25 @@ function switchBlockSize() {
           .classed("toggle-active", true)
         
         blockSize = 'small'
+    }
+}
+
+// PRINT NO GAMES FOUND
+
+function gamesEmpty() {
+    games = d3.selectAll(".container")
+              .filter(function(){return getComputedStyle(this).display == "grid"})
+              .selectAll(".scoreboard-block")
+              .filter(function(){return getComputedStyle(this).display == "flex"})
+              .size()
+
+    d3.select(".content")
+      .selectAll("h3")
+      .remove()
+
+    if (games == 0) {
+        d3.select(".content")
+          .append("h3")
+          .text("No games found.")
     }
 }
