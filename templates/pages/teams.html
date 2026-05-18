@@ -2,7 +2,7 @@
 {% block content %}
 
 <div style="display: flex; flex-direction: row; align-items: center;">
-    <img src="/static/logos/{{ data.code }}.png" style="width: 50px; height: 50px; object-fit: contain;">
+    <img alt="{{ data.name }}" src="/static/logos/{{ data.code }}.png" style="width: 50px; height: 50px; object-fit: contain;">
     <h1>{{ data.name }} ({{ data.wins }}-{{ data.losses }})</h1>
 </div>
 

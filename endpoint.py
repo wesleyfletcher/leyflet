@@ -237,7 +237,7 @@ def stats(season, conf, page):
     return data
 
 def rankings(season, conf):
-    data = []
+    data = {}
 
     season = CURRENT_SEASON if not season else season
     conf = '' if not conf else conf.replace('-', ' ')
@@ -245,13 +245,21 @@ def rankings(season, conf):
     db = database()
     metrics_table = db.runfile('metrics_table', season=season, conf=conf)
     poll_table = db.runfile('ap_poll', season=season)
+
+    confs_list = db.query("SELECT DISTINCT conf FROM member WHERE conf IS NOT NULL ORDER BY conf ASC")
     db.close()
+
+    data['confs_list'] = list(confs_list['conf'])
+
+    data['metrics'] = []
 
     for i in range(len(metrics_table)):
         row = metrics_table.loc[i]
         
-        data.append({
+        data['metrics'].append({
             'team' : row['team'],
+            'code' : row['code'],
+            'conf' : row['conf'],
             'kenpom' : int(row['kenpom']),
             'net'    : int(row['net']),
             'wab'    : int(row['wab']),
@@ -281,6 +289,8 @@ def standings(season, conf):
         
         data[row['conf']].append({
             'team' : row['team'],
+            'code' : row['code'],
+
             'conf_wins'   : int(row['conf_wins']),
             'conf_losses' : int(row['conf_losses']),
             'conf_pct'    : '{:0.3f}'.format(row['season_pct']).lstrip('0'),

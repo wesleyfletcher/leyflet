@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<link rel="stylesheet" href="/static/pages/rankings.css">
+
 <h1>Rankings</h1>
 
 <div class="view-select" style="--view-count: 2;">
@@ -13,6 +15,16 @@
 </div>
 
 <div class="view-section" id="rankings-metrics">
+    <form onsubmit="" method="POST">
+        <label for="conf-picker">Conf:</label>
+        <select id="conf-picker">
+            <option value="all">Division I</option>
+            {% for conf in data.confs_list %}
+                <option value="{{ conf }}" {{ 'selected' if data.conf==conf }}>{{ conf }}</option>
+            {% endfor %}
+        </select><br>
+    </form>
+
     <table>
         <tr>
             <th>Team</th>
@@ -22,8 +34,8 @@
             <th>SOR</th>
             <th>Torvik</th>
         </tr>
-        {% for row in data %}
-            <tr>
+        {% for row in data.metrics %}
+            <tr class="rankings-row" conf="{{ row.conf }}">
                 <td>{{ row.team }}</td>
                 <td>{{ row.kenpom }}</td>
                 <td>{{ row.net }}</td>
@@ -35,8 +47,10 @@
     </table>
 </div>
 
-<div class="view-section" id="rankings-polls">
+<div class="view-section" id="rankings-polls" style="display: none;">
     <h2>Polls</h2>
 </div>
+
+<script src="/static/scripts/rankings.js"></script>
 
 {% endblock %}

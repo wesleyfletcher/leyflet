@@ -1,0 +1,11 @@
+#conf-picker {
+    color: var(--dark-color);
+    font-family: "Farro", sans-serif;
+
+    border: 2px solid var(--dark-color);
+    border-radius: 5px;
+}
+
+.rankings-row {
+    
+}

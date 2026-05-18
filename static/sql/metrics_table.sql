@@ -4,7 +4,9 @@ FROM metrics
 JOIN member
 USING (season, team)
 
-WHERE conf LIKE '%{conf}%'
-AND season = {season}
+JOIN team
+ON metrics.team = team.name
+
+WHERE season = {season}
 
 ORDER BY kenpom ASC

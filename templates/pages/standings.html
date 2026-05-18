@@ -1,53 +1,73 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<link rel="stylesheet" href="/static/pages/standings.css">
+
 <h1>Standings</h1>
+
+<form onsubmit="" method="POST">
+    <label for="conf-picker">Conf:</label>
+    <select id="conf-picker">
+        <option value="all">Division I</option>
+        {% for conf in data %}
+            <option value="{{ conf }}" {{ 'selected' if data.conf==conf }}>{{ conf }}</option>
+        {% endfor %}
+    </select><br>
+</form>
 
 {% for conf in data %}
 
-    <h2>{{ conf }}</h2>
+    <h2 class="standings-header" conf="{{ conf }}">{{ conf }}</h2>
 
-    <table>
+    <table class="standings-table" conf="{{ conf }}">
         <tr>
-            <th></th>
-            <th colspan="3">Conference</th>
-            <th colspan="3">Season</th>
-            <th colspan="3">Site</th>
+            <th class="column-border row-border" colspan="3"></th>
+            <th class="column-border row-border" colspan="3">Conference</th>
+            <th class="column-border row-border" colspan="3">Season</th>
+            <th class="row-border" colspan="3">Site</th>
         </tr>
         <tr>
-            <th>Team</th>
+            <th class="standings-small row-border"></th>
+            <th class="standings-team column-border row-border">Team</th>
+            <th class="standings-small column-border row-border">GB</th>
 
-            <th>W</th>
-            <th>L</th>
-            <th>%</th>
+            <th class="standings-small column-border row-border">W</th>
+            <th class="standings-small column-border row-border">L</th>
+            <th class="standings-wide column-border row-border">%</th>
 
-            <th>W</th>
-            <th>L</th>
-            <th>%</th>
+            <th class="standings-small column-border row-border">W</th>
+            <th class="standings-small column-border row-border">L</th>
+            <th class="standings-wide column-border row-border">%</th>
 
-            <th>Home</th>
-            <th>Away</th>
-            <th>Neutral</th>
+            <th class="standings-wide column-border row-border">Home</th>
+            <th class="standings-wide column-border row-border">Away</th>
+            <th class="standings-wide row-border">Neutral</th>
         </tr>
         {% for row in data[conf] %}
             <tr>
-                <td>{{ row.team }}</td>
+                <td class="standings-logo">
+                    <div><img alt="{{ row.team }}" src="/static/logos/{{ row.code }}.png"></div>
+                </td>
+                <td class="column-border">{{ row.team }}</td>
+                <td class="column-border"></td>
 
-                <td>{{ row.conf_wins }}</td>
-                <td>{{ row.conf_losses }}</td>
-                <td>{{ row.conf_pct }}</td>
+                <td class="column-border">{{ row.conf_wins }}</td>
+                <td class="column-border">{{ row.conf_losses }}</td>
+                <td class="column-border">{{ row.conf_pct }}</td>
 
-                <td>{{ row.season_wins }}</td>
-                <td>{{ row.season_losses }}</td>
-                <td>{{ row.season_pct }}</td>
+                <td class="column-border">{{ row.season_wins }}</td>
+                <td class="column-border">{{ row.season_losses }}</td>
+                <td class="column-border">{{ row.season_pct }}</td>
 
-                <td>{{ row.home_record}}</td>
-                <td>{{ row.away_record}}</td>
+                <td class="column-border">{{ row.home_record}}</td>
+                <td class="column-border">{{ row.away_record}}</td>
                 <td>{{ row.neutral_record}}</td>
             </tr>
         {% endfor %}
     </table>
 
 {% endfor %}
+
+<script src="/static/scripts/standings.js"></script>
 
 {% endblock %}
