@@ -76,3 +76,13 @@ Data scrapers
 
 
 (possibly) use dagster for pipelining data from ESPN to site
+
+
+
+DAG functions
+
+- Live read scores and pbp from ESPN (every few seconds)
+- Finalize score, stats, plays from stats.ncaa.org (some minutes/hrs after each game)
+
+- add newly scheduled games (most at beginning of season, daily for tournaments)
+- check postponed/cancelled games (daily)

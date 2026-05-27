@@ -107,7 +107,7 @@ def teams(code, season):
 
     return data
 
-def scores(date):
+def scores(date, conf):
     data = {}
 
     date = datetime.date.today() if not date else datetime.date.fromisoformat(date)
@@ -123,6 +123,12 @@ def scores(date):
     db.close()
 
     data['confs_list'] = list(confs_list['conf'])
+
+    data['conf'] = '' if not conf else conf.replace('-', ' ')
+    for conf_value in data['confs_list']:
+        if data['conf'].upper() == conf_value.upper():
+            data['conf'] = conf_value
+            break
 
     data['scores'] = {}
     for i in range(len(scores_table)):
@@ -281,15 +287,22 @@ def standings(season, conf):
 
     db.close()
 
+    conf_gb = {}
+
     for i in range(len(conf_standings)):
         row = conf_standings.loc[i]
 
         if row['conf'] not in data:
             data[row['conf']] = []
+
+            gb_leader = conf_standings[conf_standings['conf'] == row['conf']]['games_behind'].min()
+            conf_gb[row['conf']] = gb_leader
         
         data[row['conf']].append({
             'team' : row['team'],
             'code' : row['code'],
+
+            'gb' : float('{:0.1f}'.format(row['games_behind'] - conf_gb[row['conf']])),
 
             'conf_wins'   : int(row['conf_wins']),
             'conf_losses' : int(row['conf_losses']),
@@ -341,7 +354,7 @@ def games(id):
     data['away_score_ot'] = int(game_table['away_score_ot']) if game_table['away_score_ot'] else None
 
     data['neutral'] = bool(game_table['neutral'])
-    data['overtimes'] = int(game_table['overtimes'])
+    data['overtimes'] = int(game_table['overtimes']) if game_table['overtimes'] else None
 
     ## Stats
 
@@ -385,7 +398,7 @@ def games(id):
 
         data['plays'][row['half']].append({
             'type'   : row['type'],
-            'text'   : row['text'],
+            'desc'   : row['desc'],
             'clock'  : str(row['clock'])[:5],
             'team'   : row['team'],
             'player' : int(row['player']) if row['player'] else None,

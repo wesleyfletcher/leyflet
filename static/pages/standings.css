@@ -28,7 +28,6 @@
 }
 
 .standings-logo {
-    padding-left: 1%;
     width: 5%;
 }
 
@@ -43,11 +42,16 @@
 }
 
 .standings-team {
-    width: 30%;
+    text-align: left;
+    width: 25%;
+}
+
+.standings-team a {
+    cursor: pointer;
 }
 
 .standings-small {
-    width: 5%;
+    width: 6%;
 }
 
 .standings-wide {

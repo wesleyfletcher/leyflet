@@ -1,5 +1,0 @@
-Read incorrect scoreboards into complete
-Remove duplicate plays
-Fix 'not available' plays
-
-Try to add missing plays and box scores

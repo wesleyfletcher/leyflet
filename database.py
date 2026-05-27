@@ -44,6 +44,13 @@ class database:
         return df
     
     def runfile(self, file : str, **kwargs):
+        for arg in kwargs:
+            if type(kwargs[arg]) != str:
+                continue
+
+            if ';' in kwargs[arg] or '--' in kwargs[arg]:
+                raise ValueError('SQL INJECTION')
+
         sql_file = open(f'static/sql/{file}.sql', 'r')
 
         qry = sql_file.read().replace('\n', ' ')

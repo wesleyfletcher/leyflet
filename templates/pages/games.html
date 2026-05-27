@@ -116,12 +116,12 @@
 <div class="view-section" id="games-plays" style="display: none;">
     <h2>1st Half</h2>
     {% for play in data.plays['1H'] %}
-        <p>{{play.text}}</p>
+        <p>{{play.desc}}</p>
     {% endfor %}
 
     <h2>2nd Half</h2>
     {% for play in data.plays['2H'] %}
-        <p>{{play.text}}</p>
+        <p>{{play.desc}}</p>
     {% endfor %}
 </div>
 

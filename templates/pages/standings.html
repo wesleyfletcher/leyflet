@@ -48,8 +48,10 @@
                 <td class="standings-logo">
                     <div><img alt="{{ row.team }}" src="/static/logos/{{ row.code }}.png"></div>
                 </td>
-                <td class="column-border">{{ row.team }}</td>
-                <td class="column-border"></td>
+                <td class="standings-team column-border">
+                    <a class="link" href="/teams/{{ row.code }}">{{ row.team }}</a>
+                </td>
+                <td class="column-border">{{ row.gb if row.gb > 0 else '--' }}</td>
 
                 <td class="column-border">{{ row.conf_wins }}</td>
                 <td class="column-border">{{ row.conf_losses }}</td>

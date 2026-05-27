@@ -28,8 +28,9 @@ def teams(code):
 @app.route('/scores/', methods=['GET', 'POST'])
 def scores():
     date = request.args.get('date')
+    conf = request.args.get('conf')
 
-    data = endpoint.scores(date)
+    data = endpoint.scores(date, conf)
 
     return render_template('pages/scores.html', data=data)
 

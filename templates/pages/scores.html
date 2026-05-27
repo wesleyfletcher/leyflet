@@ -11,29 +11,14 @@
     
     <input id="date-submit" type="submit" value="Go"><br>
 
-    <label for="conf-picker">Conf:</label>
+    <label for="conf-picker">Conference:</label>
     <select id="conf-picker">
         <option value="all">Division I</option>
         {% for conf in data.confs_list %}
-            <option value="{{ conf }}" {{ 'selected' if data.conf==conf }}>{{ conf }}</option>
+            <option value="{{ conf.lower() }}" {{ 'selected' if data.conf==conf }}>{{ conf }}</option>
         {% endfor %}
     </select><br>
 </form>
-
-<div class="view-select" style="--view-count: 4;">
-    <div class="view-option view-left view-active" id="all-scores-btn" onclick="showAllByStatus()">
-        All
-    </div>
-    <div class="view-option view-center" id="Active-scores-btn" onclick="filterByStatus('Active')">
-        Active
-    </div>
-    <div class="view-option view-center" id="Complete-scores-btn" onclick="filterByStatus('Complete')">
-        Completed
-    </div>
-    <div class="view-option view-right" id="Scheduled-scores-btn" onclick="filterByStatus('Scheduled')">
-        Scheduled
-    </div>
-</div>
 
 <div class="layout-toggle" onclick="switchBlockSize()">
     <div class="toggle-option toggle-active" id="toggle-three-col">
@@ -56,8 +41,9 @@
 {% for id in data.scores %}
     {% set game = data.scores[id] %}
 
-    <a status="{{ game.status }}" class="scoreboard-block small-block" href="/games/{{ id }}"
-        home-conf="{{ game.home_conf }}" away-conf="{{ game.away_conf }}">
+    <a class="scoreboard-block small-block" href="/games/{{ id }}"
+       home-conf="{{ game.home_conf.lower() }}" away-conf="{{ game.away_conf.lower() }}">
+
     {% if game.status == 'Complete' %}
         <div class="scoreboard-header">
             <div class="scoreboard-status">{{ game.game_time }}</div>
@@ -115,8 +101,6 @@
                 </div>
             </div>
         </div>
-
-        
 
     {% elif game.status == 'Active' %}
         <div class="scoreboard-header">
@@ -206,8 +190,9 @@
 <div class="container one-column view-section" id="wide-view">
 {% for id in data.scores %}
     {% set game = data.scores[id] %}
-    <a status="{{ game.status }}" class="scoreboard-block wide-block" href="/games/{{ id }}"
-    home-conf="{{ game.home_conf }}" away-conf="{{ game.away_conf }}">
+    <a class="scoreboard-block wide-block" href="/games/{{ id }}"
+       home-conf="{{ game.home_conf.lower() }}" away-conf="{{ game.away_conf.lower() }}">
+
     {% if game.status == 'Complete' %}
         <div class="scoreboard-header">
             <div class="scoreboard-status">{{ game.game_time }}</div>
@@ -244,8 +229,6 @@
             <div class="scoreboard-half">{{ game.home_score_2h }}</div>
             <div class="scoreboard-half">{{ game.home_score_ot if game.overtimes > 0 }}</div>
         </div>
-
-        
 
     {% elif game.status == 'Active' %}
         <div class="scoreboard-header">

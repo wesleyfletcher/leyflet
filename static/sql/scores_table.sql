@@ -22,8 +22,8 @@ SELECT
     home_code.code AS home_team_code,
     away_code.code AS away_team_code,
 
-    home_conf.conf AS home_conf,
-    away_conf.conf AS away_conf,
+    IFNULL(home_conf.conf, '') AS home_conf,
+    IFNULL(away_conf.conf, '') AS away_conf,
 
     CONCAT(home_record.season_wins, '-', home_record.season_losses) AS home_season_record,
     CONCAT(away_record.season_wins, '-', away_record.season_losses) AS away_season_record,

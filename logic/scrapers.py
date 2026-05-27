@@ -97,7 +97,7 @@ def wab(year=2026):
     return pd.DataFrame({'Rank' : ranks, 'Team' : teams}).sort_values(by='Rank', ascending=True)
 
 def get_name(team : str, throw_error=False):
-    names = json.load(open('./logic/name_variants.json', 'r'))
+    names = json.load(open('name_variants.json', 'r'))
 
     team = team.replace('-', ' ')
     team = team.replace('–', ' ')

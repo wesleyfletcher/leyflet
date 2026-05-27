@@ -51,7 +51,9 @@ JOIN (
         ) AS leading_scorers
 
         JOIN (
-            SELECT *
+            SELECT player, team,
+                   game, season,
+                   pts
             FROM stats
 
             JOIN game
@@ -111,7 +113,9 @@ JOIN (
         ) AS leading_scorers
 
         JOIN (
-            SELECT *
+            SELECT player, team,
+                   game, season,
+                   pts
             FROM stats
 
             JOIN game
