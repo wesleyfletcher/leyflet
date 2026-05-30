@@ -123,12 +123,7 @@ def scores(date, conf):
     db.close()
 
     data['confs_list'] = list(confs_list['conf'])
-
-    data['conf'] = '' if not conf else conf.replace('-', ' ')
-    for conf_value in data['confs_list']:
-        if data['conf'].upper() == conf_value.upper():
-            data['conf'] = conf_value
-            break
+    data['conf'] = conf if conf else None
 
     data['scores'] = {}
     for i in range(len(scores_table)):
@@ -168,7 +163,8 @@ def scores(date, conf):
             'home_score_2h' : row['home_score_2h'], 'away_score_2h' : row['away_score_2h'],
             'home_score_ot' : row['home_score_ot'], 'away_score_ot' : row['away_score_ot'],
 
-            'home_conf' : row['home_conf'], 'away_conf' : row['away_conf'],
+            'home_conf' : row['home_conf'].replace(' ', '-'),
+            'away_conf' : row['away_conf'].replace(' ', '-'),
 
             'home_season_record' : row['home_season_record'],
             'away_season_record' : row['away_season_record'],

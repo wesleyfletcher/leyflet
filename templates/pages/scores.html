@@ -5,7 +5,7 @@
 
 <h1>Scores</h1>
 
-<form onsubmit="scoresRedirect()" method="POST">
+<form method="POST">
     <label for="date-picker">Date:</label>
     <input id="date-picker" type="date" value="{{ data.date }}">
     
@@ -15,13 +15,15 @@
     <select id="conf-picker">
         <option value="all">Division I</option>
         {% for conf in data.confs_list %}
-            <option value="{{ conf.lower() }}" {{ 'selected' if data.conf==conf }}>{{ conf }}</option>
+            <option value="{{ conf.replace(' ', '-').lower() }}"
+                {{ 'selected' if data.conf==conf.replace(' ', '-').lower() }}>{{ conf }}
+            </option>
         {% endfor %}
     </select><br>
 </form>
 
-<div class="layout-toggle" onclick="switchBlockSize()">
-    <div class="toggle-option toggle-active" id="toggle-three-col">
+<div class="layout-toggle" onclick="toggleView()">
+    <div class="toggle-option" id="toggle-three-col">
         <svg width="60" height="45" fill="var(--dark-color)">
             <rect x="8"  y="15" width="12" height="15"></rect>
             <rect x="24" y="15" width="12" height="15"></rect>
@@ -42,7 +44,8 @@
     {% set game = data.scores[id] %}
 
     <a class="scoreboard-block small-block" href="/games/{{ id }}"
-       home-conf="{{ game.home_conf.lower() }}" away-conf="{{ game.away_conf.lower() }}">
+       home-conf="{{ game.home_conf.lower() }}"
+       away-conf="{{ game.away_conf.lower() }}">
 
     {% if game.status == 'Complete' %}
         <div class="scoreboard-header">
@@ -191,7 +194,8 @@
 {% for id in data.scores %}
     {% set game = data.scores[id] %}
     <a class="scoreboard-block wide-block" href="/games/{{ id }}"
-       home-conf="{{ game.home_conf.lower() }}" away-conf="{{ game.away_conf.lower() }}">
+       home-conf="{{ game.home_conf.lower() }}"
+       away-conf="{{ game.away_conf.lower() }}">
 
     {% if game.status == 'Complete' %}
         <div class="scoreboard-header">

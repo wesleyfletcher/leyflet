@@ -56,19 +56,17 @@
     --block-size: 360px;
     --scoreboard-cols: max(1, round(down, var(--content-width) / var(--block-size)), 1);
 
+    display: none;
+
     width: min(100%, calc(var(--block-size) * var(--scoreboard-cols)));
     justify-items: center;
 }
 
 .three-column {
-    display: grid;
-
     grid-template-columns: repeat(var(--scoreboard-cols), 1fr);
 }
 
 .one-column {
-    display: none;
-
     grid-template-columns: 1fr;
 }
 
@@ -145,7 +143,7 @@
 
 .scoreboard-logo img {
     max-width: 80%;
-    max-height: 80%;
+    max-height: 40px;
 
     object-fit: contain;
 }
@@ -223,6 +221,6 @@
 .key-stats {
     width: 50%;
 
-    font-size: 0.7em;
+    font-size: 0.6em;
     text-align: right;
 }

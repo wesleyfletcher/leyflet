@@ -1,164 +1,119 @@
 let params = new URLSearchParams(document.location.search);
+let form = d3.select("form");
 
-date = params.get("date");
-searchConf = params.get("conf");
-blockSize = params.get("view");
-
-searchConf = searchConf ? searchConf.replace('-', ' ').toLowerCase() : 'all';
-filterByConf(searchConf)
-
-if (blockSize && ['small', 'wide'].includes(blockSize.toLowerCase())) {
-	blockSize = blockSize.toLowerCase();
-}
-else {
-	blockSize = 'small'
+let today = new Date();
+var date = params.get("date");
+if (!date) {
+	date = 10000*today.getFullYear() + 100*(today.getMonth()+1) + today.getDate();
 }
 
-if (blockSize == 'wide') {
-	blockSize = 'small'
-	switchBlockSize();
-}
+var conf = params.get("conf");
+var view = params.get("view");
 
-setURL(date, searchConf.replace(' ', '-'), blockSize);
-gamesEmpty()
+let datePicker = d3.select("#date-picker")
+let confPicker = d3.select("#conf-picker")
 
-// CHANGE URL
-
-function setURL(date, conf, view) {
-	params = new URLSearchParams()
-
-	if (date) {
-		params.set('date', date)
-	}
-	if (conf != 'all') {
-		params.set('conf', conf)
-	}
-	if (view != 'small') {
-		params.set('view', view)
-	}
-
-	url = '?' + params.toString()
-
-	window.history.replaceState({}, '', url)
-
-	return url;
-}
-
-// FORM BUTTONS
-
-d3.select("#date-picker")
-  .on("change", function(event) {
-    d3.select("#date-picker")
-      .attr("value", event.target.value)
+let confList = []
+confPicker.selectAll("option").each(function(d,i){
+	confList.push(d3.select(this).attr("value"))
 })
 
-d3.select("#conf-picker")
-  .on("change", function(event) {
-    searchConf = event.target.value;
+viewList = ['small', 'wide']
 
-    filterByConf(searchConf)
-    gamesEmpty()
-})
-
-function scoresRedirect() {
-    form = d3.select("form")
-
-    date = d3.select("#date-picker")
-             .attr("value")
-             .replaceAll("-", "")
-
-    action = setURL(date, searchConf.replace(' ', '-'), blockSize);
-    form.attr("action", action)
+if (!confList.includes(conf ? conf.toLowerCase() : null)) {
+    conf = 'all';
+}
+if (!viewList.includes(view ? view.toLowerCase() : null)) {
+    view = 'small'
 }
 
-// CONF SELECT
+selectConf(conf);
+toggleView();toggleView();
 
-function filterByConf(conf) {
-  	if (conf == 'all') {
-		d3.selectAll(".scoreboard-block")
+datePicker.on("change", function(event) {
+    datePicker.attr("value", event.target.value)
+    date = event.target.value.replaceAll("-", "")
+    updateParams()
+})
+confPicker.on("change", function(event) {
+    selectConf(event.target.value)
+})
+
+function selectConf(inConf) {
+    if (inConf == 'all') {
+        d3.selectAll(".scoreboard-block")
           .style("display", "flex")
     }
-
     else {
         d3.selectAll(".scoreboard-block")
           .style("display", "none")
 
-		d3.selectAll(".scoreboard-block[home-conf='" + conf + "']")
-		  .style("display", "flex")
-		d3.selectAll(".scoreboard-block[away-conf='" + conf + "']")
-		  .style("display", "flex")
+        d3.selectAll("[home-conf='"+inConf+"']")
+          .style("display", "flex")
+        d3.selectAll("[away-conf='"+inConf+"']")
+          .style("display", "flex")
     }
 
-	searchConf = conf;
-	setURL(date, searchConf.replace(' ', '-'), blockSize);
+    conf = inConf;
+    updateParams()
 }
 
-// LAYOUT SWITCH
+function toggleView() {
+    d3.selectAll(".container")
+      .style("display", "none");
 
-function hideWideView() {
-	containerWidth = 1080;
-	toggleWidth = +d3.select(".layout-toggle")
-					.style("width")
-					.slice(0, -2)
-
-	if (window.innerWidth < containerWidth + 3*toggleWidth) {
-		d3.select(".layout-toggle")
-			.style("visibility", "hidden")
-
-		if (blockSize == 'wide') {
-			switchBlockSize();
-		}
-	}
-	else {
-		d3.select(".layout-toggle")
-			.style("visibility", "visible")
-	}
-}
-
-hideWideView()
-window.addEventListener("resize", hideWideView)
-
-function switchBlockSize() {
-    d3.select(".toggle-active")
-      .classed("toggle-active", false)
-
-    if (blockSize == 'small') {
-        d3.select(".three-column")
-          .style("display", "none")
-
+    d3.selectAll(".toggle-option")
+      .classed("toggle-active", false);
+    
+    if (view == 'small') {
         d3.select(".one-column")
-          .style("display", "grid")
+          .style("display", "grid");
 
         d3.select("#toggle-one-col")
-          .classed("toggle-active", true)
+          .classed("toggle-active", true);
 
-        blockSize = 'wide'
+        view = 'wide';
     }
-
     else {
-        d3.select(".one-column")
-          .style("display", "none")
-
         d3.select(".three-column")
-          .style("display", "grid")
+          .style("display", "grid");
 
         d3.select("#toggle-three-col")
-          .classed("toggle-active", true)
-        
-        blockSize = 'small'
+          .classed("toggle-active", true);
+
+        view = 'small';
     }
 
-	setURL(date, searchConf.replace(' ', '-'), blockSize);
+    updateParams()
 }
 
-// PRINT NO GAMES FOUND
+function truncateView() {
+    containerWidth = 1080;
+    toggleWidth = +d3.select(".layout-toggle")
+                     .style("width")
+                     .slice(0, -2)
 
+    toggle = d3.select(".layout-toggle");
+    
+    if (window.innerWidth < containerWidth+3*toggleWidth) {
+        toggle.style("visibility", "hidden");
+        if (view == 'wide') {
+            toggleView();
+        }
+    }
+    else {
+        toggle.style("visibility", "visible");
+    }
+}
+truncateView();
+window.addEventListener("resize", truncateView);
+
+// print if games empty
 function gamesEmpty() {
-    games = d3.selectAll(".container")
-              .filter(function(){return getComputedStyle(this).display == "grid"})
-              .selectAll(".scoreboard-block")
-              .filter(function(){return getComputedStyle(this).display == "flex"})
-              .size()
+    games = d3.selectAll(".scoreboard-block")
+              .filter(function(){
+                return getComputedStyle(this).display == "flex"
+              }).size()
 
     d3.select(".content")
       .selectAll("h3")
@@ -169,4 +124,19 @@ function gamesEmpty() {
           .append("h3")
           .text("No games found.")
     }
+}
+
+function updateParams() {
+    // update url
+    let inParams = new URLSearchParams();
+    params.set('date', date);
+    params.set('conf', conf);
+    params.set('view', view);
+
+    url = '?' + params.toString()
+	window.history.replaceState({}, '', url)
+
+    form.attr("action", url)
+
+    gamesEmpty()
 }
