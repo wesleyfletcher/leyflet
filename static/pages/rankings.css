@@ -6,6 +6,73 @@
     border-radius: 5px;
 }
 
-.rankings-row {
+.metrics-table {
+    width: 80%;
+
+    margin-top: 15px;
+    margin-bottom: 25px;
     
+    background-color: white;
+
+    border-spacing: 0;
+    border: 2px solid var(--dark-color);
+    border-radius: 20px;
+
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.metrics-logo {
+    width: 5%;
+}
+
+.metrics-logo div {
+    display: flex;
+    justify-content: center;
+}
+
+.metrics-logo img {
+    width: 100%;
+    height: 20px;
+    object-fit: contain;
+}
+
+.metrics-team {
+    text-align: left;
+    width: 25%;
+}
+
+.metrics-team a {
+    cursor: pointer;
+}
+
+.metrics-small {
+    width: 6%;
+}
+
+.metrics-wide {
+    width: 10%;
+}
+
+.column-border {
+    border-right: solid 2px var(--dark-color);
+}
+
+.row-border {
+    border-bottom: solid 2px var(--dark-color);
+}
+
+.sort-header {
+    cursor: pointer;
+}
+
+.sort-header:hover {
+    transition: background-color 0.3s, color 0.3s;
+
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.polls-row {
+    display: none;
 }

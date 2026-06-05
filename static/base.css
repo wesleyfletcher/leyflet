@@ -59,6 +59,14 @@ div .link:hover {
 
 /* View styles */
 
+.view-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+}
+
 .view-select {
     background-color: white;
 

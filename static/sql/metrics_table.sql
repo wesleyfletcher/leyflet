@@ -1,6 +1,9 @@
 SELECT *
 FROM metrics
 
+JOIN quad_records
+USING (season, team)
+
 JOIN member
 USING (season, team)
 

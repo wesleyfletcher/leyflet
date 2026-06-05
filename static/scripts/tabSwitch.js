@@ -9,5 +9,5 @@ function switchTab(tab) {
       .style("display", "none");
 
     d3.select("#" + tab)
-      .style("display", "block")
+      .style("display", "flex")
 }

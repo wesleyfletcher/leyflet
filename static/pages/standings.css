@@ -33,6 +33,7 @@
 
 .standings-logo div {
     display: flex;
+    justify-content: center;
 }
 
 .standings-logo img {

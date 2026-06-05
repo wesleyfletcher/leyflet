@@ -254,6 +254,7 @@ def rankings(season, conf):
     data['confs_list'] = list(confs_list['conf'])
 
     data['metrics'] = []
+    data['polls'] = []
 
     for i in range(len(metrics_table)):
         row = metrics_table.loc[i]
@@ -266,7 +267,24 @@ def rankings(season, conf):
             'net'    : int(row['net']),
             'wab'    : int(row['wab']),
             'sor'    : int(row['sor']),
-            'torvik' : int(row['torvik'])
+            'torvik' : int(row['torvik']),
+
+            'q1_wins' : int(row['q1_wins']), 'q1_losses' : int(row['q1_losses']),
+            'q2_wins' : int(row['q2_wins']), 'q2_losses' : int(row['q2_losses']),
+            'q3_wins' : int(row['q3_wins']), 'q3_losses' : int(row['q3_losses']),
+            'q4_wins' : int(row['q4_wins']), 'q4_losses' : int(row['q4_losses'])
+        })
+
+    for i in range(len(poll_table)):
+        row = poll_table.loc[i]
+
+        data['polls'].append({
+            'team' : row['team'],
+            'code' : row['code'],
+            'rank' : int(row['ap_poll']) if int(row['ap_poll']) <= 25 else 'RV',
+            'votes' : int(row['ap_pts']),
+            'first' : int(row['ap_first_votes']) if row['ap_first_votes'] else None,
+            'week' : int(row['week'])
         })
 
     return data

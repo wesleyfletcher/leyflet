@@ -25,30 +25,85 @@
         </select><br>
     </form>
 
-    <table>
+    <table class="metrics-table">
         <tr>
-            <th>Team</th>
-            <th>KenPom</th>
-            <th>NET</th>
-            <th>WAB</th>
-            <th>SOR</th>
-            <th>Torvik</th>
+            <th class="column-border row-border" colspan="2"></th>
+            <th class="column-border row-border" colspan="5">Metrics</th>
+            <th class="row-border" colspan="4">Quads</th>
+        </tr>
+        <tr>
+            <th class="metrics-logo row-border"></th>
+            <th class="metrics-team column-border row-border">Team</th>
+
+            <th class="metrics-small column-border row-border sort-header" onclick="sortColumn('KP')">KP</th>
+            <th class="metrics-small column-border row-border sort-header" onclick="sortColumn('NET')">NET</th>
+            <th class="metrics-small column-border row-border sort-header" onclick="sortColumn('WAB')">WAB</th>
+            <th class="metrics-small column-border row-border sort-header" onclick="sortColumn('SOR')">SOR</th>
+            <th class="metrics-small column-border row-border sort-header" onclick="sortColumn('TVK')">TVK</th>
+
+            <th class="metrics-wide column-border row-border sort-header" onclick="sortColumn('I')">I</th>
+            <th class="metrics-wide column-border row-border sort-header" onclick="sortColumn('II')">II</th>
+            <th class="metrics-wide column-border row-border sort-header" onclick="sortColumn('III')">III</th>
+            <th class="metrics-wide row-border sort-header" onclick="sortColumn('IV')">IV</th>
         </tr>
         {% for row in data.metrics %}
-            <tr class="rankings-row" conf="{{ row.conf }}">
-                <td>{{ row.team }}</td>
-                <td>{{ row.kenpom }}</td>
-                <td>{{ row.net }}</td>
-                <td>{{ row.wab }}</td>
-                <td>{{ row.sor }}</td>
-                <td>{{ row.torvik }}</td>
+            <tr class="metrics-row" conf="{{ row.conf }}">
+                <!-- Team -->
+                <td class="metrics-logo">
+                    <div><img alt="{{ row.team }}" src="/static/logos/{{ row.code }}.png"></div>
+                </td>
+                <td class="metrics-team column-border">
+                    <a class="link" href="/teams/{{ row.code }}">{{ row.team }}</a>
+                </td>
+
+                <!-- Metrics -->
+                <td class="column-border" value="{{ row.kenpom }}">{{ row.kenpom }}</td>
+                <td class="column-border" value="{{ row.net }}">{{ row.net }}</td>
+                <td class="column-border" value="{{ row.wab }}">{{ row.wab }}</td>
+                <td class="column-border" value="{{ row.sor }}">{{ row.sor }}</td>
+                <td class="column-border" value="{{ row.torvik }}">{{ row.torvik }}</td>
+
+                <!-- Quads -->
+                <td class="column-border" value="{{ row.q1_losses - 100*row.q1_wins }}">
+                    {{ row.q1_wins }}-{{ row.q1_losses }}
+                </td>
+                <td class="column-border" value="{{ row.q2_losses - 100*row.q2_wins }}">
+                    {{ row.q2_wins }}-{{ row.q2_losses }}
+                </td>
+                <td class="column-border" value="{{ row.q3_losses - 100*row.q3_wins }}">
+                    {{ row.q3_wins }}-{{ row.q3_losses }}
+                </td>
+                <td value="{{ row.q4_losses - 100*row.q4_wins }}">
+                    {{ row.q4_wins }}-{{ row.q4_losses }}
+                </td>
             </tr>
         {% endfor %}
     </table>
 </div>
 
 <div class="view-section" id="rankings-polls" style="display: none;">
-    <h2>Polls</h2>
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th colspan="2">Team</th>
+            <th colspan="2">Votes</th>
+        </tr>
+        {% for row in data.polls %}
+            <tr class="polls-row" week="{{ row.week }}">
+                <td>{{ row.rank }}</td>
+                <td>
+                    <div class="metrics-logo"><img alt="{{ row.team }}" src="/static/logos/{{ row.code }}.png"></div>
+                </td>
+                <td>{{ row.team }}</td>
+                <td>{{ row.votes }}</td>
+                {% if row.first %}
+                    <td>({{ row.first }})</td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
 </div>
 
 <script src="/static/scripts/rankings.js"></script>

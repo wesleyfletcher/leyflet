@@ -201,7 +201,7 @@
 		"Central Ark",
 		"Cent Ark"
 	],
-	"Central Connecticut St": [
+	"Central Conn": [
 		"Central Connecticut St",
 		"Central Connecticut State",
 		"Central Connecticut",
@@ -1323,19 +1323,24 @@
 	"Tennessee": [
 		"Tennessee"
 	],
-	"Texas A&M Corpus Christi": [
+	"Texas A&M CC": [
+		"Corpus Christi",
 		"Texas A&M Corpus Christi",
 		"Texas A&M Corpus Chris",
 		"Texas A&M C Christi",
+		"Texas A&M CC",
 		"TAMU Corpus Christi",
 		"TAMU Corpus Chris",
 		"TAMU C Christi",
+		"TAMU CC",
 		"A&M Corpus Christi",
 		"A&M Corpus Chris",
 		"A&M C Christi",
+		"A&M CC",
 		"TAM Corpus Christi",
 		"TAM Corpus Chris",
-		"TAM C Christi"
+		"TAM C Christi",
+		"TAM CC"
 	],
 	"Texas A&M": [
 		"Texas A&M",
