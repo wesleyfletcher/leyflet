@@ -1,4 +1,4 @@
-from website.database import database
+from database import database
 import datetime
 
 CURRENT_SEASON = 2025
