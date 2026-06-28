@@ -1,7 +1,7 @@
-/logic
+/pipeline/logic
 *.ipynb
 *.pyc
 
 /__pycache__/*
-/logic/__pycache__/*
+pipeline/logic/__pycache__/*
 .env

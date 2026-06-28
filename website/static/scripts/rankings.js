@@ -52,4 +52,11 @@ function setWeek(week) {
 	  .style("display", "table-row");
 }
 
+d3.select("#week-picker")
+  .on("change", function(event) {
+    let week = +event.target.value;
+
+    setWeek(week)
+})
+
 setWeek(1);

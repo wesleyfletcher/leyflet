@@ -2,7 +2,6 @@ CBB Website
 
 Main ideas:
     1. Synthesize (but don't steal) ideas from all corners of CBB
-    2. Should feel "official" for CBB (more like MLB and Masters websites, less like ESPN)
 
 - Live scores
     - Gamecasts

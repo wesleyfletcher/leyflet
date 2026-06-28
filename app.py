@@ -1,6 +1,6 @@
 from flask import *
 
-import endpoint
+import website.endpoint as endpoint
 
 app = Flask(__name__)
 

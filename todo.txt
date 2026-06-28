@@ -1,0 +1,39 @@
+1. Database population
+    i. Replace plays with NCAA data
+        - Scrape pbp from NCAA
+        - Format data to go into database
+        - Verify that score matches up
+        - Delete old plays and add new ones
+    ii. Replace stats with NCAA data
+    iii. Populate jersey numbers from NCAA
+    iv. Add coaches poll rankings
+
+2. Orchestration pipeline
+    i. Update database for each new season
+    ii. Add newly scheduled or rescheduled games daily
+    iii. Populate database with live scores from ESPN
+    iv. After games, add finalized NCAA stats and pbp
+
+3. Solidify website page structure
+    i. Lay out content of all pages, subpages, and features
+    ii. Package SQL queries into usable JSON
+    iii. Give functionality for tabs, sorting, and pagination
+    iv. Optimize pages for loading speed
+
+4. Format website design
+    i. Style pages in a consistent way sitewide
+    ii. Arrange data so it is appealing visually
+    iii. Make a layout for mobile devices
+    iv. Add accessibility for disabled users
+
+5. Create branding
+    i. Design logo
+    ii. Find best looking fonts
+    iii. Choose website colors
+    iv. Promote site on socials
+
+6. Maintain website and minimize costs
+    i. Host MySQL database
+    ii. Host github code on a server provider
+    iii. Secure website domain indefinitely
+    iv. Observe site usage and make appropriate changes 

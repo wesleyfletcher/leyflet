@@ -1,4 +1,4 @@
-from database import database
+from website.database import database
 import datetime
 
 CURRENT_SEASON = 2025
@@ -255,6 +255,8 @@ def rankings(season, conf):
 
     data['metrics'] = []
     data['polls'] = []
+
+    data['num_weeks'] = int(poll_table['week'].max())
 
     for i in range(len(metrics_table)):
         row = metrics_table.loc[i]

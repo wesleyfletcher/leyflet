@@ -1,4 +1,4 @@
-#conf-picker {
+.form-picker {
     color: var(--dark-color);
     font-family: "Farro", sans-serif;
 
@@ -6,8 +6,8 @@
     border-radius: 5px;
 }
 
-.metrics-table {
-    width: 80%;
+.rankings-table {
+    width: 1080px;
 
     margin-top: 15px;
     margin-bottom: 25px;
