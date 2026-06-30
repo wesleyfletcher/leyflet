@@ -1,5 +1,6 @@
 flask
 gunicorn
+dagster
 
 beautifulsoup4
 selenium

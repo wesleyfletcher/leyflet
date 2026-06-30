@@ -10,7 +10,11 @@ def error(e):
 
 @app.route('/')
 def home():
-    return render_template('pages/home.html')
+
+    with open('../data/test.txt', 'r') as file:
+        msg = file.read()
+
+    return render_template('pages/home.html', text=msg)
 
 @app.route('/teams/')
 def teams_list():
